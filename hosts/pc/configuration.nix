@@ -9,8 +9,10 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./desktop.nix
-      ../../users/zed.nix
+      ../../users/zed/config.nix
     ];
+
+  nixpkgs.config.allowUnfree = true;
 
   boot.loader.limine = {
     enable = true;
@@ -37,6 +39,8 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    alsa.enable = true;
+    wireplumber.enable = true;
   };
 
   programs.firefox.enable = true;
@@ -48,6 +52,8 @@
     git
     curl
     wget
+    kitty
+    anyrun
   ];
 
   programs.mtr.enable = true;

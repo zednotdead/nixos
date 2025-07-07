@@ -3,9 +3,14 @@
 {
   users.users.zed = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [
     ];
   };
+
+  home-manager.users.zed = ./home.nix;
+  home-manager.backupFileExtension = "bak";
 }
