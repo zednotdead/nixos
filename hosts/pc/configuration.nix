@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./desktop.nix
-      ./users/zed.nix
+      ../../users/zed.nix
     ];
 
   boot.loader.limine = {

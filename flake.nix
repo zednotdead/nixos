@@ -8,7 +8,9 @@
   };
   outputs = inputs@{ self, nixpkgs, ... }: {
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
-      modules = [ ./configuration.nix ];
+      modules = [
+        ./hosts/pc/configuration.nix
+      ];
     };
   };
 }
