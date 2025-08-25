@@ -1,8 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
 
     hyprland-plugins = {
@@ -14,7 +12,6 @@
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
       modules = [
         ./hosts/pc/configuration.nix
-        home-manager.nixosModules.home-manager
       ];
     };
   };
