@@ -3,7 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { inputs, config, lib, pkgs, ... }:
-
 {
   nixpkgs.config.allowUnfree = true;
   imports =
@@ -72,6 +71,7 @@
     git
     stow
     greetd.tuigreet
+    gnumake
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

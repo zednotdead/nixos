@@ -12,6 +12,8 @@
       _1password-gui-beta
       _1password-cli
       discord
+      wallust
+      swww
     ];
     shell = pkgs.fish;
   };

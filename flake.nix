@@ -8,8 +8,9 @@
       inputs.hyprland.follows = "hyprland";
     };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, ... }: {
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
       modules = [
         ./hosts/pc/configuration.nix
       ];
