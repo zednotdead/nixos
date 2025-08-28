@@ -1,19 +1,17 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ inputs, config, lib, pkgs, quickshell, ... }:
 {
+  lib,
+  pkgs,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [./hardware-configuration.nix];
 
   programs.nix-ld.enable = true;
 
-  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -31,11 +29,19 @@
 
   services.printing.enable = true;
   services.flatpak.enable = true;
+  systemd.services.flatpak-repo = {
+    wantedBy = ["multi-user.target"];
+    path = [pkgs.flatpak];
+    script = ''
+      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
+  };
 
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
+
   services.openssh.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
@@ -47,10 +53,10 @@
     stow
     tuigreet
     gnumake
-    lxqt.lxqt-policykit
-    cifs-utils
     postgresql
     dig
+    rustup
+    gcc
   ];
 
   programs.mtr.enable = true;

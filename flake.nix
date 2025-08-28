@@ -12,9 +12,13 @@
       inputs.hyprland.follows = "hyprland";
     };
   };
-  outputs = inputs@{ self, nixpkgs, ... }: {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    ...
+  }: {
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
       modules = [
         ./hosts/pc/configuration.nix
         ./users/zed/config.nix
@@ -22,4 +26,3 @@
     };
   };
 }
-
