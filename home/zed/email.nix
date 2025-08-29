@@ -10,6 +10,11 @@
   programs.offlineimap.enable = true;
   services.imapnotify.enable = true;
   programs.neomutt.enable = true;
+  programs.astroid.enable = true;
+
+  home.packages = with pkgs; [
+    thunderbird
+  ];
 
   accounts.email.maildirBasePath = ".maildir";
   accounts.email.accounts = {
@@ -59,6 +64,9 @@
         enable = true;
       };
       neomutt = {
+        enable = true;
+      };
+      astroid = {
         enable = true;
       };
       notmuch = {

@@ -41,7 +41,7 @@
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
   programs._1password.enable = true;
-  programs._1password-gui = with pkgs.master; {
+  programs._1password-gui = with pkgs; {
     enable = true;
     package = _1password-gui-beta;
     polkitPolicyOwners = ["zed"];

@@ -85,6 +85,7 @@
     dig
     rustup
     gcc
+    networkmanagerapplet
   ];
 
   programs.mtr.enable = true;

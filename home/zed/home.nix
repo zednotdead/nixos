@@ -11,5 +11,6 @@
     ./calendar.nix
     ./contacts.nix
     ./email.nix
+    ./hyprland.nix
   ];
 }
