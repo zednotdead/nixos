@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: {
+  nixpkgs.config.allowUnfree = true;
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
@@ -14,23 +15,14 @@
   };
 
   programs.uwsm.enable = true;
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet";
-      };
-    };
-  };
+  programs.command-not-found.enable = true;
+  environment.etc."programs.sqlite".source = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
+  programs.command-not-found.dbPath = "/etc/programs.sqlite";
 
   programs.hyprland = {
     enable = true;
-    withUWSM = true;
-    # set the flake package
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    withUWSM = true; package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
 
   xdg.portal.extraPortals = [
@@ -47,7 +39,16 @@
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
-  programs.gpu-screen-recorder.enable = true;
+
+  programs._1password.enable = true;
+  programs._1password-gui = with pkgs.master; {
+    enable = true;
+    package = _1password-gui-beta;
+    polkitPolicyOwners = ["zed"];
+  };
+
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   users.users.zed = {
     isNormalUser = true;
@@ -57,8 +58,6 @@
       kitty
       wofi
       librewolf-bin
-      _1password-gui-beta
-      _1password-cli
       discord
       wallust
       swww
@@ -83,8 +82,23 @@
       grimblast
       godot
       hyprpicker
-      gpu-screen-recorder-gtk
       alejandra
+      pika-backup
+      ncpamixer
+      nautilus
+      mpv
+      hyprprop
+      vdirsyncer
+      rio
+      gopass
+      (ffmpeg-full.override {
+        withUnfree = true; # Allow unfree dependencies (for Nvidia features notably)
+        withMetal = false; # Use Metal API on Mac. Unfree and requires manual downloading of files
+        withMfx = false; # Hardware acceleration via the deprecated intel-media-sdk/libmfx. Use oneVPL instead (enabled by default) from Intel's oneAPI.
+        withTensorflow = false; # Tensorflow dnn backend support (Increases closure size by ~390 MiB)
+        withSmallBuild = false; # Prefer binary size to performance.
+        withDebug = false; # Build using debug options
+      })
     ];
     shell = pkgs.fish;
   };

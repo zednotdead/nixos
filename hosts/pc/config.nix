@@ -7,6 +7,9 @@
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
   imports = [./hardware-configuration.nix];
 
@@ -21,6 +24,22 @@
   time.timeZone = "Europe/Warsaw";
 
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocales = ["pl_PL.UTF-8/UTF-8"];
+  i18n.extraLocaleSettings = {
+    # LC_ALL = "en_US.UTF-8"; # This overrides all other LC_* settings.
+    LC_CTYPE = "en_US.UTF8";
+    LC_ADDRESS = "pl_PL.UTF-8";
+    LC_MEASUREMENT = "pl_PL.UTF-8";
+    LC_MESSAGES = "en_US.UTF-8";
+    LC_MONETARY = "pl_PL.UTF-8";
+    LC_NAME = "pl_PL.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "pl_PL.UTF-8";
+    LC_TELEPHONE = "pl_PL.UTF-8";
+    LC_TIME = "pl_PL.UTF-8";
+    LC_COLLATE = "pl_PL.UTF-8";
+  };
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = lib.mkForce "pl";
@@ -46,12 +65,21 @@
 
   security.sudo.wheelNeedsPassword = false;
 
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     neovim
     wget
     git
     stow
-    tuigreet
+    greetd.tuigreet
     gnumake
     postgresql
     dig
