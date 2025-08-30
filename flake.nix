@@ -21,6 +21,18 @@
       url = "github:wamserma/flake-programs-sqlite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    base16.url = "github:SenchoPens/base16.nix";
+
+    tt-schemes = {
+      url = "github:tinted-theming/schemes";
+      flake = false;
+    };
+
+    tt-terminal = {
+      url = "github:tinted-theming/tinted-terminal";
+      flake = false;
+    };
   };
   outputs = inputs @ {
     self,
@@ -33,6 +45,7 @@
       modules = [
         ./hosts/pc/config.nix
         ./users/zed/config.nix
+        {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

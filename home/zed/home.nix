@@ -12,5 +12,6 @@
     ./contacts.nix
     ./email.nix
     ./hyprland.nix
+    ./rio.nix
   ];
 }

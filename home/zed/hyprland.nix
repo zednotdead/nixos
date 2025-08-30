@@ -36,7 +36,7 @@
         "${pkgs.hyprsunset}/bin/hyprsunset"
         "${pkgs.udiskie}/bin/udiskie"
       ];
-      "$terminal" = "${pkgs.kitty}/bin/kitty";
+      "$terminal" = "${pkgs.rio}/bin/rio";
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
       "$menu" = "${pkgs.wofi}/bin/wofi --show drun";
       "$mainMod" = "SUPER";
@@ -179,6 +179,7 @@
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
         "float, class:librewolf, title:^$"
+        "float, class:librewolf, title:^Picture-in-Picture$"
         "move 100% 100%, class:librewolf, title:^$"
         "float, class:1Password"
         "focusonactivate, class:librewolf"
