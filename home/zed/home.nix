@@ -1,5 +1,4 @@
 {
-  lib,
   config,
   pkgs,
   ...
@@ -13,5 +12,6 @@
     ./email.nix
     ./hyprland.nix
     ./rio.nix
+    ./shell.nix
   ];
 }

@@ -38,22 +38,22 @@
     self,
     nixpkgs,
     home-manager,
+    base16,
     ...
   }: {
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-        inputs.base16.nixosModule
-        ./hosts/pc/config.nix
-        ./users/zed/config.nix
-        {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
         home-manager.nixosModules.home-manager
-        inputs.base16.homeManagerModule
+        base16.nixosModule
+        {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.zed = ./home/zed/home.nix;
         }
+        ./hosts/pc/config.nix
+        ./users/zed/config.nix
       ];
     };
   };

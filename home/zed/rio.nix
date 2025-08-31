@@ -12,15 +12,10 @@
     timg
   ];
 
-  programs.zathura.enable = true;
-  programs.zathura.extraConfig =
-    builtins.readFile (config.scheme inputs.base16-zathura);
-
   programs.rio = {
     enable = true;
     settings = {
       renderer = {
-        performance = "high";
         level = 1;
       };
       fonts = {
@@ -28,8 +23,8 @@
         family = "Iosevka";
         features = ["dlig"];
       };
-      padding-x = 10;
-      padding-y = [5 5];
+      padding-x = 0;
+      padding-y = [0 0];
       colors = {
         background = "#161616";
         foreground = "#ffffff";
