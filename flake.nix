@@ -43,10 +43,12 @@
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
+        inputs.base16.nixosModule
         ./hosts/pc/config.nix
         ./users/zed/config.nix
         {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
         home-manager.nixosModules.home-manager
+        inputs.base16.homeManagerModule
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

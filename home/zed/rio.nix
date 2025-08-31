@@ -12,6 +12,10 @@
     timg
   ];
 
+  programs.zathura.enable = true;
+  programs.zathura.extraConfig =
+    builtins.readFile (config.scheme inputs.base16-zathura);
+
   programs.rio = {
     enable = true;
     settings = {
