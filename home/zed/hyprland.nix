@@ -36,7 +36,7 @@
         "${pkgs.hyprsunset}/bin/hyprsunset"
         "${pkgs.udiskie}/bin/udiskie"
       ];
-      "$terminal" = "${pkgs.rio}/bin/rio";
+      "$terminal" = "${pkgs.wezterm}/bin/wezterm";
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
       "$menu" = "${pkgs.wofi}/bin/wofi --show drun";
       "$mainMod" = "SUPER";

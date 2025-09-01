@@ -46,12 +46,7 @@
           "INBOX"
           "INBOX/Newsletters"
         ];
-        onNotifyPost = ''
-          ${pkgs.offlineimap}/bin/offlineimap
-          && ${pkgs.notmuch}/bin/notmuch new
-          && ${pkgs.afew} -n -t -C ~/.config/notmuch/default/config
-          && ${pkgs.libnotify}/bin/notify-send 'New mail arrived'
-        '';
+        onNotifyPost = "${pkgs.offlineimap}/bin/offlineimap && ${pkgs.notmuch}/bin/notmuch new && ${pkgs.afew} -n -t -C ~/.config/notmuch/default/config && ${pkgs.libnotify}/bin/notify-send 'New mail arrived'";
       };
       offlineimap = {
         enable = true;

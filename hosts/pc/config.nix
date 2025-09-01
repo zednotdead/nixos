@@ -7,6 +7,21 @@
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      inherit
+        (final.lixPackageSets.stable)
+        nixpkgs-review
+        nix-direnv
+        nix-eval-jobs
+        nix-fast-build
+        colmena
+        ;
+    })
+  ];
+
+  nix.package = pkgs.lixPackageSets.stable.lix;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -86,6 +101,7 @@
     rustup
     gcc
     networkmanagerapplet
+    docker-compose
   ];
 
   programs.mtr.enable = true;
@@ -95,6 +111,11 @@
   };
 
   powerManagement.enable = true;
+
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

@@ -1,4 +1,6 @@
-.PHONY: switch
+.PHONY: os home
 
-switch:
-	sudo nixos-rebuild switch --flake .#pc
+os:
+	nh os switch --ask .
+home:
+	nh home switch --ask .

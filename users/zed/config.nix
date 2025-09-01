@@ -10,10 +10,6 @@
   };
 
   programs.fish.enable = true;
-  programs.starship = {
-    enable = true;
-  };
-
   programs.uwsm.enable = true;
   programs.command-not-found.enable = true;
   environment.etc."programs.sqlite".source = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
@@ -21,7 +17,8 @@
 
   programs.hyprland = {
     enable = true;
-    withUWSM = true; package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    withUWSM = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
 
@@ -49,10 +46,16 @@
 
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "$HOME/nixos"; # sets NH_OS_FLAKE variable for you
+  };
 
   users.users.zed = {
     isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "docker"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
       kitty
@@ -99,6 +102,7 @@
         withSmallBuild = false; # Prefer binary size to performance.
         withDebug = false; # Build using debug options
       })
+      home-manager
     ];
     shell = pkgs.fish;
   };

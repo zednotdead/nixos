@@ -39,22 +39,32 @@
     nixpkgs,
     home-manager,
     base16,
+    tt-terminal,
+    tt-schemes,
     ...
-  }: {
+  }: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-        home-manager.nixosModules.home-manager
         base16.nixosModule
         {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.zed = ./home/zed/home.nix;
-        }
         ./hosts/pc/config.nix
         ./users/zed/config.nix
       ];
+    };
+    homeConfigurations."zed" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [
+        base16.homeManagerModule
+        {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
+        ./home/zed/home.nix
+      ];
+      extraSpecialArgs = {
+        inherit inputs;
+      };
     };
   };
 }
