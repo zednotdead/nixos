@@ -42,10 +42,7 @@
     tt-terminal,
     tt-schemes,
     ...
-  }: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
+  }: {
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
@@ -55,16 +52,35 @@
         ./users/zed/config.nix
       ];
     };
-    homeConfigurations."zed" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        base16.homeManagerModule
-        {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
-        ./home/zed/home.nix
-      ];
-      extraSpecialArgs = {
-        inherit inputs;
+    homeConfigurations."zed" = let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          base16.homeManagerModule
+          {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
+          ./home/zed/home.nix
+        ];
+        extraSpecialArgs = {
+          inherit inputs;
+        };
       };
-    };
+    homeConfigurations."work" = let
+      system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          base16.homeManagerModule
+          {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
+          ./home/zed/work.nix
+        ];
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+      };
   };
 }
