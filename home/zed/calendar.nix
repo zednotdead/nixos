@@ -13,6 +13,10 @@
     };
   };
 
+  home.packages = with pkgs; [
+    gopass
+  ];
+
   accounts.calendar.basePath = ".calendar";
   accounts.calendar.accounts = {
     "Mailbox" = {

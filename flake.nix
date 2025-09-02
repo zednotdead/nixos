@@ -65,7 +65,7 @@
           base16.homeManagerModule
           agenix.homeManagerModules.default
           {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
-          ./home/zed/home.nix
+          ./home/zed
         ];
         extraSpecialArgs = {
           inherit inputs;

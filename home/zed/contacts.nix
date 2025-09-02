@@ -7,6 +7,10 @@
   services.vdirsyncer.enable = true;
   programs.khard.enable = true;
 
+  home.packages = with pkgs; [
+    gopass
+  ];
+
   accounts.contact.basePath = ".contacts";
   accounts.contact.accounts = {
     "Mailbox" = {

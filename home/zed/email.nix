@@ -14,6 +14,7 @@
 
   home.packages = with pkgs; [
     thunderbird
+    gopass
   ];
 
   accounts.email.maildirBasePath = ".maildir";

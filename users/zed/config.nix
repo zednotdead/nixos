@@ -10,11 +10,11 @@
   };
 
   programs.fish.enable = true;
-  programs.uwsm.enable = true;
   programs.command-not-found.enable = true;
   environment.etc."programs.sqlite".source = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
   programs.command-not-found.dbPath = "/etc/programs.sqlite";
 
+  programs.uwsm.enable = true;
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -58,42 +58,15 @@
     extraGroups = ["docker" "wheel"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
-      kitty
-      wofi
-      librewolf-bin
-      discord
-      wallust
-      swww
       file
       p7zip
-      grim
-      slurp
-      wayfreeze
-      gimp
-      hyprsunset
-      hyprpolkitagent
-      hyprlock
-      wl-clipboard
       unzip
-      kdePackages.qtdeclarative
       brotli
-      peazip
-      fastfetch
       nil
-      inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
-      thunderbird
-      grimblast
       godot
-      hyprpicker
       alejandra
       pika-backup
       ncpamixer
-      nautilus
-      mpv
-      hyprprop
-      vdirsyncer
-      rio
-      gopass
       (ffmpeg-full.override {
         withUnfree = true; # Allow unfree dependencies (for Nvidia features notably)
         withMetal = false; # Use Metal API on Mac. Unfree and requires manual downloading of files

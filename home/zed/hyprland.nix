@@ -3,13 +3,12 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+let
+  quickshell = inputs.quickshell.packages.${pkgs.system}.default;
+in {
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
   xdg.configFile."hypr/monitor.conf".source = ./hyprland/monitors.conf;
-  xdg.configFile."quickshell" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/quickshell";
-    recursive = true;
-  };
 
   services.kdeconnect = {
     enable = true;
@@ -25,6 +24,20 @@
     udiskie
     hyprlock
     grimblast
+    wallust
+    hyprsunset
+    hyprpolkitagent
+    hyprlock
+    wl-clipboard
+    grimblast
+    hyprpicker
+    mpv
+    hyprprop
+    nautilus
+    peazip
+    librewolf-bin
+    discord
+    gimp
   ];
 
   wayland.windowManager.hyprland = {
@@ -41,7 +54,7 @@
         "${pkgs.networkmanagerapplet}/bin/nm-applet &"
         "${pkgs.swww}/bin/swww-daemon"
         "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.discord}/bin/discord"
-        "quickshell"
+        "${quickshell}/bin/quickshell"
         "${pkgs.hyprsunset}/bin/hyprsunset"
         "${pkgs.udiskie}/bin/udiskie"
       ];

@@ -24,6 +24,7 @@ in {
     ./contacts.nix
     ./email.nix
     ./hyprland.nix
+    ./quickshell.nix
     ./rio.nix
     ./kitty.nix
     ./wezterm.nix
