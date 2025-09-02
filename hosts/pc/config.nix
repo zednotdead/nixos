@@ -4,6 +4,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
@@ -89,8 +90,12 @@
     };
   };
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+
   environment.systemPackages = with pkgs; [
-    neovim
     wget
     git
     stow
@@ -102,6 +107,7 @@
     gcc
     networkmanagerapplet
     docker-compose
+    inputs.agenix.packages.${pkgs.system}.default
   ];
 
   programs.mtr.enable = true;

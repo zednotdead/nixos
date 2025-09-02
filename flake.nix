@@ -1,4 +1,28 @@
 {
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+      imports = [
+        ./hosts
+      ];
+      perSystem = {pkgs, ...}: {
+        packages.zed = (
+          inputs.home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [
+              inputs.base16.homeManagerModule
+              inputs.agenix.homeManagerModules.default
+              {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
+              ./home/zed/home.nix
+            ];
+            extraSpecialArgs = {
+              inherit inputs;
+            };
+          }
+        ).activationPackage;
+      };
+    };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
@@ -33,54 +57,10 @@
       url = "github:tinted-theming/tinted-terminal";
       flake = false;
     };
-  };
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    home-manager,
-    base16,
-    tt-terminal,
-    tt-schemes,
-    ...
-  }: {
-    nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        base16.nixosModule
-        {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
-        ./hosts/pc/config.nix
-        ./users/zed/config.nix
-      ];
+    agenix.url = "github:ryantm/agenix";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    homeConfigurations."zed" = let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          base16.homeManagerModule
-          {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
-          ./home/zed/home.nix
-        ];
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-      };
-    homeConfigurations."work" = let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          base16.homeManagerModule
-          {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
-          ./home/zed/work.nix
-        ];
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-      };
   };
 }
