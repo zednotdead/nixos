@@ -6,6 +6,10 @@
 }: {
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
   xdg.configFile."hypr/monitor.conf".source = ./hyprland/monitors.conf;
+  xdg.configFile."quickshell" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/quickshell";
+    recursive = true;
+  };
 
   services.kdeconnect = {
     enable = true;
