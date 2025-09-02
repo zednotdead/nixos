@@ -2,8 +2,6 @@ import Quickshell
 import Quickshell.Widgets
 import Quickshell.Services.Pipewire
 import QtQuick
-import QtQuick.Layouts
-import QtQuick.Controls
 
 Item {
   id: root
@@ -52,7 +50,7 @@ Item {
       item: root
       edges: Edges.Top
       gravity: Edges.Top
-      rect.x: 0
+      rect.x: root.width / 2
     }
     visible: root.volumeWindowShown
   }
