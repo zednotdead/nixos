@@ -51,6 +51,7 @@ Item {
       edges: Edges.Top
       gravity: Edges.Top
       rect.x: root.width / 2
+      rect.y: -(root.height / 2)
     }
     visible: root.volumeWindowShown
   }
