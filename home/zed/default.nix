@@ -40,5 +40,6 @@ in {
     ./shell.nix
     ./backup.nix
     ./minio.nix
+    ./nvim
   ];
 }

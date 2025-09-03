@@ -34,6 +34,10 @@
       flake = false;
     };
     agenix.url = "github:ryantm/agenix";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,
@@ -43,6 +47,7 @@
     tt-terminal,
     tt-schemes,
     agenix,
+    nixvim,
     ...
   }: {
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
