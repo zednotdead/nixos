@@ -50,9 +50,9 @@
       modules = [
         base16.nixosModule
         {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
+        agenix.nixosModules.default
         ./hosts/pc/config.nix
         ./users/zed/config.nix
-        agenix.nixosModules.default
       ];
     };
     homeConfigurations."zed" = let
