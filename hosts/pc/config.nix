@@ -79,7 +79,9 @@
 
   services.openssh.enable = true;
 
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.enable = false;
+  security.sudo-rs.enable = true;
+  security.sudo-rs.wheelNeedsPassword = false;
 
   services.greetd = {
     enable = true;

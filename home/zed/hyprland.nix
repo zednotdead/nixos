@@ -3,8 +3,7 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   quickshell = inputs.quickshell.packages.${pkgs.system}.default;
 in {
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
@@ -35,10 +34,16 @@ in {
     hyprprop
     nautilus
     peazip
-    librewolf-bin
     discord
     gimp
   ];
+
+  programs.librewolf = {
+    enable = true;
+    nativeMessagingHosts = [
+      pkgs.tridactyl-native
+    ];
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;

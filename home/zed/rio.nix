@@ -7,7 +7,6 @@
   home.packages = with pkgs; [
     rio
     aporetic
-    iosevka
     imgcat
     timg
   ];

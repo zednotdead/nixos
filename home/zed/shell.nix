@@ -12,6 +12,7 @@
     zellij
     nix-search-tv
     kubectx
+    exiftool
   ];
 
   services.gpg-agent = {
@@ -43,7 +44,7 @@
     shellAliases = {
       zel = "${pkgs.zellij}/bin/zellij";
       k = "${pkgs.kubectl}/bin/kubectl";
-      sf = "${pkgs.superfile}/bin/superfile";
+      spf = "${pkgs.superfile}/bin/superfile";
     };
   };
 
@@ -188,47 +189,151 @@
   programs.superfile = {
     enable = true;
     hotkeys = {
-      confirm = ["enter" ""];
-      quit = ["ctrl+c" ""];
-      list_up = ["k" ""];
-      list_down = ["j" ""];
+      confirm = ["enter" "right" "l"];
+      quit = ["q" "esc"];
+
+      # movement
+      list_up = ["up" "k"];
+      list_down = ["down" "j"];
       page_up = ["pgup" ""];
       page_down = ["pgdown" ""];
+
+      # file panel control
       create_new_file_panel = ["n" ""];
-      close_file_panel = ["q" ""];
-      next_file_panel = ["tab" ""];
-      previous_file_panel = ["shift+tab" ""];
+      close_file_panel = ["w" ""];
+      next_file_panel = ["tab" "L"];
+      previous_file_panel = ["shift+left" "H"];
       toggle_file_preview_panel = ["f" ""];
       open_sort_options_menu = ["o" ""];
       toggle_reverse_sort = ["R" ""];
-      focus_on_process_bar = ["ctrl+p" ""];
-      focus_on_sidebar = ["ctrl+s" ""];
-      focus_on_metadata = ["ctrl+d" ""];
-      file_panel_item_create = ["a" ""];
-      file_panel_item_rename = ["r" ""];
-      copy_items = ["y" ""];
-      cut_items = ["x" ""];
-      paste_items = ["p" ""];
-      delete_items = ["d" ""];
+
+      # change focus
+      focus_on_process_bar = ["p" ""];
+      focus_on_sidebar = ["s" ""];
+      focus_on_metadata = ["m" ""];
+
+      # create file/directory and rename
+      file_panel_item_create = ["ctrl+n" ""];
+      file_panel_item_rename = ["ctrl+r" ""];
+
+      # file operations
+      copy_items = ["ctrl+c" ""];
+      cut_items = ["ctrl+x" ""];
+      paste_items = ["ctrl+v" "ctrl+w" ""];
+      delete_items = ["ctrl+d" "delete" ""];
+
+      # compress and extract
       extract_file = ["ctrl+e" ""];
       compress_file = ["ctrl+a" ""];
+
+      # editor
       open_file_with_editor = ["e" ""];
       open_current_directory_with_editor = ["E" ""];
+
+      # other
       pinned_directory = ["P" ""];
       toggle_dot_file = ["." ""];
-      change_panel_mode = ["m" ""];
+      change_panel_mode = ["v" ""];
       open_help_menu = ["?" ""];
       open_command_line = [":" ""];
-      copy_path = ["Y" ""];
+      open_spf_prompt = [">" ""];
+      copy_path = ["ctrl+p" ""];
       copy_present_working_directory = ["c" ""];
-      toggle_footer = ["ctrl+f" ""];
+      toggle_footer = ["F" ""];
+
+      # Typing hotkeys (can conflict with all hotkeys)
       confirm_typing = ["enter" ""];
-      cancel_typing = ["esc" ""];
-      parent_directory = ["-" ""];
+      cancel_typing = ["ctrl+c" "esc"];
+
+      # Normal mode hotkeys (can conflict with other modes cannot conflict with global hotkeys)
+      parent_directory = ["h" "left" "backspace"];
       search_bar = ["/" ""];
-      file_panel_select_mode_items_select_down = ["J" ""];
-      file_panel_select_mode_items_select_up = ["K" ""];
+
+      # Select mode hotkeys (can conflict with other modes cannot conflict with global hotkeys)
+      file_panel_select_mode_items_select_down = ["shift+down" "J"];
+      file_panel_select_mode_items_select_up = ["shift+up" "K"];
       file_panel_select_all_items = ["A" ""];
+    };
+    settings = {
+      theme = "oxocarbondark";
+      editor = "${pkgs.neovim}/bin/neovim";
+      dir_editor = "${pkgs.neovim}/bin/neovim";
+      auto_check_update = false;
+      cd_on_quit = false;
+      default_file_open_preview = true;
+      show_image_preview = true;
+      show_panel_footer_info = true;
+      file_size_use_si = true;
+      default_directory = ".";
+      default_sort_type = 0;
+      sort_order_reversed = false;
+      case_sensitive_sort = false;
+      debug = false;
+      ignore_missing_fields = true;
+
+      code_previewer = "bat";
+      nerdfont = true;
+      transparent_background = false;
+      file_preview_width = 0;
+      sidebar_width = 20;
+
+      border_top = "─";
+      border_bottom = "─";
+      border_left = "│";
+      border_right = "│";
+      border_top_left = "╭";
+      border_top_right = "╮";
+      border_bottom_left = "╰";
+      border_bottom_right = "╯";
+      border_middle_left = "├";
+      border_middle_right = "┤";
+
+      metadata = true;
+      enable_md5_checksum = false;
+      zoxide_support = true;
+    };
+    themes = {
+      oxocarbondark = with config.scheme.withHashtag; {
+        code_syntax_highlight = "oxocarbon-dark";
+        file_panel_border = base03;
+        sidebar_border = base03;
+        footer_border = base03;
+        file_panel_border_active = base0B;
+        sidebar_border_active = base0B;
+        footer_border_active = base0B;
+        modal_border_active = base00;
+        full_screen_bg = base00;
+        file_panel_bg = base00;
+        sidebar_bg = base00;
+        footer_bg = base00;
+        modal_bg = base00;
+        full_screen_fg = base05;
+        file_panel_fg = base05;
+        sidebar_fg = base05;
+        footer_fg = base05;
+        modal_fg = base05;
+        cursor = base06;
+        correct = base0B;
+        error = base08;
+        hint = base0D;
+        cancel = base09;
+        gradient_color = [base0B base0E];
+        directory_icon_color = base0D;
+        file_panel_top_directory_icon = base0B;
+        file_panel_top_path = base0D;
+        file_panel_item_selected_fg = base0B;
+        file_panel_item_selected_bg = base00;
+        sidebar_title = base0D;
+        sidebar_item_selected_fg = base0B;
+        sidebar_item_selected_bg = base00;
+        sidebar_divider = base04;
+        modal_cancel_fg = base02;
+        modal_cancel_bg = base00;
+        modal_confirm_fg = base02;
+        modal_confirm_bg = base00;
+        help_menu_hotkey = base00;
+        help_menu_title = base05;
+      };
     };
   };
 
@@ -244,10 +349,10 @@
   programs.newsboat = {
     enable = true;
     extraConfig = ''
-    urls-source "miniflux"
-    miniflux-url "https://miniflux.zed.gay"
-    miniflux-login "me@zed.gay"
-    miniflux-passwordeval "sh -c 'cat ${config.age.secrets.newsboat-password.path}'"
+      urls-source "miniflux"
+      miniflux-url "https://miniflux.zed.gay"
+      miniflux-login "me@zed.gay"
+      miniflux-passwordeval "sh -c 'cat ${config.age.secrets.newsboat-password.path}'"
     '';
   };
 }
