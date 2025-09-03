@@ -52,6 +52,7 @@
     enable = true;
     settings = {
       theme = "oxocarbon-dark";
+      show_startup_tips = false;
     };
     themes = {
       oxocarbon-dark = with config.scheme.withHashtag; {
