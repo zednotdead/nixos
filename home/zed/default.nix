@@ -29,17 +29,17 @@ in {
   };
 
   imports = [
-    ./calendar.nix
-    ./contacts.nix
-    ./email.nix
-    ./hyprland.nix
-    ./quickshell.nix
-    ./rio.nix
-    ./kitty.nix
-    ./wezterm.nix
-    ./shell.nix
-    ./backup.nix
-    ./minio.nix
-    ./nvim
+    ../modules/calendar.nix
+    ../modules/contacts.nix
+    ../modules/email.nix
+    ../modules/hyprland
+    ../modules/quickshell.nix
+    ../modules/rio.nix
+    ../modules/kitty.nix
+    ../modules/wezterm.nix
+    ../modules/shell.nix
+    ../modules/backup.nix
+    ../modules/minio.nix
+    ../modules/nvim
   ];
 }

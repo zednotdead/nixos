@@ -7,7 +7,7 @@
   quickshell = inputs.quickshell.packages.${pkgs.system}.default;
 in {
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
-  xdg.configFile."hypr/monitor.conf".source = ./hyprland/monitors.conf;
+  xdg.configFile."hypr/monitor.conf".source = ./monitors.conf;
 
   services.kdeconnect = {
     enable = true;

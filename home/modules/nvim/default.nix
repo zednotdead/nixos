@@ -26,6 +26,7 @@
       ["${leader}t" "tabs"]
       ["${leader}f" "find"]
       ["${leader}l" "LSP"]
+      ["${leader}g" "terminal"]
     ];
   in {
     enable = true;

@@ -26,8 +26,8 @@ in {
   };
 
   imports = [
-    ../zed/wezterm.nix
-    ../zed/shell.nix
-    ../zed/nvim
+    ../modules/wezterm.nix
+    ../modules/shell.nix
+    ../modules/nvim
   ];
 }
