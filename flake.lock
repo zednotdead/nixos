@@ -215,11 +215,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756954499,
-        "narHash": "sha256-Pg4xBHzvzNY8l9x/rLWoJMnIR8ebG+xeU+IyqThIkqU=",
+        "lastModified": 1756991914,
+        "narHash": "sha256-4ve/3ah5H/SpL2m3qmZ9GU+VinQYp2MN1G7GamimTds=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ed1a98c375450dfccf427adacd2bfd1a7b22eb25",
+        "rev": "b08f8737776f10920c330657bee8b95834b7a70f",
         "type": "github"
       },
       "original": {
@@ -670,11 +670,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1756962247,
-        "narHash": "sha256-u+9mrTHdeqE4FX+G+L+f9SiZnIFjEKY92HiWFxlvRvk=",
+        "lastModified": 1756983797,
+        "narHash": "sha256-Pvq28QvJR5o9u1r6moU2ne8Vm/SDzdh7wU3W3roYbvw=",
         "owner": "wamserma",
         "repo": "flake-programs-sqlite",
-        "rev": "9b8af8a8a42f7c20aae9708de893d260c129c696",
+        "rev": "f6fa0950f357d0e3dcff60ee953ffd73d53d8123",
         "type": "github"
       },
       "original": {
@@ -690,11 +690,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756972316,
-        "narHash": "sha256-s78NCmRMNch5wHE9Q2cp2wg4OijKc1pWvPLZPVG0zuY=",
+        "lastModified": 1756981260,
+        "narHash": "sha256-GhuD9QVimjynHI0OOyZsqJsnlXr2orowh9H+HYz4YMs=",
         "ref": "refs/heads/master",
-        "rev": "2c2983462c4cfbab846bd4718c0cfd53d57d46a9",
-        "revCount": 670,
+        "rev": "6eb12551baf924f8fdecdd04113863a754259c34",
+        "revCount": 672,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
