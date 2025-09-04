@@ -17,29 +17,29 @@ in {
     secretsDir = "/run/user/${userId}/agenix";
     secrets = {
       newsboat-password = {
-        file = ../../secrets/newsboat.age;
+        file = ../secrets/newsboat.age;
       };
       restic = {
-        file = ../../secrets/restic.age;
+        file = ../secrets/restic.age;
       };
       restic-password = {
-        file = ../../secrets/restic-password.age;
+        file = ../secrets/restic-password.age;
       };
     };
   };
 
   imports = [
-    ../modules/calendar.nix
-    ../modules/contacts.nix
-    ../modules/email.nix
-    ../modules/hyprland
-    ../modules/quickshell.nix
-    ../modules/rio.nix
-    ../modules/kitty.nix
-    ../modules/wezterm.nix
-    ../modules/shell.nix
-    ../modules/backup.nix
-    ../modules/minio.nix
-    ../modules/nvim
+    ./modules/calendar.nix
+    ./modules/contacts.nix
+    ./modules/email.nix
+    ./modules/hyprland
+    ./modules/quickshell.nix
+    ./modules/rio.nix
+    ./modules/kitty.nix
+    ./modules/wezterm.nix
+    ./modules/shell.nix
+    ./modules/backup.nix
+    ./modules/minio.nix
+    ./modules/nvim
   ];
 }

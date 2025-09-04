@@ -14,20 +14,20 @@ in {
     identityPaths = ["${homeDir}/.ssh/id_ed25519"];
     secrets = {
       newsboat-password = {
-        file = ../../secrets/newsboat.age;
+        file = ../secrets/newsboat.age;
       };
       restic = {
-        file = ../../secrets/restic.age;
+        file = ../secrets/restic.age;
       };
       restic-password = {
-        file = ../../secrets/restic-password.age;
+        file = ../secrets/restic-password.age;
       };
     };
   };
 
   imports = [
-    ../modules/wezterm.nix
-    ../modules/shell.nix
-    ../modules/nvim
+    ./modules/wezterm.nix
+    ./modules/shell.nix
+    ./modules/nvim
   ];
 }

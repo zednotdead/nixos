@@ -7,6 +7,7 @@
   programs.nixvim.plugins.typescript-tools.enable = true;
   programs.nixvim.plugins.rustaceanvim.enable = true;
   programs.nixvim.plugins.dropbar.enable = true;
+  programs.nixvim.plugins.trouble.enable = true;
 
   programs.nixvim.lsp.servers = {
     nil_ls.enable = true;

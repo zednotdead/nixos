@@ -50,7 +50,11 @@ in {
 
   programs.nixvim.keymaps = [
     {
-      action = "<Cmd>Neotree toggle<CR>";
+      action.__raw = ''
+	function()
+	  require("conform").format()
+	end
+      '';
       key = "${prefix}f";
       options.desc = "Format";
     }
