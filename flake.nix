@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -71,6 +71,22 @@
           agenix.homeManagerModules.default
           {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
           ./home/zed
+        ];
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+      };
+    homeConfigurations."zbigniew.zolnierowicz" = let
+      system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          base16.homeManagerModule
+          agenix.homeManagerModules.default
+          {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
+          ./home/work
         ];
         extraSpecialArgs = {
           inherit inputs;

@@ -15,12 +15,15 @@
     exiftool
   ];
 
+  programs.lazygit.enable = true;
+  programs.fzf.enable = true;
+  programs.git.enable = true;
+  programs.nh.enable = true;
+
   services.gpg-agent = {
     enable = true;
     enableFishIntegration = true;
   };
-
-  services.ssh-agent = {enable = true;};
 
   programs.fish = {
     enable = true;
