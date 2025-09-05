@@ -45,6 +45,19 @@
     polkitPolicyOwners = ["zed"];
   };
 
+  fonts.packages = with pkgs; [
+    corefonts
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+  ];
+
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
   programs.nh = {
