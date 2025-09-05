@@ -41,5 +41,6 @@ in {
     ./modules/backup.nix
     ./modules/minio.nix
     ./modules/nvim
+    ./modules/matrix.nix
   ];
 }
