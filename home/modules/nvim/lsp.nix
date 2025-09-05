@@ -21,6 +21,8 @@
     just.enable = true;
   };
 
+  programs.nixvim.plugins.aerial.enable = true;
+
   programs.nixvim.lsp.keymaps = [
     {
       lspBufAction = "code_action";
@@ -56,6 +58,11 @@
       action = "<Cmd>Trouble diagnostics toggle focus=false win.position=bottom<CR>";
       key = "${prefix}D";
       options.desc = "All diagnostics";
+    }
+  {
+      action = "<Cmd>AerialToggle<CR>";
+      key = "${prefix}o";
+      options.desc = "Outline";
     }
   ];
 }
