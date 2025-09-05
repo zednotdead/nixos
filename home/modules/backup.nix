@@ -16,6 +16,7 @@ in {
 	  ".cargo"
 	  ".local/share/mise"
 	  ".local/share/pnpm"
+	  ".local/share/containers"
 	  ".rustup"
           ".config/user-share"
           ".cache"
