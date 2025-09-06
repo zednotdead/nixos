@@ -13,6 +13,7 @@
     nix-search-tv
     kubectx
     exiftool
+    comma
   ];
 
   programs.lazygit.enable = true;

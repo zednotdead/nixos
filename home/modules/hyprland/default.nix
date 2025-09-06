@@ -36,6 +36,7 @@ in {
     peazip
     discord
     gimp
+    prismlauncher
   ];
 
   programs.librewolf = {
