@@ -360,4 +360,9 @@
       miniflux-passwordeval "sh -c 'cat ${config.age.secrets.newsboat-password.path}'"
     '';
   };
+
+  programs.nix-your-shell = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 }
