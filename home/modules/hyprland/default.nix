@@ -39,11 +39,17 @@ in {
     prismlauncher
   ];
 
+  programs.zathura.enable = true;
+
   programs.librewolf = {
     enable = true;
     nativeMessagingHosts = [
       pkgs.tridactyl-native
     ];
+  };
+
+  services.swaync = {
+    enable = true;
   };
 
   wayland.windowManager.hyprland = {
@@ -202,6 +208,7 @@ in {
         "$mainMod, mouse_up, workspace, e-1"
         "$mainMod Ctrl, Q, exec, ${pkgs.hyprlock}/bin/hyprlock"
         ", Print, exec, ${pkgs.grimblast}/bin/grimblast --freeze copy area"
+        "$mainMod, C, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
       ];
       windowrule = [
         "suppressevent maximize, class:.*"

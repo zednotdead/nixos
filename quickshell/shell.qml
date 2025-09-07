@@ -19,5 +19,5 @@ ShellRoot {
         anchor.window: bar
     }
 
-    NotificationPopup {}
+    // NotificationPopup {}
 }

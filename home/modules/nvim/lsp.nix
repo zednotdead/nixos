@@ -19,6 +19,7 @@
     glsl_analyzer.enable = true;
     html.enable = true;
     just.enable = true;
+    slint_lsp.enable = true;
   };
 
   programs.nixvim.plugins.aerial.enable = true;
