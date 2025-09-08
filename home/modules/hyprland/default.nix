@@ -37,6 +37,7 @@ in {
     discord
     gimp
     prismlauncher
+    localsend
   ];
 
   programs.zathura.enable = true;

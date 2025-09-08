@@ -23,6 +23,10 @@
     portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
 
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
   xdg.portal.extraPortals = [
     inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
   ];
