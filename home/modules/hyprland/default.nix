@@ -39,6 +39,7 @@ in {
     gimp
     prismlauncher
     localsend
+    keymapp
   ];
 
   programs.zathura.enable = true;

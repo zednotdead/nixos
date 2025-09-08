@@ -65,6 +65,9 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "$HOME/nixos"; # sets NH_OS_FLAKE variable for you
   };
+  
+  hardware.keyboard.zsa.enable = true;
+
   users.mutableUsers = false;
 
   users.users.zed = {
