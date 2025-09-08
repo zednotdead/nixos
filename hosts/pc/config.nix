@@ -101,7 +101,7 @@
     wget
     git
     stow
-    greetd.tuigreet
+    tuigreet
     gnumake
     postgresql
     dig
