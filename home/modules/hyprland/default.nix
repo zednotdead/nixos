@@ -9,6 +9,8 @@ in {
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
   xdg.configFile."hypr/monitor.conf".source = ./monitors.conf;
 
+  gtk.enable = true;
+
   services.kdeconnect = {
     enable = true;
     indicator = true;
@@ -18,7 +20,6 @@ in {
     kitty
     nautilus
     swww
-    wofi
     networkmanagerapplet
     udiskie
     hyprlock
@@ -53,6 +54,15 @@ in {
     enable = true;
   };
 
+  programs.anyrun = {
+    enable = true;
+    config.plugins = builtins.map (x: "${pkgs.anyrun}/lib/${x}") [
+      "libapplications.so"
+      "librink.so"
+      "libkidex.so"
+    ];
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
@@ -73,7 +83,7 @@ in {
       ];
       "$terminal" = "${pkgs.wezterm}/bin/wezterm";
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
-      "$menu" = "${pkgs.wofi}/bin/wofi --show drun";
+      "$menu" = "${pkgs.anyrun}/bin/anyrun";
       "$mainMod" = "SUPER";
       general = {
         gaps_in = 5;
