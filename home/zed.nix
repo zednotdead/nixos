@@ -11,6 +11,7 @@ in {
   home.username = "zed";
   home.homeDirectory = homeDir;
   home.stateVersion = "25.05";
+  home.shell.enableFishIntegration = true;
 
   age = {
     identityPaths = ["${homeDir}/.ssh/id_ed25519"];
