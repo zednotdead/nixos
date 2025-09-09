@@ -1,4 +1,4 @@
-{leader, ...}: let
+{...}: let
   leader = "<Space>";
 in {
   programs.nixvim.keymaps = [
@@ -31,18 +31,18 @@ in {
     }
     {
       action.__raw = ''
-	function()
-	  Snacks.picker.git_files({ untracked = true })
-	end
+        function()
+          Snacks.picker.git_files({ untracked = true })
+        end
       '';
       key = "${leader}fi";
       options.desc = "Find files";
     }
     {
       action.__raw = ''
-	function()
-	  Snacks.picker.git_grep({ untracked = true })
-	end
+        function()
+          Snacks.picker.git_grep({ untracked = true })
+        end
       '';
       key = "${leader}ff";
       options.desc = "Live grep";

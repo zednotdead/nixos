@@ -16,163 +16,342 @@
     comma
   ];
 
-  programs.lazygit.enable = true;
-  programs.fzf.enable = true;
-  programs.git.enable = true;
-  programs.nh.enable = true;
+  programs = {
+    lazygit.enable = true;
+    fzf.enable = true;
+    git.enable = true;
+    nh.enable = true;
 
-  services.gpg-agent = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+    fish = {
+      enable = true;
+      generateCompletions = true;
+      functions = {
+        goops = ''
+          ${pkgs.git}/bin/git add --all
+          ${pkgs.git}/bin/git commit --amend --no-edit --allow-empty
+          ${pkgs.git}/bin/git push --force-with-lease
+        '';
+        gpu = ''
+          ${pkgs.git}/bin/git push
+        '';
+        gpl = ''
+          ${pkgs.git}/bin/git pull
+        '';
+      };
+      shellInit = ''
+        set fish_greeting
+      '';
+      shellAliases = {
+        zel = "${pkgs.zellij}/bin/zellij";
+        k = "${pkgs.kubectl}/bin/kubectl";
+        spf = "${pkgs.superfile}/bin/superfile";
+      };
+    };
 
-  programs.fish = {
-    enable = true;
-    generateCompletions = true;
-    functions = {
-      goops = ''
-        ${pkgs.git}/bin/git add --all
-        ${pkgs.git}/bin/git commit --amend --no-edit --allow-empty
-        ${pkgs.git}/bin/git push --force-with-lease
-      '';
-      gpu = ''
-        ${pkgs.git}/bin/git push
-      '';
-      gpl = ''
-        ${pkgs.git}/bin/git pull
-      '';
-    };
-    shellInit = ''
-      set fish_greeting
-    '';
-    shellAliases = {
-      zel = "${pkgs.zellij}/bin/zellij";
-      k = "${pkgs.kubectl}/bin/kubectl";
-      spf = "${pkgs.superfile}/bin/superfile";
-    };
-  };
-
-  programs.zellij = {
-    enable = true;
-    settings = {
-      theme = "oxocarbon-dark";
-      show_startup_tips = false;
-    };
-    themes = {
-      oxocarbon-dark = with config.scheme.withHashtag; {
-        themes = {
-          oxocarbon-dark = {
-            fg = base05;
-            bg = base02;
-            black = base00;
-            red = base08;
-            green = base0B;
-            yellow = base0A;
-            blue = base0D;
-            magenta = base0E;
-            cyan = base0C;
-            white = base05;
-            orange = base09;
+    zellij = {
+      enable = true;
+      settings = {
+        theme = "oxocarbon-dark";
+        show_startup_tips = false;
+      };
+      themes = {
+        oxocarbon-dark = with config.scheme.withHashtag; {
+          themes = {
+            oxocarbon-dark = {
+              fg = base05;
+              bg = base02;
+              black = base00;
+              red = base08;
+              green = base0B;
+              yellow = base0A;
+              blue = base0D;
+              magenta = base0E;
+              cyan = base0C;
+              white = base05;
+              orange = base09;
+            };
           };
         };
       };
     };
-  };
 
-  programs.pay-respects = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+    pay-respects = {
+      enable = true;
+      enableFishIntegration = true;
+    };
 
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-    enableTransience = true;
-    settings = {
-      add_newline = false;
-      format = lib.concatStrings [
-        "$username"
-        "$hostname"
-        "$directory"
-        "$git_branch"
-        "$git_state"
-        "$git_status"
-        "$kubernetes"
-        "$cmd_duration"
-        "$line_break"
-        "$python"
-        "$character"
-      ];
-      scan_timeout = 10;
-      character = {
-        success_symbol = "[❯](purple)";
-        error_symbol = "[❯](red)";
-        vimcmd_symbol = "[❮](green)";
-      };
+    starship = {
+      enable = true;
+      enableFishIntegration = true;
+      enableTransience = true;
+      settings = {
+        add_newline = false;
+        format = lib.concatStrings [
+          "$username"
+          "$hostname"
+          "$directory"
+          "$git_branch"
+          "$git_state"
+          "$git_status"
+          "$kubernetes"
+          "$cmd_duration"
+          "$line_break"
+          "$python"
+          "$character"
+        ];
+        scan_timeout = 10;
+        character = {
+          success_symbol = "[❯](purple)";
+          error_symbol = "[❯](red)";
+          vimcmd_symbol = "[❮](green)";
+        };
 
-      git_branch = {
-        format = "[$branch]($style)";
-        style = "bright-black";
-      };
+        git_branch = {
+          format = "[$branch]($style)";
+          style = "bright-black";
+        };
 
-      git_status = {
-        style = "cyan";
-        modified = " !×$\{count}";
-        ahead = " ⇡×$\{count}";
-        behind = " ⇣×$\{count}";
-        diverged = " ⇡×$\{ahead_count} ⇣×$\{behind_count}";
-        staged = " +×$\{count}";
-        untracked = " ?×$\{count}";
-        stashed = "";
-        deleted = " ✘×$\{count}";
-        format = "[$all_status$ahead_behind]($style)";
-      };
+        git_status = {
+          style = "cyan";
+          modified = " !×$\{count}";
+          ahead = " ⇡×$\{count}";
+          behind = " ⇣×$\{count}";
+          diverged = " ⇡×$\{ahead_count} ⇣×$\{behind_count}";
+          staged = " +×$\{count}";
+          untracked = " ?×$\{count}";
+          stashed = "";
+          deleted = " ✘×$\{count}";
+          format = "[$all_status$ahead_behind]($style)";
+        };
 
-      git_state = {
-        format = "\([$state( $progress_current/$progress_total)]($style)\) ";
-        style = "bright-black";
-      };
+        git_state = {
+          format = "\([$state( $progress_current/$progress_total)]($style)\) ";
+          style = "bright-black";
+        };
 
-      kubernetes = {
-        disabled = false;
-        symbol = "☸ ";
-        format = " [$symbol$context( \($namespace\))]($style)";
-        style = "cyan bold";
-      };
+        kubernetes = {
+          disabled = false;
+          symbol = "☸ ";
+          format = " [$symbol$context( \($namespace\))]($style)";
+          style = "cyan bold";
+        };
 
-      cmd_duration = {
-        format = " [$duration]($style) ";
-        style = "yellow";
-      };
+        cmd_duration = {
+          format = " [$duration]($style) ";
+          style = "yellow";
+        };
 
-      python = {
-        format = "[$virtualenv]($style) ";
-        style = "bright-black";
+        python = {
+          format = "[$virtualenv]($style) ";
+          style = "bright-black";
+        };
       };
     };
-  };
 
-  programs.mise = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+    mise = {
+      enable = true;
+      enableFishIntegration = true;
+    };
 
-  programs.gh = {enable = true;};
+    gh = {enable = true;};
 
-  programs.zoxide = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
 
-  programs.mcfly = {
-    enable = true;
-    enableFishIntegration = true;
-    fzf = {
+    mcfly = {
+      enable = true;
+      enableFishIntegration = true;
+      fzf = {
+        enable = true;
+      };
+    };
+
+    television = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    k9s = {enable = true;};
+
+    superfile = {
+      enable = true;
+      hotkeys = {
+        confirm = ["enter" "right" "l"];
+        quit = ["q" "esc"];
+
+        # movement
+        list_up = ["up" "k"];
+        list_down = ["down" "j"];
+        page_up = ["pgup" ""];
+        page_down = ["pgdown" ""];
+
+        # file panel control
+        create_new_file_panel = ["n" ""];
+        close_file_panel = ["w" ""];
+        next_file_panel = ["tab" "L"];
+        previous_file_panel = ["shift+left" "H"];
+        toggle_file_preview_panel = ["f" ""];
+        open_sort_options_menu = ["o" ""];
+        toggle_reverse_sort = ["R" ""];
+
+        # change focus
+        focus_on_process_bar = ["p" ""];
+        focus_on_sidebar = ["s" ""];
+        focus_on_metadata = ["m" ""];
+
+        # create file/directory and rename
+        file_panel_item_create = ["ctrl+n" ""];
+        file_panel_item_rename = ["ctrl+r" ""];
+
+        # file operations
+        copy_items = ["ctrl+c" ""];
+        cut_items = ["ctrl+x" ""];
+        paste_items = ["ctrl+v" "ctrl+w" ""];
+        delete_items = ["ctrl+d" "delete" ""];
+
+        # compress and extract
+        extract_file = ["ctrl+e" ""];
+        compress_file = ["ctrl+a" ""];
+
+        # editor
+        open_file_with_editor = ["e" ""];
+        open_current_directory_with_editor = ["E" ""];
+
+        # other
+        pinned_directory = ["P" ""];
+        toggle_dot_file = ["." ""];
+        change_panel_mode = ["v" ""];
+        open_help_menu = ["?" ""];
+        open_command_line = [":" ""];
+        open_spf_prompt = [">" ""];
+        copy_path = ["ctrl+p" ""];
+        copy_present_working_directory = ["c" ""];
+        toggle_footer = ["F" ""];
+
+        # Typing hotkeys (can conflict with all hotkeys)
+        confirm_typing = ["enter" ""];
+        cancel_typing = ["ctrl+c" "esc"];
+
+        # Normal mode hotkeys (can conflict with other modes cannot conflict with global hotkeys)
+        parent_directory = ["h" "left" "backspace"];
+        search_bar = ["/" ""];
+
+        # Select mode hotkeys (can conflict with other modes cannot conflict with global hotkeys)
+        file_panel_select_mode_items_select_down = ["shift+down" "J"];
+        file_panel_select_mode_items_select_up = ["shift+up" "K"];
+        file_panel_select_all_items = ["A" ""];
+      };
+      settings = {
+        theme = "oxocarbondark";
+        editor = "${pkgs.neovim}/bin/neovim";
+        dir_editor = "${pkgs.neovim}/bin/neovim";
+        auto_check_update = false;
+        cd_on_quit = false;
+        default_file_open_preview = true;
+        show_image_preview = true;
+        show_panel_footer_info = true;
+        file_size_use_si = true;
+        default_directory = ".";
+        default_sort_type = 0;
+        sort_order_reversed = false;
+        case_sensitive_sort = false;
+        debug = false;
+        ignore_missing_fields = true;
+
+        code_previewer = "bat";
+        nerdfont = true;
+        transparent_background = false;
+        file_preview_width = 0;
+        sidebar_width = 20;
+
+        border_top = "─";
+        border_bottom = "─";
+        border_left = "│";
+        border_right = "│";
+        border_top_left = "╭";
+        border_top_right = "╮";
+        border_bottom_left = "╰";
+        border_bottom_right = "╯";
+        border_middle_left = "├";
+        border_middle_right = "┤";
+
+        metadata = true;
+        enable_md5_checksum = false;
+        zoxide_support = true;
+      };
+      themes = {
+        oxocarbondark = with config.scheme.withHashtag; {
+          code_syntax_highlight = "oxocarbon-dark";
+          file_panel_border = base03;
+          sidebar_border = base03;
+          footer_border = base03;
+          file_panel_border_active = base0B;
+          sidebar_border_active = base0B;
+          footer_border_active = base0B;
+          modal_border_active = base00;
+          full_screen_bg = base00;
+          file_panel_bg = base00;
+          sidebar_bg = base00;
+          footer_bg = base00;
+          modal_bg = base00;
+          full_screen_fg = base05;
+          file_panel_fg = base05;
+          sidebar_fg = base05;
+          footer_fg = base05;
+          modal_fg = base05;
+          cursor = base06;
+          correct = base0B;
+          error = base08;
+          hint = base0D;
+          cancel = base09;
+          gradient_color = [base0B base0E];
+          directory_icon_color = base0D;
+          file_panel_top_directory_icon = base0B;
+          file_panel_top_path = base0D;
+          file_panel_item_selected_fg = base0B;
+          file_panel_item_selected_bg = base00;
+          sidebar_title = base0D;
+          sidebar_item_selected_fg = base0B;
+          sidebar_item_selected_bg = base00;
+          sidebar_divider = base04;
+          modal_cancel_fg = base02;
+          modal_cancel_bg = base00;
+          modal_confirm_fg = base02;
+          modal_confirm_bg = base00;
+          help_menu_hotkey = base00;
+          help_menu_title = base05;
+        };
+      };
+    };
+
+    pistol = {
       enable = true;
     };
+
+    tealdeer = {
+      enable = true;
+      enableAutoUpdates = true;
+    };
+
+    newsboat = {
+      enable = true;
+      extraConfig = ''
+        urls-source "miniflux"
+        miniflux-url "https://miniflux.zed.gay"
+        miniflux-login "me@zed.gay"
+        miniflux-passwordeval "sh -c 'cat ${config.age.secrets.newsboat-password.path}'"
+      '';
+    };
+
+    nix-your-shell = {
+      enable = true;
+      enableFishIntegration = true;
+    };
   };
 
-  programs.television = {
+  services.gpg-agent = {
     enable = true;
     enableFishIntegration = true;
   };
@@ -188,181 +367,4 @@
     [preview]
     command = "nix-search-tv preview {}"
   '';
-
-  programs.k9s = {enable = true;};
-
-  programs.superfile = {
-    enable = true;
-    hotkeys = {
-      confirm = ["enter" "right" "l"];
-      quit = ["q" "esc"];
-
-      # movement
-      list_up = ["up" "k"];
-      list_down = ["down" "j"];
-      page_up = ["pgup" ""];
-      page_down = ["pgdown" ""];
-
-      # file panel control
-      create_new_file_panel = ["n" ""];
-      close_file_panel = ["w" ""];
-      next_file_panel = ["tab" "L"];
-      previous_file_panel = ["shift+left" "H"];
-      toggle_file_preview_panel = ["f" ""];
-      open_sort_options_menu = ["o" ""];
-      toggle_reverse_sort = ["R" ""];
-
-      # change focus
-      focus_on_process_bar = ["p" ""];
-      focus_on_sidebar = ["s" ""];
-      focus_on_metadata = ["m" ""];
-
-      # create file/directory and rename
-      file_panel_item_create = ["ctrl+n" ""];
-      file_panel_item_rename = ["ctrl+r" ""];
-
-      # file operations
-      copy_items = ["ctrl+c" ""];
-      cut_items = ["ctrl+x" ""];
-      paste_items = ["ctrl+v" "ctrl+w" ""];
-      delete_items = ["ctrl+d" "delete" ""];
-
-      # compress and extract
-      extract_file = ["ctrl+e" ""];
-      compress_file = ["ctrl+a" ""];
-
-      # editor
-      open_file_with_editor = ["e" ""];
-      open_current_directory_with_editor = ["E" ""];
-
-      # other
-      pinned_directory = ["P" ""];
-      toggle_dot_file = ["." ""];
-      change_panel_mode = ["v" ""];
-      open_help_menu = ["?" ""];
-      open_command_line = [":" ""];
-      open_spf_prompt = [">" ""];
-      copy_path = ["ctrl+p" ""];
-      copy_present_working_directory = ["c" ""];
-      toggle_footer = ["F" ""];
-
-      # Typing hotkeys (can conflict with all hotkeys)
-      confirm_typing = ["enter" ""];
-      cancel_typing = ["ctrl+c" "esc"];
-
-      # Normal mode hotkeys (can conflict with other modes cannot conflict with global hotkeys)
-      parent_directory = ["h" "left" "backspace"];
-      search_bar = ["/" ""];
-
-      # Select mode hotkeys (can conflict with other modes cannot conflict with global hotkeys)
-      file_panel_select_mode_items_select_down = ["shift+down" "J"];
-      file_panel_select_mode_items_select_up = ["shift+up" "K"];
-      file_panel_select_all_items = ["A" ""];
-    };
-    settings = {
-      theme = "oxocarbondark";
-      editor = "${pkgs.neovim}/bin/neovim";
-      dir_editor = "${pkgs.neovim}/bin/neovim";
-      auto_check_update = false;
-      cd_on_quit = false;
-      default_file_open_preview = true;
-      show_image_preview = true;
-      show_panel_footer_info = true;
-      file_size_use_si = true;
-      default_directory = ".";
-      default_sort_type = 0;
-      sort_order_reversed = false;
-      case_sensitive_sort = false;
-      debug = false;
-      ignore_missing_fields = true;
-
-      code_previewer = "bat";
-      nerdfont = true;
-      transparent_background = false;
-      file_preview_width = 0;
-      sidebar_width = 20;
-
-      border_top = "─";
-      border_bottom = "─";
-      border_left = "│";
-      border_right = "│";
-      border_top_left = "╭";
-      border_top_right = "╮";
-      border_bottom_left = "╰";
-      border_bottom_right = "╯";
-      border_middle_left = "├";
-      border_middle_right = "┤";
-
-      metadata = true;
-      enable_md5_checksum = false;
-      zoxide_support = true;
-    };
-    themes = {
-      oxocarbondark = with config.scheme.withHashtag; {
-        code_syntax_highlight = "oxocarbon-dark";
-        file_panel_border = base03;
-        sidebar_border = base03;
-        footer_border = base03;
-        file_panel_border_active = base0B;
-        sidebar_border_active = base0B;
-        footer_border_active = base0B;
-        modal_border_active = base00;
-        full_screen_bg = base00;
-        file_panel_bg = base00;
-        sidebar_bg = base00;
-        footer_bg = base00;
-        modal_bg = base00;
-        full_screen_fg = base05;
-        file_panel_fg = base05;
-        sidebar_fg = base05;
-        footer_fg = base05;
-        modal_fg = base05;
-        cursor = base06;
-        correct = base0B;
-        error = base08;
-        hint = base0D;
-        cancel = base09;
-        gradient_color = [base0B base0E];
-        directory_icon_color = base0D;
-        file_panel_top_directory_icon = base0B;
-        file_panel_top_path = base0D;
-        file_panel_item_selected_fg = base0B;
-        file_panel_item_selected_bg = base00;
-        sidebar_title = base0D;
-        sidebar_item_selected_fg = base0B;
-        sidebar_item_selected_bg = base00;
-        sidebar_divider = base04;
-        modal_cancel_fg = base02;
-        modal_cancel_bg = base00;
-        modal_confirm_fg = base02;
-        modal_confirm_bg = base00;
-        help_menu_hotkey = base00;
-        help_menu_title = base05;
-      };
-    };
-  };
-
-  programs.pistol = {
-    enable = true;
-  };
-
-  programs.tealdeer = {
-    enable = true;
-    enableAutoUpdates = true;
-  };
-
-  programs.newsboat = {
-    enable = true;
-    extraConfig = ''
-      urls-source "miniflux"
-      miniflux-url "https://miniflux.zed.gay"
-      miniflux-login "me@zed.gay"
-      miniflux-passwordeval "sh -c 'cat ${config.age.secrets.newsboat-password.path}'"
-    '';
-  };
-
-  programs.nix-your-shell = {
-    enable = true;
-    enableFishIntegration = true;
-  };
 }

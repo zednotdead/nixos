@@ -8,10 +8,12 @@
   userId = "1000";
 in {
   nixpkgs.config.allowUnfree = true;
-  home.username = "zed";
-  home.homeDirectory = homeDir;
-  home.stateVersion = "25.05";
-  home.shell.enableFishIntegration = true;
+  home = {
+    username = "zed";
+    homeDirectory = homeDir;
+    stateVersion = "25.05";
+    shell.enableFishIntegration = true;
+  };
 
   age = {
     identityPaths = ["${homeDir}/.ssh/id_ed25519"];

@@ -7,64 +7,73 @@
   inputs,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
-  nix.settings = {
-    builders-use-substitutes = true;
-    extra-substituters = [
-      "https://hyprland.cachix.org"
-      "https://anyrun.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+  nixpkgs = {
+    config.allowUnfree = true;
+
+    overlays = [
+      (final: prev: {
+        inherit
+          (final.lixPackageSets.stable)
+          nixpkgs-review
+          nix-direnv
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
     ];
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      inherit
-        (final.lixPackageSets.stable)
-        nixpkgs-review
-        nix-direnv
-        nix-eval-jobs
-        nix-fast-build
-        colmena
-        ;
-    })
-  ];
+  nix = {
+    settings = {
+      builders-use-substitutes = true;
+      extra-substituters = [
+        "https://hyprland.cachix.org"
+        "https://anyrun.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+      ];
+    };
 
-  nix.package = pkgs.lixPackageSets.stable.lix;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+    package = pkgs.lixPackageSets.stable.lix;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   imports = [./hardware-configuration.nix];
 
-  programs.nix-ld.enable = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "pc";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "pc";
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "Europe/Warsaw";
 
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocales = ["pl_PL.UTF-8/UTF-8"];
-  i18n.extraLocaleSettings = {
-    # LC_ALL = "en_US.UTF-8"; # This overrides all other LC_* settings.
-    LC_CTYPE = "en_US.UTF8";
-    LC_ADDRESS = "pl_PL.UTF-8";
-    LC_MEASUREMENT = "pl_PL.UTF-8";
-    LC_MESSAGES = "en_US.UTF-8";
-    LC_MONETARY = "pl_PL.UTF-8";
-    LC_NAME = "pl_PL.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "pl_PL.UTF-8";
-    LC_TELEPHONE = "pl_PL.UTF-8";
-    LC_TIME = "pl_PL.UTF-8";
-    LC_COLLATE = "pl_PL.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocales = ["pl_PL.UTF-8/UTF-8"];
+    extraLocaleSettings = {
+      # LC_ALL = "en_US.UTF-8"; # This overrides all other LC_* settings.
+      LC_CTYPE = "en_US.UTF8";
+      LC_ADDRESS = "pl_PL.UTF-8";
+      LC_MEASUREMENT = "pl_PL.UTF-8";
+      LC_MESSAGES = "en_US.UTF-8";
+      LC_MONETARY = "pl_PL.UTF-8";
+      LC_NAME = "pl_PL.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "pl_PL.UTF-8";
+      LC_TELEPHONE = "pl_PL.UTF-8";
+      LC_TIME = "pl_PL.UTF-8";
+      LC_COLLATE = "pl_PL.UTF-8";
+    };
   };
 
   console = {
@@ -72,9 +81,26 @@
     keyMap = lib.mkForce "pl";
     useXkbConfig = true; # use xkb.options in tty.
   };
+  services = {
+    printing.enable = true;
+    flatpak.enable = true;
 
-  services.printing.enable = true;
-  services.flatpak.enable = true;
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
+
+    openssh.enable = true;
+
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet";
+        };
+      };
+    };
+  };
   systemd.services.flatpak-repo = {
     wantedBy = ["multi-user.target"];
     path = [pkgs.flatpak];
@@ -83,29 +109,12 @@
     '';
   };
 
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-
-  services.openssh.enable = true;
-
-  security.sudo.enable = false;
-  security.sudo-rs.enable = true;
-  security.sudo-rs.wheelNeedsPassword = false;
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-      };
+  security = {
+    sudo.enable = false;
+    sudo-rs = {
+      enable = true;
+      wheelNeedsPassword = false;
     };
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -123,10 +132,19 @@
     inputs.agenix.packages.${pkgs.system}.default
   ];
 
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    nix-ld.enable = true;
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
+
+    mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
 
   powerManagement.enable = true;
@@ -135,6 +153,7 @@
     enable = true;
     enableOnBoot = true;
   };
+
   age.secrets.zed-password.file = ../../secrets/zed-password.age;
 
   # This option defines the first version of NixOS you have installed on this particular machine,

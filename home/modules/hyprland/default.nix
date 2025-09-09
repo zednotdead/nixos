@@ -42,26 +42,28 @@ in {
     keymapp
   ];
 
-  programs.zathura.enable = true;
+  programs = {
+    zathura.enable = true;
 
-  programs.librewolf = {
-    enable = true;
-    nativeMessagingHosts = [
-      pkgs.tridactyl-native
-    ];
+    librewolf = {
+      enable = true;
+      nativeMessagingHosts = [
+        pkgs.tridactyl-native
+      ];
+    };
+
+    anyrun = {
+      enable = true;
+      config.plugins = builtins.map (x: "${pkgs.anyrun}/lib/${x}") [
+        "libapplications.so"
+        "librink.so"
+        "libkidex.so"
+      ];
+    };
   };
 
   services.swaync = {
     enable = true;
-  };
-
-  programs.anyrun = {
-    enable = true;
-    config.plugins = builtins.map (x: "${pkgs.anyrun}/lib/${x}") [
-      "libapplications.so"
-      "librink.so"
-      "libkidex.so"
-    ];
   };
 
   wayland.windowManager.hyprland = {

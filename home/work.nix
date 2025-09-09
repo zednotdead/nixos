@@ -1,15 +1,14 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{_}: let
   homeDir = "/Users/zbigniew.zolnierowicz";
 in {
   nixpkgs.config.allowUnfree = true;
-  home.username = "zbigniew.zolnierowicz";
-  home.homeDirectory = homeDir;
-  home.stateVersion = "25.05";
-  home.shell.enableFishIntegration = true;
+
+  home = {
+    username = "zbigniew.zolnierowicz";
+    homeDirectory = homeDir;
+    stateVersion = "25.05";
+    shell.enableFishIntegration = true;
+  };
 
   age = {
     identityPaths = ["${homeDir}/.ssh/id_ed25519"];
