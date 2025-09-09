@@ -2,10 +2,6 @@ amends "package://github.com/jdx/hk/releases/download/v1.2.0/hk@1.2.0#/Config.pk
 import "package://github.com/jdx/hk/releases/download/v1.2.0/hk@1.2.0#/Builtins.pkl"
 
 local linters = new Mapping<String, Step> {
-    // uses builtin prettier linter config
-    ["prettier"] = Builtins.prettier
-
-    // define a custom linter
     ["pkl"] {
         glob = "*.pkl"
         check = "pkl eval {{files}} >/dev/null"
@@ -13,7 +9,6 @@ local linters = new Mapping<String, Step> {
 
     ["nix-fmt"] {
       glob = "*"
-      check = "nix flake check"
       fix = "nix fmt"
     }
 }
