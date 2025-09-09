@@ -15,27 +15,15 @@ local linters = new Mapping<String, Step> {
 
 hooks {
     ["pre-commit"] {
-        fix = true    // automatically modify files with available linter fixes
-        stash = "git" // stashes unstaged changes while running fix steps
+        fix = true
+        stash = "git"
         steps {
-            // "prelint" here is simply a name to define the step
-            ["prelint"] {
-                // if a step has a "check" script it will execute that
-                check = "mise run prelint"
-                exclusive = true // ensures that the step runs in isolation
-            }
-            ...linters // add all linters defined above
-            ["postlint"] {
-                check = "mise run postlint"
-                exclusive = true
-            }
+            ...linters
         }
     }
-    // instead of pre-commit, you can instead define pre-push hooks
     ["pre-push"] {
         steps = linters
     }
-    // "fix" and "check" are special steps for `hk fix` and `hk check` commands
     ["fix"] {
         fix = true
         steps = linters
