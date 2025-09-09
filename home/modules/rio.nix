@@ -24,11 +24,14 @@
       };
       padding-x = 0;
       padding-y = [0 0];
-      inherit ((
+      inherit
+        ((
           builtins.fromTOML (
             builtins.readFile "${inputs.tt-terminal}/themes-16/rio/base16-oxocarbon-dark.toml"
           )
-        )) colors;
+        ))
+        colors
+        ;
     };
   };
 }

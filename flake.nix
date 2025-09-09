@@ -38,6 +38,8 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    systems.url = "github:nix-systems/default";
   };
   outputs = inputs @ {
     self,
@@ -48,8 +50,17 @@
     tt-schemes,
     agenix,
     nixvim,
+    systems,
+    treefmt-nix,
     ...
-  }: {
+  }: let
+    eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+    treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+  in {
+    formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+    checks = eachSystem (pkgs: {
+      formatting = treefmtEval.${pkgs.system}.config.build.check self;
+    });
     nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
@@ -60,37 +71,39 @@
         ./users/zed/config.nix
       ];
     };
-    homeConfigurations."zed" = let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          base16.homeManagerModule
-          agenix.homeManagerModules.default
-          {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
-          ./home/zed.nix
-        ];
-        extraSpecialArgs = {
-          inherit inputs;
+    homeConfigurations = {
+      "zed" = let
+        system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            base16.homeManagerModule
+            agenix.homeManagerModules.default
+            {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
+            ./home/zed.nix
+          ];
+          extraSpecialArgs = {
+            inherit inputs;
+          };
         };
-      };
-    homeConfigurations."zbigniew.zolnierowicz" = let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          base16.homeManagerModule
-          agenix.homeManagerModules.default
-          {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
-          ./home/work.nix
-        ];
-        extraSpecialArgs = {
-          inherit inputs;
+      "zbigniew.zolnierowicz" = let
+        system = "aarch64-darwin";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            base16.homeManagerModule
+            agenix.homeManagerModules.default
+            {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
+            ./home/work.nix
+          ];
+          extraSpecialArgs = {
+            inherit inputs;
+          };
         };
-      };
+    };
   };
 }

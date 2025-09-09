@@ -11,7 +11,11 @@ local linters = new Mapping<String, Step> {
         check = "pkl eval {{files}} >/dev/null"
     }
 
-    ["nix"] = Builtins.alejandra
+    ["nix-fmt"] {
+      glob = "*"
+      check = "nix flake check"
+      fix = "nix fmt"
+    }
 }
 
 hooks {

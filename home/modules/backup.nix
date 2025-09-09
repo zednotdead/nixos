@@ -12,12 +12,12 @@ in {
         passwordFile = resticPassword;
         repository = "s3:http://10.0.2.3:9000/home-restic";
         exclude = builtins.map (x: homeDir + "/" + x) [
-	  ".bun"
-	  ".cargo"
-	  ".local/share/mise"
-	  ".local/share/pnpm"
-	  ".local/share/containers"
-	  ".rustup"
+          ".bun"
+          ".cargo"
+          ".local/share/mise"
+          ".local/share/pnpm"
+          ".local/share/containers"
+          ".rustup"
           ".config/user-share"
           ".cache"
           ".local/share/Steam"
