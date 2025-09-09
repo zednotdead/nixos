@@ -1,4 +1,4 @@
-{_}: let
+{...}: let
   homeDir = "/Users/zbigniew.zolnierowicz";
 in {
   nixpkgs.config.allowUnfree = true;
