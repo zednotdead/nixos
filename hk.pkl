@@ -9,6 +9,7 @@ local linters = new Mapping<String, Step> {
 
     ["nix-fmt"] {
       glob = "*"
+      stage = "*"
       fix = "nix fmt"
     }
 }

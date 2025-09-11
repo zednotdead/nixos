@@ -45,9 +45,12 @@
 
   imports = [./hardware-configuration.nix];
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    binfmt.emulatedSystems = ["aarch64-linux"];
   };
 
   networking = {
@@ -100,7 +103,11 @@
         };
       };
     };
+    tailscale = {
+      enable = true;
+    };
   };
+
   systemd.services.flatpak-repo = {
     wantedBy = ["multi-user.target"];
     path = [pkgs.flatpak];
