@@ -29,6 +29,8 @@ in {
         just.enable = true;
         slint_lsp.enable = true;
         statix.enable = true;
+        basedpyright.enable = true;
+        ruff.enable = true;
       };
 
       keymaps = [
