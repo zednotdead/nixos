@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   programs = {
     afew.enable = true;
-    alot.enable = true;
     msmtp.enable = true;
     notmuch.enable = true;
     offlineimap.enable = true;

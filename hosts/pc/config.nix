@@ -9,35 +9,14 @@
 }: {
   nixpkgs = {
     config.allowUnfree = true;
-
-    overlays = [
-      (final: prev: {
-        inherit
-          (final.lixPackageSets.stable)
-          nixpkgs-review
-          nix-direnv
-          nix-eval-jobs
-          nix-fast-build
-          colmena
-          ;
-      })
-    ];
   };
 
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     settings = {
       builders-use-substitutes = true;
-      extra-substituters = [
-        "https://hyprland.cachix.org"
-        "https://anyrun.cachix.org"
-      ];
-      extra-trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-      ];
     };
 
-    package = pkgs.lixPackageSets.stable.lix;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -50,7 +29,6 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    binfmt.emulatedSystems = ["aarch64-linux"];
   };
 
   networking = {
