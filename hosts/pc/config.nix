@@ -9,10 +9,23 @@
 }: {
   nixpkgs = {
     config.allowUnfree = true;
+    overlays = [
+      (final: prev: {
+        inherit
+          (final.lixPackageSets.git)
+          nixpkgs-review
+          nix-direnv
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
+    ];
   };
 
   nix = {
-    package = pkgs.lixPackageSets.stable.lix;
+    package = pkgs.lixPackageSets.git.lix;
+
     settings = {
       builders-use-substitutes = true;
     };
