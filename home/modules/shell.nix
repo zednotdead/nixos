@@ -14,6 +14,7 @@
     kubectx
     exiftool
     comma
+    skim
   ];
 
   programs = {
@@ -40,7 +41,14 @@
       };
       shellInit = ''
         set fish_greeting
+        bind ctrl-h backward-kill-word
       '';
+      plugins = with pkgs.fishPlugins; [
+        {
+          name = "bangbang";
+          inherit (bang-bang) src;
+        }
+      ];
       shellAliases = {
         zel = "${pkgs.zellij}/bin/zellij";
         k = "${pkgs.kubectl}/bin/kubectl";
