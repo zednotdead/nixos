@@ -58,6 +58,7 @@
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = "$HOME/nixos"; # sets NH_OS_FLAKE variable for you
     };
+    adb.enable = true;
   };
 
   fonts.packages = with pkgs; [
@@ -80,7 +81,7 @@
     mutableUsers = false;
     users.zed = {
       isNormalUser = true;
-      extraGroups = ["docker" "wheel"]; # Enable ‘sudo’ for the user.
+      extraGroups = ["docker" "wheel" "kvm" "adbusers"]; # Enable ‘sudo’ for the user.
       hashedPasswordFile = config.age.secrets.zed-password.path;
       packages = with pkgs; [
         tree
