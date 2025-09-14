@@ -45,5 +45,6 @@ in {
     ./modules/minio.nix
     ./modules/nvim
     ./modules/matrix.nix
+    ./modules/media.nix
   ];
 }

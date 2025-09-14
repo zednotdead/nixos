@@ -31,7 +31,6 @@ in {
     wl-clipboard
     grimblast
     hyprpicker
-    mpv
     hyprprop
     nautilus
     peazip
