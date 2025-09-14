@@ -13,11 +13,11 @@
     nix-search-tv
     kubectx
     exiftool
-    comma
     skim
   ];
 
   programs = {
+    nix-index-database.comma.enable = true;
     lazygit.enable = true;
     fzf.enable = true;
     git.enable = true;

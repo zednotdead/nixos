@@ -19,8 +19,8 @@
       };
       fonts = {
         size = 18;
-        family = "Iosevka";
-        features = ["dlig"];
+        family = "Maple Mono NF";
+        features = ["calt"];
       };
       padding-x = 0;
       padding-y = [0 0];

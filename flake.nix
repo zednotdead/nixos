@@ -40,6 +40,10 @@
     };
     treefmt-nix.url = "github:numtide/treefmt-nix";
     systems.url = "github:nix-systems/default";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,
@@ -52,6 +56,7 @@
     nixvim,
     systems,
     treefmt-nix,
+    nix-index-database,
     ...
   }: let
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
@@ -81,6 +86,7 @@
           modules = [
             base16.homeManagerModule
             agenix.homeManagerModules.default
+	    nix-index-database.homeModules.nix-index
             {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
             ./home/zed.nix
           ];
@@ -97,6 +103,7 @@
           modules = [
             base16.homeManagerModule
             agenix.homeManagerModules.default
+	    nix-index-database.homeModules.nix-index
             {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
             ./home/work.nix
           ];
