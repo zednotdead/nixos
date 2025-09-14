@@ -14,6 +14,7 @@ in {
       trouble.enable = true;
 
       aerial.enable = true;
+      tiny-inline-diagnostic.enable = true;
     };
 
     lsp = {
