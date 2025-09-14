@@ -2,6 +2,7 @@
   homeDir = "/Users/zbigniew.zolnierowicz";
 in {
   nixpkgs.config.allowUnfree = true;
+  fonts.fontconfig.enable = true;
 
   home = {
     username = "zbigniew.zolnierowicz";

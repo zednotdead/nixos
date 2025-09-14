@@ -1,13 +1,10 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{...}: let
   homeDir = "/home/zed";
   # FIXME: I gotta do this so that I can use agenix
   userId = "1000";
 in {
   nixpkgs.config.allowUnfree = true;
+  fonts.fontconfig.enable = true;
   home = {
     username = "zed";
     homeDirectory = homeDir;

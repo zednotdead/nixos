@@ -1,18 +1,23 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: {
+  home.packages = with pkgs; [
+    maple-mono.NF
+  ];
+
   programs.wezterm = {
     enable = true;
     extraConfig = ''
-      return {
-        font = wezterm.font("PragmataPro Mono Liga"),
-        font_size = 14.0,
-        hide_tab_bar_if_only_one_tab = true,
-        color_scheme = "oxocarbon-dark"
-      }
+           return {
+             font = wezterm.font_with_fallback({
+        "Maple Mono NF",
+      }),
+             font_size = 14.0,
+             hide_tab_bar_if_only_one_tab = true,
+             color_scheme = "oxocarbon-dark"
+           }
     '';
     colorSchemes = {
       "oxocarbon-dark" = builtins.fromTOML (
