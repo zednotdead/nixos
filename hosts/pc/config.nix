@@ -9,11 +9,10 @@
 }: {
   nixpkgs = {
     config.allowUnfree = true;
-
     overlays = [
       (final: prev: {
         inherit
-          (final.lixPackageSets.stable)
+          (final.lixPackageSets.git)
           nixpkgs-review
           nix-direnv
           nix-eval-jobs
@@ -25,19 +24,12 @@
   };
 
   nix = {
+    package = pkgs.lixPackageSets.git.lix;
+
     settings = {
       builders-use-substitutes = true;
-      extra-substituters = [
-        "https://hyprland.cachix.org"
-        "https://anyrun.cachix.org"
-      ];
-      extra-trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-      ];
     };
 
-    package = pkgs.lixPackageSets.stable.lix;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -45,9 +37,11 @@
 
   imports = [./hardware-configuration.nix];
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
   };
 
   networking = {
@@ -100,7 +94,11 @@
         };
       };
     };
+    tailscale = {
+      enable = true;
+    };
   };
+
   systemd.services.flatpak-repo = {
     wantedBy = ["multi-user.target"];
     path = [pkgs.flatpak];

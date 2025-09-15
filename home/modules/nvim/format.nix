@@ -41,6 +41,7 @@ in {
       terraform = ["terraform_fmt"];
       go = ["goimports" "gofmt"];
       nix = ["alejandra"];
+      python = ["ruff"];
     };
     settings.formatters = {
       rustfmt = {

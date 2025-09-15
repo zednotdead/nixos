@@ -31,7 +31,6 @@ in {
     wl-clipboard
     grimblast
     hyprpicker
-    mpv
     hyprprop
     nautilus
     peazip
@@ -40,6 +39,7 @@ in {
     prismlauncher
     localsend
     keymapp
+    tailscale-systray
   ];
 
   programs = {
@@ -83,6 +83,7 @@ in {
         "${quickshell}/bin/quickshell"
         "${pkgs.hyprsunset}/bin/hyprsunset"
         "${pkgs.udiskie}/bin/udiskie"
+        "${pkgs.tailscale-systray}/bin/tailscale-systray"
       ];
       "$terminal" = "${pkgs.wezterm}/bin/wezterm";
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
