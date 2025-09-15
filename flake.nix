@@ -86,7 +86,7 @@
           modules = [
             base16.homeManagerModule
             agenix.homeManagerModules.default
-	    nix-index-database.homeModules.nix-index
+            nix-index-database.homeModules.nix-index
             {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
             ./home/zed.nix
           ];
@@ -103,7 +103,7 @@
           modules = [
             base16.homeManagerModule
             agenix.homeManagerModules.default
-	    nix-index-database.homeModules.nix-index
+            nix-index-database.homeModules.nix-index
             {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
             ./home/work.nix
           ];
