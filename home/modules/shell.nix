@@ -13,9 +13,7 @@
     nix-search-tv
     kubectx
     exiftool
-    comma
     delta
-    skim
   ];
 
   programs = {
@@ -163,7 +161,11 @@
       enableFishIntegration = true;
     };
 
-    gh = {enable = true;};
+    gh-dash.enable = true;
+    gh = {
+      enable = true;
+      gitCredentialHelper.enable = true;
+    };
 
     zoxide = {
       enable = true;
