@@ -14,6 +14,7 @@
     kubectx
     exiftool
     comma
+    delta
   ];
 
   programs = {
