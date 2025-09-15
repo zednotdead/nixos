@@ -40,6 +40,7 @@ in {
     localsend
     keymapp
     tailscale-systray
+    ungoogled-chromium
   ];
 
   programs = {
