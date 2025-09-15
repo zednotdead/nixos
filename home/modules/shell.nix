@@ -22,6 +22,8 @@
     fzf.enable = true;
     git.enable = true;
     nh.enable = true;
+    fd.enable = true;
+    btop.enable = true;
 
     fish = {
       enable = true;

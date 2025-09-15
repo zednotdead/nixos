@@ -46,6 +46,7 @@ in {
 
   programs = {
     zathura.enable = true;
+    pqiv.enable = true;
 
     librewolf = {
       enable = true;
