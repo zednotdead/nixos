@@ -41,6 +41,7 @@ in {
     keymapp
     tailscale-systray
     ungoogled-chromium
+    realvnc-vnc-viewer
   ];
 
   programs = {
