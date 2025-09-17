@@ -28,6 +28,15 @@
 
     settings = {
       builders-use-substitutes = true;
+      substituters = [
+        "https://vicinae.cachix.org"
+        "https://hyprland.cachix.org"
+      ];
+      trusted-public-keys = [
+        "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
+      trusted-substituters = ["https://hyprland.cachix.org"];
     };
 
     extraOptions = ''

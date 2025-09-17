@@ -44,6 +44,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vicinae.url = "github:vicinaehq/vicinae";
   };
   outputs = inputs @ {
     self,
@@ -57,6 +58,7 @@
     systems,
     treefmt-nix,
     nix-index-database,
+    vicinae,
     ...
   }: let
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
@@ -87,6 +89,7 @@
             base16.homeManagerModule
             agenix.homeManagerModules.default
             nix-index-database.homeModules.nix-index
+            vicinae.homeManagerModules.default
             {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
             ./home/zed.nix
           ];

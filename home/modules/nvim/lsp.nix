@@ -33,6 +33,8 @@ in {
         basedpyright.enable = true;
         ruff.enable = true;
         tailwindcss.enable = true;
+        marksman.enable = true;
+        vale_ls.enable = true;
       };
 
       keymaps = [

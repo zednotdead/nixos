@@ -5,16 +5,28 @@
   ...
 }: let
   quickshell = inputs.quickshell.packages.${pkgs.system}.default;
+  vicinae = inputs.vicinae.packages.${pkgs.system}.default;
 in {
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
   xdg.configFile."hypr/monitor.conf".source = ./monitors.conf;
 
-  gtk.enable = true;
+  services = {
+    vicinae = {
+      enable = true;
+      autoStart = true;
+    };
 
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
+    kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
+
+    swaync = {
+      enable = true;
+    };
   };
+
+  gtk.enable = true;
 
   home.packages = with pkgs; [
     kitty
@@ -65,10 +77,6 @@ in {
     };
   };
 
-  services.swaync = {
-    enable = true;
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
@@ -90,7 +98,7 @@ in {
       ];
       "$terminal" = "${pkgs.wezterm}/bin/wezterm";
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
-      "$menu" = "${pkgs.anyrun}/bin/anyrun";
+      "$menu" = "${vicinae}/bin/vicinae";
       "$mainMod" = "SUPER";
       general = {
         gaps_in = 5;
