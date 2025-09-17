@@ -32,6 +32,7 @@ in {
         statix.enable = true;
         basedpyright.enable = true;
         ruff.enable = true;
+        tailwindcss.enable = true;
       };
 
       keymaps = [

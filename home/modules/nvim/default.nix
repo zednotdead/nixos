@@ -51,6 +51,14 @@
       enable = config.scheme.slug != "oxocarbon-dark";
       colorscheme = config.scheme.slug;
     };
+    filetype = {
+      extension = {
+        njk = "html";
+        webc = "html";
+        vert = "glsl";
+        frag = "glsl";
+      };
+    };
     plugins = {
       web-devicons = {
         enable = true;

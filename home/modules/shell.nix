@@ -14,6 +14,7 @@
     kubectx
     exiftool
     delta
+    lazyssh
   ];
 
   programs = {
