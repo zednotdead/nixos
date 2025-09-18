@@ -48,12 +48,15 @@ in {
     peazip
     discord
     gimp
-    prismlauncher
     localsend
     keymapp
     tailscale-systray
     ungoogled-chromium
     realvnc-vnc-viewer
+    (prismlauncher.override {
+      additionalLibs = [vlc];
+      additionalPrograms = [vlc];
+    })
   ];
 
   programs = {
