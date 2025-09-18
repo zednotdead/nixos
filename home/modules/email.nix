@@ -4,7 +4,10 @@
     msmtp.enable = true;
     notmuch.enable = true;
     offlineimap.enable = true;
-    neomutt.enable = true;
+    neomutt = {
+      enable = true;
+      vimKeys = true;
+    };
     astroid.enable = true;
   };
 

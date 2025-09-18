@@ -25,6 +25,12 @@
     nh.enable = true;
     fd.enable = true;
     btop.enable = true;
+    chawan = {
+      enable = true;
+      settings = {
+        buffer.images = true;
+      };
+    };
 
     fish = {
       enable = true;
