@@ -2,11 +2,16 @@
   config,
   pkgs,
   inputs,
+  perSystem,
   ...
 }: let
-  quickshell = inputs.quickshell.packages.${pkgs.system}.default;
-  vicinae = inputs.vicinae.packages.${pkgs.system}.default;
+  quickshell = perSystem.quickshell.default;
+  vicinae = perSystem.vicinae.default;
 in {
+  imports = [
+    inputs.vicinae.homeManagerModules.default
+  ];
+
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
   xdg.configFile."hypr/monitor.conf".source = ./monitors.conf;
 
@@ -67,15 +72,6 @@ in {
       enable = true;
       nativeMessagingHosts = [
         pkgs.tridactyl-native
-      ];
-    };
-
-    anyrun = {
-      enable = true;
-      config.plugins = builtins.map (x: "${pkgs.anyrun}/lib/${x}") [
-        "libapplications.so"
-        "librink.so"
-        "libkidex.so"
       ];
     };
   };

@@ -2,8 +2,13 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.nix-index-database.homeModules.nix-index
+  ];
+
   home.packages = with pkgs; [
     fastfetch
     nix-search-cli
@@ -22,7 +27,12 @@
     lazygit.enable = true;
     fzf.enable = true;
     git.enable = true;
-    nh.enable = true;
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "$HOME/nixos";
+    };
     fd.enable = true;
     btop.enable = true;
     chawan = {

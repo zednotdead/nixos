@@ -1,5 +1,4 @@
 os:
-	nh os switch --ask .
-
-hm:
-	nh home switch --ask .
+	nh os switch .
+home:
+	nh home switch .
