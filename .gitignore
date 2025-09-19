@@ -1,1 +1,6 @@
-.qmlls.ini
+# direnv
+.direnv/
+
+# nix
+result
+result-*
