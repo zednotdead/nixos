@@ -12,15 +12,6 @@ in {
     inputs.vicinae.homeManagerModules.default
   ];
 
-  nix.settings = {
-    substituters = [
-      "https://vicinae.cachix.org"
-    ];
-    trusted-public-keys = [
-      "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
-    ];
-  };
-
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
   xdg.configFile."hypr/monitor.conf".source = ./monitors.conf;
 

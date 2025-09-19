@@ -17,6 +17,8 @@
     ./hardware-configuration.nix
   ];
 
+  nix.settings.trusted-users = ["root" "zed"];
+
   boot = {
     loader = {
       systemd-boot.enable = true;
