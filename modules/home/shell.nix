@@ -10,7 +10,8 @@
   ];
 
   home.packages = with pkgs; [
-    fastfetch
+    macchina
+    hyfetch
     nix-search-cli
     kubectl
     viddy
