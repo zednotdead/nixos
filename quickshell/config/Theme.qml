@@ -6,33 +6,6 @@ import Quickshell.Io
 Singleton {
     id: root
 
-    property Gradient barBackground: Gradient {
-        GradientStop {
-            position: 0.0
-            color: "#3168d5"
-        }
-        GradientStop {
-            position: 0.09
-            color: "#4993e6"
-        }
-        GradientStop {
-            position: 0.18
-            color: "#245dd7"
-        }
-        GradientStop {
-            position: 0.5
-            color: "#245ddb"
-        }
-        GradientStop {
-            position: 0.89
-            color: "#2561de"
-        }
-        GradientStop {
-            position: 1.0
-            color: "#1941a5"
-        }
-    }
-
     property color workspaceFocused: this.color05
     property color workspaceFocusedHover: Qt.lighter(this.workspaceFocused, 1.2)
     property color workspaceUnfocused: Qt.darker(this.workspaceFocused, 1.5)

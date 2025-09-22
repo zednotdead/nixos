@@ -19,6 +19,7 @@ in {
     flake.homeModules.email
     flake.homeModules.media
     flake.homeModules.backup
+    flake.homeModules.obsidian
   ];
 
   home.username = username;

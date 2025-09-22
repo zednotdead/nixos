@@ -1,7 +1,6 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import qs.modules.startmenu
 import qs.modules.widgets.workspaces
 import qs.modules.widgets.clock
 import qs.modules.widgets.tray
@@ -14,7 +13,7 @@ PanelWindow {
     color: "transparent"
 
     anchors {
-        bottom: true
+        top: true
         right: true
         left: true
     }
@@ -28,11 +27,11 @@ PanelWindow {
         id: bar
         z: -1
 
-        gradient: Theme.barBackground
+	color: Theme.background
 
         implicitHeight: root.barHeight
 
-        anchors.bottom: parent.bottom
+        anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
 
@@ -41,8 +40,9 @@ PanelWindow {
 
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            anchors.rightMargin: 10
+            anchors.top: parent.top
+            anchors.leftMargin: 10
+            anchors.rightMargin: 20
 
             anchors.verticalCenter: parent.verticalCenter
 
@@ -52,14 +52,6 @@ PanelWindow {
                 anchors.left: sb.right
                 anchors.leftMargin: 10
                 anchors.verticalCenter: parent.verticalCenter
-            }
-
-            StartButton {
-                id: sb
-
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
             }
 
             RowLayout {

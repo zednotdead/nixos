@@ -6,18 +6,11 @@ pragma ComponentBehavior: Bound
 
 import Quickshell
 import qs.modules.bar
-import qs.modules.startmenu
 import qs.modules.notifications.popup
 
 ShellRoot {
     Bar {
         id: bar
     }
-
-    StartMenu {
-        anchor.rect.y: bar.barHeight + 20
-        anchor.window: bar
-    }
-
     // NotificationPopup {}
 }
