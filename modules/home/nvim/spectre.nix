@@ -1,6 +1,8 @@
-{...}: let
+{ ... }:
+let
   prefix = "<Space>";
-in {
+in
+{
   programs.nixvim.plugins.spectre = {
     enable = true;
   };

@@ -1,11 +1,13 @@
 {
   flake,
   ...
-}: let
+}:
+let
   username = "zed";
   homeDir = "/home/${username}";
   userId = "1000";
-in {
+in
+{
   imports = [
     flake.homeModules.shared
     flake.homeModules.wezterm
@@ -26,7 +28,7 @@ in {
   home.homeDirectory = homeDir;
 
   age = {
-    identityPaths = ["${homeDir}/.ssh/id_ed25519"];
+    identityPaths = [ "${homeDir}/.ssh/id_ed25519" ];
     secretsDir = "/run/user/${userId}/agenix";
     secrets = {
       newsboat-password = {

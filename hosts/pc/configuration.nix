@@ -6,10 +6,11 @@
   lib,
   perSystem,
   ...
-}: {
+}:
+{
   imports = [
     inputs.base16.nixosModule
-    {scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml";}
+    { scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml"; }
     inputs.agenix.nixosModules.default
     flake.nixosModules.hyprland
     flake.nixosModules.lix
@@ -17,7 +18,10 @@
     ./hardware-configuration.nix
   ];
 
-  nix.settings.trusted-users = ["root" "zed"];
+  nix.settings.trusted-users = [
+    "root"
+    "zed"
+  ];
 
   boot = {
     loader = {
@@ -43,7 +47,7 @@
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    extraLocales = ["pl_PL.UTF-8/UTF-8"];
+    extraLocales = [ "pl_PL.UTF-8/UTF-8" ];
     extraLocaleSettings = {
       # LC_ALL = "en_US.UTF-8"; # This overrides all other LC_* settings.
       LC_CTYPE = "en_US.UTF8";
@@ -90,8 +94,8 @@
   };
 
   systemd.services.flatpak-repo = {
-    wantedBy = ["multi-user.target"];
-    path = [pkgs.flatpak];
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
@@ -146,7 +150,12 @@
     mutableUsers = false;
     users.zed = {
       isNormalUser = true;
-      extraGroups = ["docker" "wheel" "kvm" "adbusers"]; # Enable ‘sudo’ for the user.
+      extraGroups = [
+        "docker"
+        "wheel"
+        "kvm"
+        "adbusers"
+      ]; # Enable ‘sudo’ for the user.
       hashedPasswordFile = config.age.secrets.zed-password.path;
       packages = with pkgs; [
         tree
@@ -159,14 +168,19 @@
         alejandra
         pika-backup
         ncpamixer
-        ((ffmpeg-full.override {
-          withUnfree = true; # Allow unfree dependencies (for Nvidia features notably)
-          withMetal = false; # Use Metal API on Mac. Unfree and requires manual downloading of files
-          withMfx = false; # Hardware acceleration via the deprecated intel-media-sdk/libmfx. Use oneVPL instead (enabled by default) from Intel's oneAPI.
-          withTensorflow = false; # Tensorflow dnn backend support (Increases closure size by ~390 MiB)
-          withSmallBuild = false; # Prefer binary size to performance.
-          withDebug = false; # Build using debug options
-        }).overrideAttrs (_: {doCheck = false;}))
+        (
+          (ffmpeg-full.override {
+            withUnfree = true; # Allow unfree dependencies (for Nvidia features notably)
+            withMetal = false; # Use Metal API on Mac. Unfree and requires manual downloading of files
+            withMfx = false; # Hardware acceleration via the deprecated intel-media-sdk/libmfx. Use oneVPL instead (enabled by default) from Intel's oneAPI.
+            withTensorflow = false; # Tensorflow dnn backend support (Increases closure size by ~390 MiB)
+            withSmallBuild = false; # Prefer binary size to performance.
+            withDebug = false; # Build using debug options
+          }).overrideAttrs
+          (_: {
+            doCheck = false;
+          })
+        )
         home-manager
       ];
       shell = pkgs.fish;

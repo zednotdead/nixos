@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.vdirsyncer.enable = true;
   services.vdirsyncer.enable = true;
   programs.khard.enable = true;
@@ -25,9 +26,21 @@
       vdirsyncer = {
         enable = true;
         collections = [
-          ["Contacts" "32" "Contacts"]
-          ["Collected addresses" "41" "Collected addresses"]
-          ["Global address book" "6" "Global address book"]
+          [
+            "Contacts"
+            "32"
+            "Contacts"
+          ]
+          [
+            "Collected addresses"
+            "41"
+            "Collected addresses"
+          ]
+          [
+            "Global address book"
+            "6"
+            "Global address book"
+          ]
         ];
       };
       remote = {

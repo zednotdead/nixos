@@ -1,6 +1,8 @@
-{...}: let
+{ ... }:
+let
   leader = "<Space>";
-in {
+in
+{
   programs.nixvim.plugins.neo-tree = {
     enable = true;
     closeIfLastWindow = true;
@@ -8,7 +10,7 @@ in {
     filesystem = {
       filteredItems = {
         hideDotfiles = false;
-        hideByPattern = [".git"];
+        hideByPattern = [ ".git" ];
       };
       followCurrentFile = {
         enabled = true;

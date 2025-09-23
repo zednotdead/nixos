@@ -2,10 +2,12 @@
   inputs,
   flake,
   ...
-}: let
+}:
+let
   username = "zbigniew.zolnierowicz";
   homeDir = "/Users/${username}";
-in {
+in
+{
   imports = [
     flake.homeModules.shared
     flake.homeModules.wezterm
@@ -17,7 +19,7 @@ in {
   home.homeDirectory = homeDir;
 
   age = {
-    identityPaths = ["${homeDir}/.ssh/id_ed25519"];
+    identityPaths = [ "${homeDir}/.ssh/id_ed25519" ];
     secrets = {
       newsboat-password = {
         file = ../../../../secrets/newsboat.age;

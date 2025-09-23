@@ -2,7 +2,8 @@
   pkgs,
   perSystem,
   ...
-}: {
+}:
+{
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -15,7 +16,7 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       ];
-      trusted-substituters = ["https://hyprland.cachix.org"];
+      trusted-substituters = [ "https://hyprland.cachix.org" ];
     };
   };
 
@@ -59,7 +60,7 @@
     _1password-gui = with pkgs; {
       enable = true;
       package = _1password-gui-beta;
-      polkitPolicyOwners = ["zed"];
+      polkitPolicyOwners = [ "zed" ];
     };
     adb.enable = true;
   };

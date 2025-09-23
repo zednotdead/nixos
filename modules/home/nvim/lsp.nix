@@ -1,6 +1,8 @@
-{...}: let
+{ ... }:
+let
   prefix = "<Space>l";
-in {
+in
+{
   programs.nixvim = {
     plugins = {
       lazydev = {

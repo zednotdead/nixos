@@ -1,13 +1,15 @@
-{config, ...}: let
+{ config, ... }:
+let
   homeDir = config.home.homeDirectory;
   resticSecrets = config.age.secrets.restic.path;
   resticPassword = config.age.secrets.restic-password.path;
-in {
+in
+{
   services.restic = {
     enable = true;
     backups = {
       remoteBackup = {
-        paths = ["\"${homeDir}\""];
+        paths = [ "\"${homeDir}\"" ];
         environmentFile = resticSecrets;
         passwordFile = resticPassword;
         repository = "s3:http://10.0.2.3:9000/home-restic";

@@ -4,15 +4,18 @@
   inputs,
   perSystem,
   ...
-}: let
+}:
+let
   quickshell = perSystem.quickshell.default;
   vicinae = perSystem.vicinae.default;
-in {
+in
+{
   imports = [
     inputs.vicinae.homeManagerModules.default
   ];
 
-  xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
   xdg.configFile."hypr/monitor.conf".source = ./monitors.conf;
 
   services = {
@@ -59,8 +62,8 @@ in {
     ungoogled-chromium
     realvnc-vnc-viewer
     (prismlauncher.override {
-      additionalLibs = [vlc];
-      additionalPrograms = [vlc];
+      additionalLibs = [ vlc ];
+      additionalPrograms = [ vlc ];
     })
   ];
 

@@ -1,6 +1,8 @@
-{...}: let
+{ ... }:
+let
   leader = "<Space>";
-in {
+in
+{
   programs.nixvim.keymaps = [
     {
       action.__raw = ''

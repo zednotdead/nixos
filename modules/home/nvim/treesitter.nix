@@ -1,9 +1,14 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim.plugins = {
     treesitter = {
       enable = true;
       settings = {
-        ensure_installed = ["lua" "markdown" "markdown_inline"];
+        ensure_installed = [
+          "lua"
+          "markdown"
+          "markdown_inline"
+        ];
         highlight.enable = true;
         indent.enable = true;
       };

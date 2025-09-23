@@ -1,6 +1,8 @@
-{...}: let
+{ ... }:
+let
   prefix = "<Space>p";
-in {
+in
+{
   programs.nixvim.plugins.auto-session = {
     enable = true;
   };

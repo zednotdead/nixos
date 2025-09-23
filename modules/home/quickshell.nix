@@ -3,9 +3,11 @@
   pkgs,
   perSystem,
   ...
-}: let
+}:
+let
   quickshell = perSystem.quickshell.default;
-in {
+in
+{
   xdg.configFile."quickshell" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/quickshell";
     recursive = true;

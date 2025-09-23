@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim.plugins.edgy = {
     enable = true;
     settings = {

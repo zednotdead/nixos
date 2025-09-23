@@ -1,11 +1,12 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim.plugins.blink-cmp = {
     enable = true;
     settings = {
       keymap = {
         preset = "super-tab";
-        "<C-.>" = ["snippet_forward"];
-        "<C-,>" = ["snippet_backward"];
+        "<C-.>" = [ "snippet_forward" ];
+        "<C-,>" = [ "snippet_backward" ];
       };
       appearance.nerd_font_variant = "normal";
       completion = {
@@ -14,7 +15,7 @@
           selection.auto_insert = false;
         };
         documentation.auto_show = false;
-        menu.draw.treesitter = ["lsp"];
+        menu.draw.treesitter = [ "lsp" ];
         menu.draw.columns.__raw = ''
           {
             { "label", "label_description", gap = 1 },

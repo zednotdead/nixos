@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.vdirsyncer.enable = true;
   services.vdirsyncer.enable = true;
 
@@ -33,9 +34,21 @@
       };
       vdirsyncer.enable = true;
       vdirsyncer.collections = [
-        ["Tasks" "MzM" "Tasks"]
-        ["Calendar" "Y2FsOi8vMC8zMQ" "Calendar"]
-        ["Birthdays" "Y2FsOi8vMS8w" "Birthdays"]
+        [
+          "Tasks"
+          "MzM"
+          "Tasks"
+        ]
+        [
+          "Calendar"
+          "Y2FsOi8vMC8zMQ"
+          "Calendar"
+        ]
+        [
+          "Birthdays"
+          "Y2FsOi8vMS8w"
+          "Birthdays"
+        ]
       ];
       remote = {
         type = "caldav";
