@@ -32,6 +32,11 @@ in
     swaync = {
       enable = true;
     };
+    
+    udiskie = {
+      enable = true;
+      tray = "auto";
+    };
   };
 
   gtk.enable = true;
@@ -95,7 +100,6 @@ in
         "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.discord}/bin/discord"
         "${quickshell}/bin/quickshell"
         "${pkgs.hyprsunset}/bin/hyprsunset"
-        "${pkgs.udiskie}/bin/udiskie"
         "${pkgs.tailscale-systray}/bin/tailscale-systray"
       ];
       "$terminal" = "${pkgs.ghostty}/bin/ghostty";
