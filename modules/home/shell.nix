@@ -59,6 +59,9 @@
         gpl = ''
           ${pkgs.git}/bin/git pull
         '';
+        gaa = ''
+          	  ${pkgs.git}/bin/git add --all
+          	'';
       };
       shellInit = ''
         set fish_greeting

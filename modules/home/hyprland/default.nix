@@ -98,7 +98,7 @@ in
         "${pkgs.udiskie}/bin/udiskie"
         "${pkgs.tailscale-systray}/bin/tailscale-systray"
       ];
-      "$terminal" = "${pkgs.wezterm}/bin/wezterm";
+      "$terminal" = "${pkgs.ghostty}/bin/ghostty";
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
       "$menu" = "${vicinae}/bin/vicinae";
       "$mainMod" = "SUPER";

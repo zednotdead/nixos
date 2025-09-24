@@ -22,6 +22,7 @@ in
     flake.homeModules.media
     flake.homeModules.backup
     flake.homeModules.obsidian
+    flake.homeModules.ghostty
   ];
 
   home.username = username;
