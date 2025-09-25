@@ -25,29 +25,30 @@
       leader = "<Space>";
       groups = [
         [
-          "${leader}p"
+          "<leader>p"
           "projects"
         ]
         [
-          "${leader}t"
+          "<leader>t"
           "tabs"
         ]
         [
-          "${leader}f"
+          "<leader>f"
           "find"
         ]
         [
-          "${leader}l"
+          "<leader>l"
           "LSP"
         ]
         [
-          "${leader}g"
+          "<leader>g"
           "terminal"
         ]
       ];
     in
     {
       enable = true;
+      globals.mapleader = leader;
       opts = {
         termguicolors = true;
         number = true;
