@@ -60,8 +60,8 @@
           ${pkgs.git}/bin/git pull
         '';
         gaa = ''
-          	  ${pkgs.git}/bin/git add --all
-          	'';
+          ${pkgs.git}/bin/git add --all
+        '';
       };
       shellInit = ''
         set fish_greeting
@@ -87,9 +87,9 @@
         show_startup_tips = false;
       };
       themes = {
-        oxocarbon-dark = with config.scheme.withHashtag; {
+        "${config.scheme.slug}" = with config.scheme.withHashtag; {
           themes = {
-            oxocarbon-dark = {
+            "${config.scheme.slug}" = {
               fg = base05;
               bg = base02;
               black = base00;

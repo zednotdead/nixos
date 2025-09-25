@@ -66,10 +66,8 @@
         shiftwidth = 2;
       };
       colorschemes.oxocarbon.enable = config.scheme.slug == "oxocarbon-dark";
-      colorschemes.base16 = {
-        enable = config.scheme.slug != "oxocarbon-dark";
-        colorscheme = config.scheme.slug;
-      };
+      colorschemes.kanagawa.enable = config.scheme.slug == "kanagawa";
+      colorschemes.rose-pine.enable = config.scheme.slug == "rose-pine";
       filetype = {
         extension = {
           njk = "html";

@@ -29,14 +29,6 @@
     perSystem.hyprland.xdg-desktop-portal-hyprland
   ];
 
-  services = {
-    gvfs = {
-      enable = true;
-    };
-
-    gnome.gnome-keyring.enable = true;
-  };
-
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -44,37 +36,5 @@
     portalPackage = perSystem.hyprland.xdg-desktop-portal-hyprland;
   };
 
-  programs = {
-    uwsm.enable = true;
-
-    localsend = {
-      enable = true;
-      openFirewall = true;
-    };
-
-    steam = {
-      enable = true;
-    };
-
-    _1password.enable = true;
-    _1password-gui = with pkgs; {
-      enable = true;
-      package = _1password-gui-beta;
-      polkitPolicyOwners = [ "zed" ];
-    };
-    adb.enable = true;
-  };
-
-  fonts.packages = with pkgs; [
-    corefonts
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
-  ];
+  programs.uwsm.enable = true;
 }

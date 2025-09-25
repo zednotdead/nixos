@@ -3,12 +3,11 @@
   flake,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     inputs.agenix.homeManagerModules.default
     inputs.base16.homeManagerModule
-    { scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml"; }
+    {scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml";}
   ];
 
   fonts.fontconfig.enable = true;

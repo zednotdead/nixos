@@ -10,9 +10,11 @@
 {
   imports = [
     inputs.base16.nixosModule
-    { scheme = "${inputs.tt-schemes}/base16/oxocarbon-dark.yaml"; }
+    { scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml"; }
     inputs.agenix.nixosModules.default
-    flake.nixosModules.hyprland
+    # flake.nixosModules.hyprland
+    flake.nixosModules.niri
+    flake.nixosModules.programs
     flake.nixosModules.lix
     flake.nixosModules.nh
     ./hardware-configuration.nix

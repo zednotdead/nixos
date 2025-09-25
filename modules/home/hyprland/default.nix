@@ -12,6 +12,18 @@ in
 {
   imports = [
     inputs.vicinae.homeManagerModules.default
+    ../programs.nix
+  ];
+
+  home.packages = with pkgs; [
+    hyprlock
+    wallust
+    hyprsunset
+    hyprpolkitagent
+    hyprlock
+    grimblast
+    hyprpicker
+    hyprprop
   ];
 
   xdg.configFile."uwsm/env".source =
@@ -24,65 +36,12 @@ in
       autoStart = true;
     };
 
-    kdeconnect = {
-      enable = true;
-      indicator = true;
-    };
-
     swaync = {
       enable = true;
-    };
-    
-    udiskie = {
-      enable = true;
-      tray = "auto";
     };
   };
 
   gtk.enable = true;
-
-  home.packages = with pkgs; [
-    kitty
-    nautilus
-    swww
-    networkmanagerapplet
-    udiskie
-    hyprlock
-    grimblast
-    wallust
-    hyprsunset
-    hyprpolkitagent
-    hyprlock
-    wl-clipboard
-    grimblast
-    hyprpicker
-    hyprprop
-    nautilus
-    peazip
-    discord
-    gimp
-    localsend
-    keymapp
-    tailscale-systray
-    ungoogled-chromium
-    realvnc-vnc-viewer
-    (prismlauncher.override {
-      additionalLibs = [ vlc ];
-      additionalPrograms = [ vlc ];
-    })
-  ];
-
-  programs = {
-    zathura.enable = true;
-    pqiv.enable = true;
-
-    librewolf = {
-      enable = true;
-      nativeMessagingHosts = [
-        pkgs.tridactyl-native
-      ];
-    };
-  };
 
   wayland.windowManager.hyprland = {
     enable = true;

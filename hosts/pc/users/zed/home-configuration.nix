@@ -12,8 +12,8 @@ in
     flake.homeModules.shared
     flake.homeModules.wezterm
     flake.homeModules.shell
-    flake.homeModules.hyprland
-    flake.homeModules.quickshell
+    # flake.homeModules.hyprland
+    # flake.homeModules.quickshell
     flake.homeModules.nvim
     flake.homeModules.minio
     flake.homeModules.calendar
@@ -23,6 +23,8 @@ in
     flake.homeModules.backup
     flake.homeModules.obsidian
     flake.homeModules.ghostty
+    flake.homeModules.matrix
+    flake.homeModules.niri
   ];
 
   home.username = username;

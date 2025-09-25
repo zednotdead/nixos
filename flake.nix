@@ -33,6 +33,16 @@
 
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
+
+    # Niri
+    niri.url = "github:sodiboo/niri-flake";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";
+    };
+
+    # Programs
     vicinae.url = "github:vicinaehq/vicinae";
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
