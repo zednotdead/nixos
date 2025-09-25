@@ -25,6 +25,7 @@ in
     flake.homeModules.ghostty
     flake.homeModules.matrix
     flake.homeModules.niri
+    flake.homeModules.discord
   ];
 
   home.username = username;

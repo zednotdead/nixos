@@ -20,6 +20,7 @@ in
     ../programs.nix
     ./shell.nix
   ];
+
   gtk = {
     enable = true;
     theme = {
