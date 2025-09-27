@@ -9,7 +9,6 @@
       enable = true;
       vimKeys = true;
     };
-    astroid.enable = true;
   };
 
   services = {

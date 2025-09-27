@@ -1,11 +1,13 @@
 {
   pkgs,
   config,
+  perSystem,
   ...
 }:
 {
   programs.ghostty = {
     enable = true;
+    package = pkgs.ghostty-bin;
     settings = {
       theme = config.scheme.slug;
       font-family = "Maple Mono NF";

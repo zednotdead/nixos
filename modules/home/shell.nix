@@ -83,7 +83,7 @@
     zellij = {
       enable = true;
       settings = {
-        theme = "oxocarbon-dark";
+        theme = config.scheme.slug;
         show_startup_tips = false;
       };
       themes = {

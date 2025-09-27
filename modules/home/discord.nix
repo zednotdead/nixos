@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
-    wl-clipboard
     discord
   ];
 

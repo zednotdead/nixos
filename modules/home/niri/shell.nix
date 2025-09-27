@@ -3,7 +3,8 @@
   inputs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -119,7 +120,7 @@
       };
       notifications = {
         doNotDisturb = false;
-        monitors = ["DP-1"];
+        monitors = [ "DP-1" ];
         location = "top_right";
         alwaysOnTop = false;
         lastSeenTs = 0;
@@ -134,14 +135,14 @@
         volumeOverdrive = false;
         cavaFrameRate = 60;
         visualizerType = "linear";
-        mprisBlacklist = [];
+        mprisBlacklist = [ ];
         preferredPlayer = "";
       };
       ui = {
         fontDefault = "Roboto";
         fontFixed = "Maple Mono NF";
         fontBillboard = "Inter";
-        monitorsScaling = [];
+        monitorsScaling = [ ];
         idleInhibitorEnabled = false;
       };
       brightness = {
