@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     flake.darwinModules.netbird
     flake.darwinModules.browser
