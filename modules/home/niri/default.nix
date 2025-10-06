@@ -53,6 +53,7 @@ in
         }
         { argv = [ "steam" ]; }
         { argv = [ "noctalia-shell" ]; }
+        { argv = [ "thunderbird" ]; }
       ];
 
       workspaces = {
@@ -68,6 +69,21 @@ in
         "09".open-on-output = "HDMI-A-1";
         "10".open-on-output = "HDMI-A-1";
       };
+
+      window-rules = [
+        {
+          matches = [
+            { app-id = "thunderbird"; }
+          ];
+          open-on-workspace = "03";
+        }
+        {
+          matches = [
+            { app-id = "steam"; }
+          ];
+          open-on-workspace = "02";
+        }
+      ];
 
       outputs = {
         "DP-1" = {
