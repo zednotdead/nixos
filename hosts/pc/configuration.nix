@@ -12,6 +12,7 @@
     inputs.base16.nixosModule
     { scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml"; }
     inputs.agenix.nixosModules.default
+    inputs.chaotic.nixosModules.default
     # flake.nixosModules.hyprland
     flake.nixosModules.niri
     flake.nixosModules.programs
@@ -26,6 +27,7 @@
   ];
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_cachyos;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -93,6 +95,7 @@
     tailscale = {
       enable = true;
     };
+    scx.enable = true;
   };
 
   systemd.services.flatpak-repo = {
