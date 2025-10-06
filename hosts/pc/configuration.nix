@@ -18,6 +18,8 @@
     flake.nixosModules.programs
     flake.nixosModules.lix
     flake.nixosModules.nh
+    flake.nixosModules.tablet
+    flake.nixosModules.wine
     ./hardware-configuration.nix
   ];
 

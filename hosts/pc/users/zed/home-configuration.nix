@@ -27,7 +27,6 @@ in
     flake.homeModules.matrix
     flake.homeModules.niri
     flake.homeModules.discord
-    flake.homeModules.zen-browser
   ];
 
   home.username = username;
