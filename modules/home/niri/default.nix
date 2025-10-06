@@ -107,7 +107,10 @@ in
           hotkey-overlay.title = "Spawn terminal (ghostty)";
         };
         "Mod+D" = {
-          action = spawn "vicinae";
+          action = spawn [
+            "vicinae"
+            "toggle"
+          ];
           hotkey-overlay.title = "Spawn application launcher (vicinae)";
         };
         XF86AudioRaiseVolume = {

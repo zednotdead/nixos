@@ -123,6 +123,7 @@
     gcc
     networkmanagerapplet
     docker-compose
+    nix-search-tv
     perSystem.agenix.default
   ];
 

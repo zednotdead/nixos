@@ -48,12 +48,13 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Vim
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Vim
+    nixvim.url = "github:nix-community/nixvim";
 
     # Misc
     nix-index-database = {

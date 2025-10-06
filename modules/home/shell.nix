@@ -17,7 +17,6 @@
     kubectl
     viddy
     zellij
-    nix-search-tv
     kubectx
     exiftool
     delta
@@ -41,6 +40,16 @@
       enable = true;
       settings = {
         buffer.images = true;
+      };
+    };
+
+    nix-search-tv = {
+      enable = true;
+      enableTelevisionIntegration = true;
+      settings = {
+        render_docs_indexes = {
+          nvf = "https://notashelf.github.io/nvf/options.html";
+        };
       };
     };
 
