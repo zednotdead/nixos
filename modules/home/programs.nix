@@ -32,7 +32,6 @@
     networkmanagerapplet
     udiskie
     wl-clipboard
-    discord
     gimp
     localsend
     keymapp

@@ -57,13 +57,25 @@ in
       ];
 
       workspaces = {
-        "01".open-on-output = "DP-1";
-        "02".open-on-output = "DP-1";
-        "03".open-on-output = "DP-1";
+        "01" = {
+          open-on-output = "DP-1";
+          name = "main";
+        };
+        "02" = {
+          open-on-output = "DP-1";
+          name = "games";
+        };
+        "03" = {
+          open-on-output = "DP-1";
+          name = "mail";
+        };
         "04".open-on-output = "DP-1";
         "05".open-on-output = "DP-1";
 
-        "06".open-on-output = "HDMI-A-1";
+        "06" = {
+          open-on-output = "HDMI-A-1";
+          name = "media";
+        };
         "07".open-on-output = "HDMI-A-1";
         "08".open-on-output = "HDMI-A-1";
         "09".open-on-output = "HDMI-A-1";

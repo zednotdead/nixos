@@ -53,6 +53,11 @@
       };
     };
 
+    yazi = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
     fish = {
       enable = true;
       generateCompletions = true;
@@ -430,7 +435,7 @@
         show_image_preview = true;
         show_panel_footer_info = true;
         file_size_use_si = true;
-        default_directory = "~";
+        default_directory = ".";
         default_sort_type = 0;
         sort_order_reversed = false;
         case_sensitive_sort = false;

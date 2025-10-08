@@ -36,14 +36,15 @@
 
     # Niri
     niri.url = "github:sodiboo/niri-flake";
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
     };
-
-    # Programs
-    vicinae.url = "github:vicinaehq/vicinae";
+    vicinae = {
+      # Programs
+      url = "github:vicinaehq/vicinae";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,8 +67,7 @@
   };
 
   # Load the blueprint
-  outputs =
-    inputs:
+  outputs = inputs:
     inputs.blueprint {
       inherit inputs;
       nixpkgs.config.allowUnfree = true;

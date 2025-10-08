@@ -20,6 +20,7 @@
     flake.nixosModules.nh
     flake.nixosModules.tablet
     flake.nixosModules.wine
+    flake.nixosModules.uutils
     ./hardware-configuration.nix
   ];
 
