@@ -4,8 +4,7 @@
   config,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
@@ -27,7 +26,11 @@
     nix-index-database.comma.enable = true;
     lazygit.enable = true;
     fzf.enable = true;
-    git.enable = true;
+    git = {
+      enable = true;
+      userName = "Zuzanna Żołnierowicz";
+      userEmail = "zuzanna@zolnierowi.cz";
+    };
     nh = {
       enable = true;
       clean.enable = true;
@@ -521,7 +524,7 @@
     };
 
     newsboat = {
-      enable = true;
+      enable = pkgs.stdenv.isLinux;
       extraConfig = ''
         urls-source "miniflux"
         miniflux-url "https://miniflux.zed.gay"

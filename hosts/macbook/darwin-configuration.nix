@@ -2,11 +2,9 @@
   pkgs,
   flake,
   ...
-}:
-let
+}: let
   user = "zed";
-in
-{
+in {
   imports = [
     flake.darwinModules.netbird
     flake.darwinModules.browser
@@ -38,9 +36,18 @@ in
     home = /Users/${user};
     shell = pkgs.fish;
   };
+  nix.settings = {
+    # Necessary for using flakes on this system.
+    experimental-features = "nix-command flakes";
 
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+    substituters = [
+      "https://nix-community.cachix.org"
+      "https://cache.nixos.org/"
+    ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
 
   # Enable alternative shell support in nix-darwin.
   programs.fish.enable = true;

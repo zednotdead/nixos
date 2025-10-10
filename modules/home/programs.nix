@@ -49,7 +49,7 @@
     pqiv.enable = true;
 
     librewolf = {
-      enable = true;
+      enable = pkgs.stdenv.isLinux;
       nativeMessagingHosts = [
         pkgs.tridactyl-native
       ];
