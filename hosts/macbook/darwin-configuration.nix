@@ -2,12 +2,17 @@
   pkgs,
   flake,
   ...
-}: {
+}: let
+  user = "zed";
+  in
+{
   imports = [
     flake.darwinModules.netbird
     flake.darwinModules.browser
     flake.darwinModules.onepassword
   ];
+
+  system.primaryUser = user;
 
   nixpkgs.config.allowBroken = true;
   nixpkgs.config.allowUnfree = true;
@@ -19,7 +24,7 @@
     ice-bar
     localsend
     rquickshare
-    discord
+    raycast
   ];
 
   environment.shells = [
@@ -28,8 +33,8 @@
     pkgs.fish
   ];
 
-  users.users.zed = {
-    home = /Users/zed;
+  users.users.${user} = {
+    home = /Users/${user};
     shell = pkgs.fish;
   };
 
