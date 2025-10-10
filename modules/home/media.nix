@@ -1,8 +1,16 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    youtube-tui
+    ytfzf
+    video-trimmer
   ];
+
+  programs.yt-dlp = {
+    enable = true;
+    settings = {
+      embed-subs = true;
+    };
+  };
 
   programs.mpv = {
     enable = true;

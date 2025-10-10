@@ -2,9 +2,10 @@
   pkgs,
   flake,
   ...
-}: let
+}:
+let
   user = "zed";
-  in
+in
 {
   imports = [
     flake.darwinModules.netbird

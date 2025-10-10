@@ -5,6 +5,7 @@
   inputs = {
     # Base
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,24 +37,22 @@
 
     # Niri
     niri.url = "github:sodiboo/niri-flake";
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
     };
-
-    # Programs
-    vicinae.url = "github:vicinaehq/vicinae";
+    vicinae = {
+      # Programs
+      url = "github:vicinaehq/vicinae";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Vim
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
 
     # Misc
     nix-index-database = {
@@ -64,6 +63,8 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   # Load the blueprint

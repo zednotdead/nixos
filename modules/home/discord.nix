@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    discord
+    (discord-canary.override {
+      withOpenASAR = true;
+    })
   ];
 
   home.sessionVariables = {

@@ -12,11 +12,15 @@
     inputs.base16.nixosModule
     { scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml"; }
     inputs.agenix.nixosModules.default
+    inputs.chaotic.nixosModules.default
     # flake.nixosModules.hyprland
     flake.nixosModules.niri
     flake.nixosModules.programs
     flake.nixosModules.lix
     flake.nixosModules.nh
+    flake.nixosModules.tablet
+    flake.nixosModules.wine
+    flake.nixosModules.uutils
     ./hardware-configuration.nix
   ];
 
@@ -25,7 +29,13 @@
     "zed"
   ];
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    cmark-gfm = perSystem.nixpkgs-master.cmark-gfm;
+    grpc-tools = perSystem.nixpkgs-master.grpc-tools;
+  };
+
   boot = {
+    kernelPackages = pkgs.linuxPackages_cachyos;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -93,6 +103,7 @@
     tailscale = {
       enable = true;
     };
+    scx.enable = true;
   };
 
   systemd.services.flatpak-repo = {
@@ -123,6 +134,7 @@
     gcc
     networkmanagerapplet
     docker-compose
+    nix-search-tv
     perSystem.agenix.default
   ];
 

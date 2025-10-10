@@ -53,21 +53,49 @@ in
         }
         { argv = [ "steam" ]; }
         { argv = [ "noctalia-shell" ]; }
+        { argv = [ "thunderbird" ]; }
       ];
 
       workspaces = {
-        "01".open-on-output = "DP-1";
-        "02".open-on-output = "DP-1";
-        "03".open-on-output = "DP-1";
+        "01" = {
+          open-on-output = "DP-1";
+          name = "main";
+        };
+        "02" = {
+          open-on-output = "DP-1";
+          name = "games";
+        };
+        "03" = {
+          open-on-output = "DP-1";
+          name = "mail";
+        };
         "04".open-on-output = "DP-1";
         "05".open-on-output = "DP-1";
 
-        "06".open-on-output = "HDMI-A-1";
+        "06" = {
+          open-on-output = "HDMI-A-1";
+          name = "media";
+        };
         "07".open-on-output = "HDMI-A-1";
         "08".open-on-output = "HDMI-A-1";
         "09".open-on-output = "HDMI-A-1";
         "10".open-on-output = "HDMI-A-1";
       };
+
+      window-rules = [
+        {
+          matches = [
+            { app-id = "thunderbird"; }
+          ];
+          open-on-workspace = "03";
+        }
+        {
+          matches = [
+            { app-id = "steam"; }
+          ];
+          open-on-workspace = "02";
+        }
+      ];
 
       outputs = {
         "DP-1" = {
@@ -107,7 +135,10 @@ in
           hotkey-overlay.title = "Spawn terminal (ghostty)";
         };
         "Mod+D" = {
-          action = spawn "vicinae";
+          action = spawn [
+            "vicinae"
+            "toggle"
+          ];
           hotkey-overlay.title = "Spawn application launcher (vicinae)";
         };
         XF86AudioRaiseVolume = {
@@ -186,23 +217,23 @@ in
           action = move-column-left;
         };
 
-        "Mod+1".action = focus-workspace "01";
-        "Mod+2".action = focus-workspace "02";
-        "Mod+3".action = focus-workspace "03";
+        "Mod+1".action = focus-workspace "main";
+        "Mod+2".action = focus-workspace "games";
+        "Mod+3".action = focus-workspace "mail";
         "Mod+4".action = focus-workspace "04";
         "Mod+5".action = focus-workspace "05";
-        "Mod+6".action = focus-workspace "06";
+        "Mod+6".action = focus-workspace "media";
         "Mod+7".action = focus-workspace "07";
         "Mod+8".action = focus-workspace "08";
         "Mod+9".action = focus-workspace "09";
         "Mod+0".action = focus-workspace "10";
 
-        "Mod+Shift+1".action.move-column-to-workspace = "01";
-        "Mod+Shift+2".action.move-column-to-workspace = "02";
-        "Mod+Shift+3".action.move-column-to-workspace = "03";
+        "Mod+Shift+1".action.move-column-to-workspace = "main";
+        "Mod+Shift+2".action.move-column-to-workspace = "games";
+        "Mod+Shift+3".action.move-column-to-workspace = "mail";
         "Mod+Shift+4".action.move-column-to-workspace = "04";
         "Mod+Shift+5".action.move-column-to-workspace = "05";
-        "Mod+Shift+6".action.move-column-to-workspace = "06";
+        "Mod+Shift+6".action.move-column-to-workspace = "media";
         "Mod+Shift+7".action.move-column-to-workspace = "07";
         "Mod+Shift+8".action.move-column-to-workspace = "08";
         "Mod+Shift+9".action.move-column-to-workspace = "09";
