@@ -52,7 +52,13 @@ in
           ];
         }
         { argv = [ "steam" ]; }
-        { argv = [ "dms" "run" "-d" ]; }
+        {
+          argv = [
+            "dms"
+            "run"
+            "-d"
+          ];
+        }
         { argv = [ "thunderbird" ]; }
       ];
 

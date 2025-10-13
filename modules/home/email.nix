@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs = {
     afew.enable = true;
     msmtp.enable = true;
@@ -14,11 +15,12 @@
     imapnotify.enable = true;
   };
 
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     [
       gopass
     ]
-    ++ (pkgs.lib.optionals (pkgs.stdenv.isLinux) [pkgs.thunderbird]);
+    ++ (pkgs.lib.optionals (pkgs.stdenv.isLinux) [ pkgs.thunderbird ]);
 
   accounts.email = {
     maildirBasePath = ".maildir";
