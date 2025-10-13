@@ -52,7 +52,7 @@ in
           ];
         }
         { argv = [ "steam" ]; }
-        { argv = [ "noctalia-shell" ]; }
+        { argv = [ "dms" "run" "-d" ]; }
         { argv = [ "thunderbird" ]; }
       ];
 
@@ -87,13 +87,13 @@ in
           matches = [
             { app-id = "thunderbird"; }
           ];
-          open-on-workspace = "03";
+          open-on-workspace = "mail";
         }
         {
           matches = [
             { app-id = "steam"; }
           ];
-          open-on-workspace = "02";
+          open-on-workspace = "games";
         }
       ];
 
