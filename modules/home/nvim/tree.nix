@@ -1,20 +1,20 @@
-{ ... }:
-let
+{...}: let
   leader = "<Space>";
-in
-{
+in {
   programs.nixvim.plugins.neo-tree = {
     enable = true;
-    closeIfLastWindow = true;
-    autoCleanAfterSessionRestore = true;
-    filesystem = {
-      filteredItems = {
-        hideDotfiles = false;
-        hideByPattern = [ ".git" ];
-      };
-      followCurrentFile = {
-        enabled = true;
-        leaveDirsOpen = true;
+    settings = {
+      close_if_last_window = true;
+      auto_clean_after_session_restore = true;
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false;
+          hide_by_pattern = [".git"];
+        };
+        follow_current_file = {
+          enabled = true;
+          leave_dirs_open = true;
+        };
       };
     };
   };
