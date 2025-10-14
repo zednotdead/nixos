@@ -5,7 +5,6 @@
   inputs = {
     # Base
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
-    nixpkgs-master.url = "github:NixOS/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,8 +67,7 @@
   };
 
   # Load the blueprint
-  outputs =
-    inputs:
+  outputs = inputs:
     inputs.blueprint {
       inherit inputs;
       nixpkgs.config.allowUnfree = true;

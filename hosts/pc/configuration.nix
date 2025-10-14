@@ -29,11 +29,6 @@
     "zed"
   ];
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    cmark-gfm = perSystem.nixpkgs-master.cmark-gfm;
-    grpc-tools = perSystem.nixpkgs-master.grpc-tools;
-  };
-
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos;
     loader = {
