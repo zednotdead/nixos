@@ -1,8 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 let
   prefix = "<Space>l";
 in
 {
+  home.packages = with pkgs; [ mdx-language-server ];
   programs.nixvim = {
     plugins = {
       lazydev = {
@@ -17,10 +18,18 @@ in
 
       aerial.enable = true;
       tiny-inline-diagnostic.enable = true;
+      lsp = {
+        enable = true;
+        servers.mdx_analyzer = {
+          enable = true;
+          package = pkgs.mdx-language-server;
+        };
+      };
     };
 
     lsp = {
       servers = {
+        astro.enable = true;
         nil_ls.enable = true;
         yamlls.enable = true;
         jsonls.enable = true;

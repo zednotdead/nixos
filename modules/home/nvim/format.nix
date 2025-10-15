@@ -4,6 +4,8 @@ let
   es_formatters = {
     __unkeyed-1 = "eslint_d";
     __unkeyed-2 = "eslint";
+    __unkeyed-3 = "prettierd";
+    __unkeyed-4 = "prettier";
     lsp_format = "fallback";
     timeout_ms = 2000;
     stop_after_first = true;
@@ -18,6 +20,8 @@ in
     jq
     opentofu
     alejandra
+    prettierd
+    prettier
   ];
 
   programs.nixvim.plugins.conform-nvim = {
