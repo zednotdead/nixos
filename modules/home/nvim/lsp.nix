@@ -46,6 +46,7 @@ in
         tailwindcss.enable = true;
         marksman.enable = true;
         vale_ls.enable = true;
+	svelte.enable = true;
       };
 
       keymaps = [

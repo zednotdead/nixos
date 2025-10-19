@@ -4,8 +4,7 @@
   config,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
@@ -20,6 +19,7 @@
     kubectx
     exiftool
     lazyssh
+    devenv
   ];
 
   programs = {
@@ -146,6 +146,7 @@
           "$git_state"
           "$git_status"
           "$kubernetes"
+          "$nix_shell"
           "$cmd_duration"
           "$line_break"
           "$python"
@@ -201,7 +202,7 @@
     };
 
     mise = {
-      enable = true;
+      enable = false;
       enableFishIntegration = true;
     };
 
@@ -517,9 +518,7 @@
       };
     };
 
-    pistol = {
-      enable = true;
-    };
+    pistol.enable = true;
 
     tealdeer = {
       enable = true;
@@ -540,6 +539,8 @@
       enable = true;
       enableFishIntegration = true;
     };
+
+    direnv.enable = true;
   };
 
   services.gpg-agent = {

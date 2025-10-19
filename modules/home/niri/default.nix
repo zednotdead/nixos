@@ -270,8 +270,8 @@ in
         "Mod+V".action = toggle-window-floating;
         "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
 
-        "Print".action = screenshot;
-        "Shift+Print".action = screenshot-window;
+        "Print".action.screenshot.show-pointer = false;
+        "Shift+Print".action.screenshot-window.write-to-disk = false;
 
         "Mod+Escape" = {
           allow-inhibiting = false;

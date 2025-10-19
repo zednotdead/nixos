@@ -31,6 +31,7 @@ in
       javascript = es_formatters;
       typescript = es_formatters;
       typescriptreact = es_formatters;
+      svelte = es_formatters;
       astro = {
         __unkeyed-1 = "eslint_d";
         __unkeyed-2 = "eslint";
