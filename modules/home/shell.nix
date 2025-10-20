@@ -527,7 +527,7 @@
     pistol.enable = true;
 
     tealdeer = {
-      enable = true;
+      enable = pkgs.stdenv.isLinux;
       enableAutoUpdates = true;
     };
 
