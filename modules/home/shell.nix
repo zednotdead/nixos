@@ -27,11 +27,17 @@
     lazygit.enable = true;
     fzf.enable = true;
     mergiraf.enable = true;
+    difftastic = {
+      enable = true;
+      git.enable = true;
+    };
     git = {
       enable = true;
       package = pkgs.gitFull;
-      userName = "Zuzanna Żołnierowicz";
-      userEmail = "zuzanna@zolnierowi.cz";
+      settings.user = {
+        name = "Zuzanna Żołnierowicz";
+        email = "zuzanna@zolnierowi.cz";
+      };
       difftastic.enable = true;
     };
     nh = {
