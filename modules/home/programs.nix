@@ -38,6 +38,7 @@
     tailscale-systray
     ungoogled-chromium
     realvnc-vnc-viewer
+    signal-desktop-bin
     (prismlauncher.override {
       additionalLibs = [ vlc ];
       additionalPrograms = [ vlc ];

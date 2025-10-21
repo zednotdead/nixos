@@ -208,7 +208,7 @@
     };
 
     mise = {
-      enable = false;
+      enable = true;
       enableFishIntegration = true;
     };
 

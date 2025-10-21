@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fonts.packages = with pkgs; [
     corefonts
     noto-fonts
@@ -26,6 +25,7 @@
       enable = true;
       openFirewall = true;
     };
+    adb.enable = true;
 
     steam = {
       enable = true;
@@ -35,7 +35,7 @@
     _1password-gui = with pkgs; {
       enable = true;
       package = _1password-gui-beta;
-      polkitPolicyOwners = [ "zed" ];
+      polkitPolicyOwners = ["zed"];
     };
   };
 }

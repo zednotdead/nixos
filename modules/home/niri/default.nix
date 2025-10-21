@@ -55,6 +55,7 @@ in {
         ];
       }
       {argv = ["thunderbird"];}
+      {argv = ["signal-desktop"];}
     ];
 
     workspaces = {
