@@ -6,11 +6,11 @@
   lib,
   perSystem,
   ...
-}: {
+}:
+{
   imports = [
     inputs.base16.nixosModule
-    inputs.disko.nixosModules.disko
-    {scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml";}
+    { scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml"; }
     inputs.agenix.nixosModules.default
     inputs.chaotic.nixosModules.default
     # flake.nixosModules.hyprland
@@ -54,7 +54,7 @@
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    extraLocales = ["pl_PL.UTF-8/UTF-8"];
+    extraLocales = [ "pl_PL.UTF-8/UTF-8" ];
     extraLocaleSettings = {
       # LC_ALL = "en_US.UTF-8"; # This overrides all other LC_* settings.
       LC_CTYPE = "en_US.UTF8";
@@ -102,8 +102,8 @@
   };
 
   systemd.services.flatpak-repo = {
-    wantedBy = ["multi-user.target"];
-    path = [pkgs.flatpak];
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
@@ -153,52 +153,6 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-  };
-
-  disko.devices = {
-    disk = {
-      main = {
-        # When using disko-install, we will overwrite this value from the commandline
-        device = "/dev/nvme0n1";
-        type = "disk";
-        content = {
-          type = "gpt";
-          partitions = {
-            MBR = {
-              type = "EF02"; # for grub MBR
-              size = "1M";
-              priority = 1; # Needs to be first partition
-            };
-            ESP = {
-              type = "EF00";
-              size = "500M";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = ["umask=0077"];
-              };
-            };
-            root = {
-              size = "512G";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-              };
-            };
-            home = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/home";
-              };
-            };
-          };
-        };
-      };
-    };
   };
 
   users = {

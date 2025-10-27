@@ -1,5 +1,7 @@
 {
   description = "Sharing home-manager modules between nixos and darwin";
+
+  # Add all your dependencies here
   inputs = {
     # Base
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
@@ -9,10 +11,6 @@
     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    disko = {
-      url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Blueprint
@@ -69,7 +67,8 @@
   };
 
   # Load the blueprint
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.blueprint {
       inherit inputs;
       nixpkgs.config.allowUnfree = true;
