@@ -38,7 +38,6 @@
         name = "Zuzanna Żołnierowicz";
         email = "zuzanna@zolnierowi.cz";
       };
-      difftastic.enable = true;
     };
     nh = {
       enable = true;
