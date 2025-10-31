@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   fonts.packages = with pkgs; [
     corefonts
     noto-fonts
@@ -35,7 +36,7 @@
     _1password-gui = with pkgs; {
       enable = true;
       package = _1password-gui-beta;
-      polkitPolicyOwners = ["zed"];
+      polkitPolicyOwners = [ "zed" ];
     };
   };
 }
