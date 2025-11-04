@@ -28,6 +28,7 @@ in
     lsp = {
       servers = {
         astro.enable = true;
+        atlas.enable = true;
         nil_ls = {
           enable = true;
           config = {
