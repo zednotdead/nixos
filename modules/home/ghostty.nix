@@ -1,10 +1,13 @@
 {
   pkgs,
   config,
-  perSystem,
   ...
 }:
 {
+  home.packages = with pkgs; [
+    maple-mono.NF
+  ];
+
   programs.ghostty = {
     enable = true;
     package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;

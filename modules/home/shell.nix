@@ -5,7 +5,8 @@
   inputs,
   perSystem,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
