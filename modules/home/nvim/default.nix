@@ -135,7 +135,7 @@
             win.enabled = true;
             words.enabled = true;
             terminal.enabled = true;
-	    notifier.enabled = true;
+            notifier.enabled = true;
           };
         };
         nvim-surround.enable = true;

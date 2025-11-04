@@ -6,18 +6,16 @@ in
   home.packages = with pkgs; [ mdx-language-server ];
   programs.nixvim = {
     plugins = {
-      lazydev = {
-        enable = true;
-      };
-
+      lazydev.enable = true;
       neoconf.enable = true;
       typescript-tools.enable = true;
       rustaceanvim.enable = true;
       dropbar.enable = true;
       trouble.enable = true;
-
       aerial.enable = true;
       tiny-inline-diagnostic.enable = true;
+      orgmode.enable = true;
+
       lsp = {
         enable = true;
         servers.mdx_analyzer = {
@@ -30,7 +28,13 @@ in
     lsp = {
       servers = {
         astro.enable = true;
-        nil_ls.enable = true;
+        nil_ls = {
+          enable = true;
+          config = {
+            nix.flake.autoEvalInputs = true;
+            nix.flake.autoArchive = true;
+          };
+        };
         yamlls.enable = true;
         jsonls.enable = true;
         cssls.enable = true;
