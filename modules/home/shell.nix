@@ -3,9 +3,9 @@
   lib,
   config,
   inputs,
+  perSystem,
   ...
-}:
-{
+}: {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
@@ -21,6 +21,7 @@
     exiftool
     lazyssh
     devenv
+    perSystem.nix-auth.default
   ];
 
   programs = {

@@ -65,11 +65,12 @@
     };
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
+    nix-auth.url = "github:numtide/nix-auth";
   };
 
   # Load the blueprint
-  outputs =
-    inputs:
+  outputs = inputs:
     inputs.blueprint {
       inherit inputs;
       nixpkgs.config.allowUnfree = true;

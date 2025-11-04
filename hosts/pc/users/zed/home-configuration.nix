@@ -11,7 +11,7 @@ in
 {
   imports = [
     flake.homeModules.shared
-    flake.homeModules.wezterm
+    # flake.homeModules.wezterm
     flake.homeModules.shell
     # flake.homeModules.hyprland
     # flake.homeModules.quickshell
