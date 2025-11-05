@@ -9,7 +9,7 @@ in
 {
   imports = [
     flake.homeModules.shared
-    flake.homeModules.wezterm
+    # flake.homeModules.wezterm
     flake.homeModules.shell
     # flake.homeModules.hyprland
     # flake.homeModules.quickshell
@@ -21,7 +21,7 @@ in
     # flake.homeModules.media
     # flake.homeModules.backup
     # flake.homeModules.obsidian
-    # flake.homeModules.ghostty
+    flake.homeModules.ghostty
     # flake.homeModules.matrix
     # flake.homeModules.niri
     # flake.homeModules.discord
