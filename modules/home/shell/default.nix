@@ -556,10 +556,14 @@
     direnv.enable = true;
     nushell = {
       enable = true;
+      configFile.source = ./config.nu;
       shellAliases = {
         zel = "${pkgs.zellij}/bin/zellij";
         k = "${pkgs.kubectl}/bin/kubectl";
         spf = "${pkgs.superfile}/bin/superfile";
+        gpu = "${pkgs.git}/bin/git push";
+        gpl = "${pkgs.git}/bin/git pull";
+        gaa = "${pkgs.git}/bin/git add --all";
       };
     };
     carapace = {
