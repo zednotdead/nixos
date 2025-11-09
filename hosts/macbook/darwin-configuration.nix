@@ -32,11 +32,12 @@ in
     pkgs.bashInteractive
     pkgs.zsh
     pkgs.fish
+    pkgs.nushell
   ];
 
   users.users.${user} = {
     home = /Users/${user};
-    shell = pkgs.fish;
+    shell = pkgs.nushell;
   };
   nix.settings = {
     # Necessary for using flakes on this system.

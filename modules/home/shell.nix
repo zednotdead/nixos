@@ -5,8 +5,7 @@
   inputs,
   perSystem,
   ...
-}:
-{
+}: {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
@@ -70,6 +69,7 @@
     yazi = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
     };
 
     fish = {
@@ -138,11 +138,13 @@
     pay-respects = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
     };
 
     starship = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
       enableTransience = true;
       settings = {
         add_newline = false;
@@ -212,6 +214,7 @@
     mise = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
     };
 
     gh-dash.enable = true;
@@ -223,6 +226,7 @@
     zoxide = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
     };
 
     mcfly = {
@@ -546,14 +550,28 @@
     nix-your-shell = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
     };
 
     direnv.enable = true;
+    nushell = {
+      enable = true;
+      shellAliases = {
+        zel = "${pkgs.zellij}/bin/zellij";
+        k = "${pkgs.kubectl}/bin/kubectl";
+        spf = "${pkgs.superfile}/bin/superfile";
+      };
+    };
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
   };
 
   services.gpg-agent = {
     enable = true;
     enableFishIntegration = true;
+    enableNushellIntegration = true;
   };
 
   xdg.configFile."television/cable/nix.toml".text = ''
