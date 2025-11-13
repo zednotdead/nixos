@@ -5,7 +5,8 @@
   inputs,
   perSystem,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
@@ -553,7 +554,12 @@
       enableNushellIntegration = true;
     };
 
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      enableNushellIntegration = true;
+      silent = true;
+    };
+
     nushell = {
       enable = true;
       configFile.source = ./config.nu;
@@ -566,6 +572,7 @@
         gaa = "${pkgs.git}/bin/git add --all";
       };
     };
+
     carapace = {
       enable = true;
       enableNushellIntegration = true;
