@@ -23,6 +23,7 @@
     lazyssh
     devenv
     perSystem.nix-auth.default
+    megacmd
   ];
 
   programs = {
