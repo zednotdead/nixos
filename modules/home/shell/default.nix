@@ -23,7 +23,6 @@ in {
     viddy
     zellij
     kubectx
-    exiftool
     lazyssh
     devenv
     perSystem.nix-auth.default
