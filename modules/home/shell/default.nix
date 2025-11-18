@@ -5,8 +5,12 @@
   inputs,
   perSystem,
   ...
-}:
-{
+}: let
+  gitUser = {
+    name = "Zuzanna Żołnierowicz";
+    email = "zuzanna@zolnierowi.cz";
+  };
+in {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
@@ -31,17 +35,18 @@
     lazygit.enable = true;
     fzf.enable = true;
     mergiraf.enable = true;
-    difftastic = {
+    delta = {
       enable = true;
-      git.enable = true;
+      enableGitIntegration = true;
     };
     git = {
       enable = true;
       package = pkgs.gitFull;
-      settings.user = {
-        name = "Zuzanna Żołnierowicz";
-        email = "zuzanna@zolnierowi.cz";
-      };
+      settings.user = gitUser;
+    };
+    jujutsu = {
+      enable = true;
+      settings.user = gitUser;
     };
     nh = {
       enable = true;
