@@ -5,7 +5,12 @@
   inputs,
   perSystem,
   ...
-}: {
+}: let
+  gitUser = {
+    name = "Zuzanna Żołnierowicz";
+    email = "zuzanna@zolnierowi.cz";
+  };
+in {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
@@ -18,10 +23,10 @@
     viddy
     zellij
     kubectx
-    exiftool
     lazyssh
     devenv
     perSystem.nix-auth.default
+    megacmd
   ];
 
   programs = {
@@ -29,17 +34,18 @@
     lazygit.enable = true;
     fzf.enable = true;
     mergiraf.enable = true;
-    difftastic = {
+    delta = {
       enable = true;
-      git.enable = true;
+      enableGitIntegration = true;
     };
     git = {
       enable = true;
       package = pkgs.gitFull;
-      settings.user = {
-        name = "Zuzanna Żołnierowicz";
-        email = "zuzanna@zolnierowi.cz";
-      };
+      settings.user = gitUser;
+    };
+    jujutsu = {
+      enable = true;
+      settings.user = gitUser;
     };
     nh = {
       enable = true;
@@ -553,7 +559,12 @@
       enableNushellIntegration = true;
     };
 
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      enableNushellIntegration = true;
+      silent = true;
+    };
+
     nushell = {
       enable = true;
       configFile.source = ./config.nu;
@@ -566,6 +577,7 @@
         gaa = "${pkgs.git}/bin/git add --all";
       };
     };
+
     carapace = {
       enable = true;
       enableNushellIntegration = true;

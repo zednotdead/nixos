@@ -7,6 +7,7 @@
 {
   imports = [
     ../programs.nix
+    ./shell.nix
   ];
 
   gtk = {
@@ -40,13 +41,6 @@
           ];
         }
         { argv = [ "steam" ]; }
-        {
-          argv = [
-            "dms"
-            "run"
-            "-d"
-          ];
-        }
         { argv = [ "thunderbird" ]; }
         { argv = [ "signal-desktop" ]; }
       ];

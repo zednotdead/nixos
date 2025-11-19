@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  perSystem,
   ...
 }:
 {
@@ -23,6 +24,7 @@
       enable = true;
       tray = "auto";
     };
+    tailscale-systray.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -35,7 +37,6 @@
     gimp
     localsend
     keymapp
-    tailscale-systray
     ungoogled-chromium
     realvnc-vnc-viewer
     signal-desktop-bin
@@ -47,7 +48,10 @@
 
   programs = {
     zathura.enable = true;
-    pqiv.enable = true;
+    pqiv = {
+      enable = true;
+      package = perSystem.nixpkgs-stable.pqiv;
+    };
 
     librewolf = {
       enable = true;
