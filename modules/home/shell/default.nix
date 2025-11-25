@@ -57,6 +57,7 @@ in
       flake = "$HOME/nixos";
     };
     fd.enable = true;
+    ripgrep.enable = true;
     btop.enable = true;
     chawan = {
       enable = true;
