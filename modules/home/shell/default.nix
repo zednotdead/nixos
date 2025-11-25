@@ -22,6 +22,7 @@ in
     hyfetch
     nix-search-cli
     kubectl
+    krew
     viddy
     zellij
     kubectx
