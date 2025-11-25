@@ -2,11 +2,9 @@
   pkgs,
   flake,
   ...
-}:
-let
+}: let
   user = "zbigniew.zolnierowicz";
-in
-{
+in {
   imports = [
     flake.darwinModules.browser
   ];
@@ -34,8 +32,9 @@ in
 
   users.users.${user} = {
     home = /Users/${user};
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
   };
+
   nix.settings = {
     # Necessary for using flakes on this system.
     experimental-features = "nix-command flakes";
