@@ -192,7 +192,7 @@
         )
         home-manager
       ];
-      shell = pkgs.nushell;
+      shell = pkgs.fish;
     };
   };
 

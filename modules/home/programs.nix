@@ -55,9 +55,10 @@
 
     librewolf = {
       enable = true;
+      package = perSystem.nixpkgs-stable.librewolf;
       nativeMessagingHosts = [
         pkgs.tridactyl-native
-        pkgs._1password-gui
+	pkgs._1password-gui-beta
       ];
     };
   };
