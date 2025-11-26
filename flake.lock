@@ -124,11 +124,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764109492,
-        "narHash": "sha256-Bvp8eh5W41gh3JYZSNX3ebmSqNLHUh1/QW3m7gko7do=",
+        "lastModified": 1764135321,
+        "narHash": "sha256-4MyGBGAGf2mOKdN6lHpYBu0L/76qf8vNz47cCyUOdHk=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "24537781b7ccd60d38c48efe81657cc6be495c15",
+        "rev": "e5a6a00282356739242a2b707011588c55d5f633",
         "type": "github"
       },
       "original": {
@@ -410,11 +410,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764075860,
-        "narHash": "sha256-KYEIHCBBw+/lwKsJNRNoUxBB4ZY2LK0G0T8f+0i65q0=",
+        "lastModified": 1764135300,
+        "narHash": "sha256-5xOuutXM7UPTUcn3uDAD8UlPQsXmqPrX81cXoDOAGcA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "295d90e22d557ccc3049dc92460b82f372cd3892",
+        "rev": "f4cb25928fafa9ae68660fe71f730fc820a59028",
         "type": "github"
       },
       "original": {
@@ -497,11 +497,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1764080505,
-        "narHash": "sha256-2XvDuIqtI7QVjYQx2+NxzL002NU3lzSTIjUikazbSME=",
+        "lastModified": 1764111111,
+        "narHash": "sha256-CqXsRpQjhHLzZg/kWiIIUeUJUko5naDLEt/VGZTjyjY=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "1c1746de61a90dbbae072f3fc618c45af33fdd59",
+        "rev": "210930bef93916b6271685277e54b0dedb46214e",
         "type": "github"
       },
       "original": {
@@ -1064,11 +1064,11 @@
         "systems": "systems_7"
       },
       "locked": {
-        "lastModified": 1764065466,
-        "narHash": "sha256-tH0yk53OPuT+D/Vlb6IXtZYJ9zb/TfHcTIm7P3eWRNA=",
+        "lastModified": 1764148348,
+        "narHash": "sha256-C9UobzCvMaLwNtRaFrt26TA/SkQtcDhJFmlVQ6DPHyA=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "b67ff4d1b29b590ab6865bc9eac785c28006f228",
+        "rev": "7fe6951bf8c2719f437f74224adf3a2e875d6781",
         "type": "github"
       },
       "original": {
@@ -1326,11 +1326,11 @@
     "tt-terminal": {
       "flake": false,
       "locked": {
-        "lastModified": 1764065241,
-        "narHash": "sha256-a5rXVo9HvLRHI6RXC1H3kNq4CLRIJ7rx5VdMJb9R+4A=",
+        "lastModified": 1764143034,
+        "narHash": "sha256-H2RRh2aFhaa383KAin/iNikiT/goPf307tkaI5gCB5A=",
         "owner": "tinted-theming",
         "repo": "tinted-terminal",
-        "rev": "37364f3777b7ae521155944f8534502788f945b0",
+        "rev": "7f17390abb5ebfa5f1e4d0d168addaf743ff72b4",
         "type": "github"
       },
       "original": {
