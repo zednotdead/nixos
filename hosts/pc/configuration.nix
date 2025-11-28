@@ -164,6 +164,7 @@
         "wheel"
         "kvm"
         "adbusers"
+        "wireshark"
       ]; # Enable ‘sudo’ for the user.
       hashedPasswordFile = config.age.secrets.zed-password.path;
       packages = with pkgs; [
