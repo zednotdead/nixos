@@ -197,5 +197,5 @@
     };
   };
 
-  system.stateVersion = "25.05"; # initial nixos state
+  system.stateVersion = "25.11"; # initial nixos state
 }
