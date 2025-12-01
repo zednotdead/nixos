@@ -44,6 +44,7 @@
       additionalLibs = [ vlc ];
       additionalPrograms = [ vlc ];
     })
+    perSystem.self.glide-browser
   ];
 
   programs = {
