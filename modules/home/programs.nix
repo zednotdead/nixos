@@ -45,6 +45,8 @@
       additionalPrograms = [ vlc ];
     })
     perSystem.self.glide-browser
+    onlyoffice-desktopeditors
+    picard
   ];
 
   programs = {
