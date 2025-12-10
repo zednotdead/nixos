@@ -1,8 +1,5 @@
 {
-  perSystem,
   inputs,
-  config,
-  pkgs,
   ...
 }:
 {
