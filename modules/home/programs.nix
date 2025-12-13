@@ -47,6 +47,7 @@
     perSystem.self.glide-browser
     onlyoffice-desktopeditors
     picard
+    nexusmods-app-unfree
   ];
 
   programs = {
