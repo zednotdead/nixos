@@ -21,6 +21,7 @@
     flake.nixosModules.tablet
     flake.nixosModules.wine
     flake.nixosModules.uutils
+    flake.nixosModules.waydroid
     ./hardware-configuration.nix
   ];
 
