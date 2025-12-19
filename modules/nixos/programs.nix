@@ -26,6 +26,15 @@
     gnome.gnome-keyring.enable = true;
   };
 
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ''
+	librewolf
+      '';
+      mode = "0755";
+    };
+  };
+
   programs = {
     localsend = {
       enable = true;
