@@ -22,6 +22,7 @@
     flake.nixosModules.wine
     flake.nixosModules.uutils
     flake.nixosModules.waydroid
+    flake.nixosModules.bluetooth
     ./hardware-configuration.nix
   ];
 
