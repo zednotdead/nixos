@@ -3,8 +3,7 @@
   inputs,
   perSystem,
   ...
-}:
-{
+}: {
   imports = [
     inputs.vicinae.homeManagerModules.default
   ];
@@ -12,7 +11,13 @@
   services = {
     vicinae = {
       enable = true;
-      autoStart = true;
+      systemd = {
+        enable = true;
+        autoStart = true;
+        environment = {
+          USE_LAYER_SHELL = 1;
+        };
+      };
     };
 
     kdeconnect = {
@@ -41,8 +46,8 @@
     realvnc-vnc-viewer
     signal-desktop-bin
     (prismlauncher.override {
-      additionalLibs = [ vlc ];
-      additionalPrograms = [ vlc ];
+      additionalLibs = [vlc];
+      additionalPrograms = [vlc];
     })
     perSystem.self.glide-browser
     onlyoffice-desktopeditors
