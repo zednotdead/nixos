@@ -115,7 +115,7 @@
       };
       cursor = {
         size = 24;
-        theme = "Tachy";
+        theme = "Digitan";
       };
 
       input = {
