@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   fonts.packages = with pkgs; [
     corefonts
     noto-fonts
@@ -29,7 +30,7 @@
   environment.etc = {
     "1password/custom_allowed_browsers" = {
       text = ''
-	librewolf
+        	librewolf
       '';
       mode = "0755";
     };
@@ -55,7 +56,7 @@
     _1password-gui = with pkgs; {
       enable = true;
       package = _1password-gui-beta;
-      polkitPolicyOwners = ["zed"];
+      polkitPolicyOwners = [ "zed" ];
     };
     gamemode.enable = true;
   };

@@ -3,7 +3,8 @@
   inputs,
   perSystem,
   ...
-}: {
+}:
+{
   imports = [
     inputs.vicinae.homeManagerModules.default
   ];
@@ -46,8 +47,8 @@
     realvnc-vnc-viewer
     signal-desktop-bin
     (prismlauncher.override {
-      additionalLibs = [vlc];
-      additionalPrograms = [vlc];
+      additionalLibs = [ vlc ];
+      additionalPrograms = [ vlc ];
     })
     perSystem.self.glide-browser
     onlyoffice-desktopeditors

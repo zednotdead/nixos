@@ -5,12 +5,14 @@
   inputs,
   perSystem,
   ...
-}: let
+}:
+let
   gitUser = {
     name = "Zuzanna Żołnierowicz";
     email = "zuzanna@zolnierowi.cz";
   };
-in {
+in
+{
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
