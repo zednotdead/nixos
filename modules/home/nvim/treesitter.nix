@@ -1,17 +1,10 @@
-{ ... }:
-{
+{pkgs, ...}: {
   programs.nixvim.plugins = {
     treesitter = {
       enable = true;
-      settings = {
-        ensure_installed = [
-          "lua"
-          "markdown"
-          "markdown_inline"
-        ];
-        highlight.enable = true;
-        indent.enable = true;
-      };
+      folding.enable = true;
+      highlight.enable = true;
+      indent.enable = true;
     };
     treesitter-textobjects.enable = true;
     ts-autotag = {

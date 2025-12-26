@@ -5,14 +5,12 @@
   inputs,
   perSystem,
   ...
-}:
-let
+}: let
   gitUser = {
     name = "Zuzanna Żołnierowicz";
     email = "zuzanna@zolnierowi.cz";
   };
-in
-{
+in {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
   ];
@@ -67,7 +65,7 @@ in
     };
 
     nix-search-tv = {
-      enable = true;
+      enable = false;
       enableTelevisionIntegration = true;
       settings = {
         render_docs_indexes = {
@@ -104,6 +102,9 @@ in
       shellInit = ''
         set fish_greeting
         bind ctrl-h backward-kill-word
+      '';
+      interactiveShellInit = ''
+        tv init fish | source
       '';
       plugins = with pkgs.fishPlugins; [
         {
@@ -239,17 +240,9 @@ in
       enableNushellIntegration = true;
     };
 
-    mcfly = {
-      enable = true;
-      enableFishIntegration = true;
-      fzf = {
-        enable = true;
-      };
-    };
-
     television = {
       enable = true;
-      enableFishIntegration = true;
+      enableFishIntegration = false;
     };
 
     k9s = {
@@ -593,16 +586,4 @@ in
     enableFishIntegration = true;
     enableNushellIntegration = true;
   };
-
-  xdg.configFile."television/cable/nix.toml".text = ''
-    [metadata]
-    name = "nix"
-    requirements = ["nix-search-tv"]
-
-    [source]
-    command = "nix-search-tv print"
-
-    [preview]
-    command = "nix-search-tv preview {}"
-  '';
 }
