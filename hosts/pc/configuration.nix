@@ -23,6 +23,7 @@
     flake.nixosModules.uutils
     flake.nixosModules.waydroid
     flake.nixosModules.bluetooth
+    flake.nixosModules.sunshine
     ./hardware-configuration.nix
   ];
 
