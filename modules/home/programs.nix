@@ -54,6 +54,8 @@
     onlyoffice-desktopeditors
     picard
     nexusmods-app-unfree
+    hledger
+    hledger-ui
   ];
 
   programs = {
