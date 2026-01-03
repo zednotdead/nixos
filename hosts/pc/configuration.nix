@@ -33,6 +33,7 @@
   ];
 
   boot = {
+    plymouth.enable = true;
     kernelPackages = pkgs.linuxPackages_cachyos;
     loader = {
       systemd-boot.enable = true;
