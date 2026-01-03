@@ -67,7 +67,7 @@ in
     };
 
     nix-search-tv = {
-      enable = false;
+      enable = true;
       enableTelevisionIntegration = true;
       settings = {
         render_docs_indexes = {
@@ -100,6 +100,9 @@ in
         gaa = ''
           ${pkgs.git}/bin/git add --all
         '';
+	tvnix = ''
+	  ${pkgs.television}/bin/tv nix-search-tv
+	'';
       };
       shellInit = ''
         set fish_greeting
