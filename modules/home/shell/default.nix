@@ -100,9 +100,9 @@ in
         gaa = ''
           ${pkgs.git}/bin/git add --all
         '';
-	tvnix = ''
-	  ${pkgs.television}/bin/tv nix-search-tv
-	'';
+        tvnix = ''
+          	  ${pkgs.television}/bin/tv nix-search-tv
+          	'';
       };
       shellInit = ''
         set fish_greeting
