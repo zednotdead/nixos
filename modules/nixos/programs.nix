@@ -41,7 +41,6 @@
       enable = true;
       openFirewall = true;
     };
-    adb.enable = true;
 
     steam = {
       enable = true;
