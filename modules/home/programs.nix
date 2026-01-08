@@ -67,7 +67,14 @@
 
     librewolf = {
       enable = true;
-      package = perSystem.nixpkgs-stable.librewolf;
+      settings = {
+        "webgl.disabled" = false;
+        "privacy.resistFingerprinting" = false;
+        "privacy.clearOnShutdown.history" = false;
+        "privacy.clearOnShutdown.cookies" = false;
+        "network.cookie.lifetimePolicy" = 0;
+        "identity.fxaccounts.enabled" = true;
+      };
       nativeMessagingHosts = [
         pkgs.tridactyl-native
         pkgs._1password-gui-beta

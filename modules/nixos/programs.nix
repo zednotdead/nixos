@@ -11,6 +11,7 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
+    librewolf
   ];
 
   environment.systemPackages = with pkgs; [
