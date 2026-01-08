@@ -103,6 +103,9 @@ in
         tvnix = ''
           	  ${pkgs.television}/bin/tv nix-search-tv
           	'';
+        get-hash-of-url = ''
+          	  nix-hash --type sha256 --to-sri $(nix-prefetch-url $argv[1])
+          	'';
       };
       shellInit = ''
         set fish_greeting

@@ -60,6 +60,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Vim
     nixvim.url = "github:nix-community/nixvim";
 
@@ -84,5 +89,6 @@
     inputs.blueprint {
       inherit inputs;
       nixpkgs.config.allowUnfree = true;
+      nixpkgs.overlays = [ inputs.nur.overlays.default ];
     };
 }
