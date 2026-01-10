@@ -105,8 +105,10 @@
         };
       };
     };
+    resolved.enable = true;
     tailscale = {
       enable = true;
+      useRoutingFeatures = "client";
     };
     scx.enable = true;
   };

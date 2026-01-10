@@ -56,6 +56,7 @@
     nexusmods-app-unfree
     hledger
     hledger-ui
+    android-tools
   ];
 
   programs = {
