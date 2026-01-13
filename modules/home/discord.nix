@@ -1,15 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages =
-    if pkgs.stdenv.isLinux then
-      with pkgs;
-      [
-        (discord-canary.override {
-          withOpenASAR = true;
-        })
-      ]
-    else
-      with pkgs; [ discord-canary ];
+  home.packages = with pkgs; [ discord-canary ];
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";

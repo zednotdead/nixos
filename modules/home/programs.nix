@@ -12,7 +12,13 @@
   services = {
     vicinae = {
       enable = true;
-      autoStart = true;
+      systemd = {
+        enable = true;
+        autoStart = true;
+        environment = {
+          USE_LAYER_SHELL = 1;
+        };
+      };
     };
 
     kdeconnect = {
@@ -44,6 +50,13 @@
       additionalLibs = [ vlc ];
       additionalPrograms = [ vlc ];
     })
+    perSystem.self.glide-browser
+    onlyoffice-desktopeditors
+    picard
+    nexusmods-app-unfree
+    hledger
+    hledger-ui
+    android-tools
   ];
 
   programs = {
@@ -55,9 +68,17 @@
 
     librewolf = {
       enable = true;
+      settings = {
+        "webgl.disabled" = false;
+        "privacy.resistFingerprinting" = false;
+        "privacy.clearOnShutdown.history" = false;
+        "privacy.clearOnShutdown.cookies" = false;
+        "network.cookie.lifetimePolicy" = 0;
+        "identity.fxaccounts.enabled" = true;
+      };
       nativeMessagingHosts = [
         pkgs.tridactyl-native
-        pkgs._1password-gui
+        pkgs._1password-gui-beta
       ];
     };
   };

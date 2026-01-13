@@ -4,14 +4,14 @@
     treesitter = {
       enable = true;
       settings = {
-        ensure_installed = [
-          "lua"
-          "markdown"
-          "markdown_inline"
-        ];
+        folding.enable = true;
         highlight.enable = true;
         indent.enable = true;
       };
+      folding.enable = true;
+      highlight.enable = true;
+      indent.enable = true;
+      nixvimInjections = true;
     };
     treesitter-textobjects.enable = true;
     ts-autotag = {

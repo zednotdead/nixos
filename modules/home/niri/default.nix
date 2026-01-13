@@ -83,6 +83,14 @@
             { app-id = "steam"; }
           ];
           open-on-workspace = "games";
+          open-focused = true;
+        }
+        {
+          matches = [
+            { title = "^Steam Big Picture Mode$"; }
+          ];
+          open-focused = true;
+          open-fullscreen = true;
         }
       ];
 
@@ -107,7 +115,7 @@
       };
       cursor = {
         size = 24;
-        theme = "Tachy";
+        theme = "Digitan";
       };
 
       input = {

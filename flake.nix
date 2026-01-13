@@ -38,10 +38,18 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dankMaterialShell = {
-      url = "github:AvengeMedia/DankMaterialShell";
+
+    dgop = {
+      url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell?ref=1db3907838161b309ee034dff1dbcb957e21d36e";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.dgop.follows = "dgop";
+    };
+
     vicinae = {
       # Programs
       url = "github:vicinaehq/vicinae";
@@ -49,6 +57,11 @@
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -76,5 +89,6 @@
     inputs.blueprint {
       inherit inputs;
       nixpkgs.config.allowUnfree = true;
+      nixpkgs.overlays = [ inputs.nur.overlays.default ];
     };
 }

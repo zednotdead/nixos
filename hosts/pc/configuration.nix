@@ -21,6 +21,9 @@
     flake.nixosModules.tablet
     flake.nixosModules.wine
     flake.nixosModules.uutils
+    flake.nixosModules.waydroid
+    flake.nixosModules.bluetooth
+    flake.nixosModules.sunshine
     ./hardware-configuration.nix
   ];
 
@@ -30,6 +33,13 @@
   ];
 
   boot = {
+    plymouth = {
+      enable = true;
+      theme = "blahaj";
+      themePackages = with pkgs; [
+        plymouth-blahaj-theme
+      ];
+    };
     kernelPackages = pkgs.linuxPackages_cachyos;
     loader = {
       systemd-boot.enable = true;
@@ -95,8 +105,10 @@
         };
       };
     };
+    resolved.enable = true;
     tailscale = {
       enable = true;
+      useRoutingFeatures = "client";
     };
     scx.enable = true;
   };
@@ -129,7 +141,6 @@
     gcc
     networkmanagerapplet
     docker-compose
-    nix-search-tv
     perSystem.agenix.default
   ];
 
@@ -164,6 +175,7 @@
         "wheel"
         "kvm"
         "adbusers"
+        "wireshark"
       ]; # Enable ‘sudo’ for the user.
       hashedPasswordFile = config.age.secrets.zed-password.path;
       packages = with pkgs; [
@@ -192,9 +204,9 @@
         )
         home-manager
       ];
-      shell = pkgs.nushell;
+      shell = pkgs.fish;
     };
   };
 
-  system.stateVersion = "25.05"; # initial nixos state
+  system.stateVersion = "25.11"; # initial nixos state
 }

@@ -2,9 +2,11 @@
   pkgs,
   flake,
   ...
-}: let
+}:
+let
   user = "zbigniew.zolnierowicz";
-in {
+in
+{
   imports = [
     flake.darwinModules.browser
   ];

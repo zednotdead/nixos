@@ -37,7 +37,7 @@ in
 
   users.users.${user} = {
     home = /Users/${user};
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
   };
   nix.settings = {
     # Necessary for using flakes on this system.

@@ -11,6 +11,13 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
+    librewolf
+  ];
+
+  environment.systemPackages = with pkgs; [
+    mangohud
+    wineWowPackages.waylandFull
+    vulkan-tools
   ];
 
   services = {
@@ -21,15 +28,28 @@
     gnome.gnome-keyring.enable = true;
   };
 
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ''
+        librewolf
+      '';
+      mode = "0755";
+    };
+  };
+
   programs = {
     localsend = {
       enable = true;
       openFirewall = true;
     };
-    adb.enable = true;
 
     steam = {
       enable = true;
+      protontricks.enable = true;
+      gamescopeSession.enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
     };
 
     _1password.enable = true;
@@ -38,5 +58,6 @@
       package = _1password-gui-beta;
       polkitPolicyOwners = [ "zed" ];
     };
+    gamemode.enable = true;
   };
 }
