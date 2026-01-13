@@ -30,6 +30,7 @@ in
     devenv
     perSystem.nix-auth.default
     megacmd
+    glab
   ];
 
   programs = {
