@@ -57,6 +57,7 @@
     hledger
     hledger-ui
     android-tools
+    orca-slicer
   ];
 
   programs = {
