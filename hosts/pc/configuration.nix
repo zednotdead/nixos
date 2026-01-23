@@ -12,7 +12,6 @@
     inputs.base16.nixosModule
     { scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml"; }
     inputs.agenix.nixosModules.default
-    inputs.chaotic.nixosModules.default
     # flake.nixosModules.hyprland
     flake.nixosModules.niri
     flake.nixosModules.programs
@@ -40,7 +39,6 @@
         plymouth-blahaj-theme
       ];
     };
-    kernelPackages = pkgs.linuxPackages_cachyos;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;

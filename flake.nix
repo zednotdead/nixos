@@ -19,7 +19,10 @@
       url = "github:numtide/blueprint";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix.url = "github:ryantm/agenix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Theming
     base16.url = "github:SenchoPens/base16.nix";
@@ -39,15 +42,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dgop = {
-      url = "github:AvengeMedia/dgop";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     dankMaterialShell = {
-      url = "github:AvengeMedia/DankMaterialShell?ref=1db3907838161b309ee034dff1dbcb957e21d36e";
+      url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.dgop.follows = "dgop";
     };
 
     vicinae = {
@@ -60,10 +57,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    waterfox.url = "github:Hythera/nix-waterfox";
 
     # Vim
     nixvim.url = "github:nix-community/nixvim";
@@ -76,9 +70,8 @@
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     nix-auth.url = "github:numtide/nix-auth";
   };
@@ -89,6 +82,5 @@
     inputs.blueprint {
       inherit inputs;
       nixpkgs.config.allowUnfree = true;
-      nixpkgs.overlays = [ inputs.nur.overlays.default ];
     };
 }

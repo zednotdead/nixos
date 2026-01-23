@@ -69,6 +69,8 @@
 
   environment.variables.AMD_VULKAN_ICD = "RADV";
 
+  hardware.enableRedistributableFirmware = true;
+
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 

@@ -84,12 +84,12 @@
           ];
           open-on-workspace = "games";
         }
-	{
-	  matches = [
-	    { app-id = "steam_app_2767030"; }
-	  ];
-	  open-fullscreen = true;
-	}
+        {
+          matches = [
+            { app-id = "steam_app_2767030"; }
+          ];
+          open-fullscreen = true;
+        }
       ];
 
       outputs = {

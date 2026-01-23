@@ -11,7 +11,6 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
-    librewolf
   ];
 
   environment.systemPackages = with pkgs; [
@@ -31,7 +30,7 @@
   environment.etc = {
     "1password/custom_allowed_browsers" = {
       text = ''
-        librewolf
+        	waterfox
       '';
       mode = "0755";
     };

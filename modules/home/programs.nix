@@ -53,11 +53,12 @@
     perSystem.self.glide-browser
     onlyoffice-desktopeditors
     picard
-    nexusmods-app-unfree
     hledger
     hledger-ui
     android-tools
     orca-slicer
+    makemkv
+    perSystem.waterfox.waterfox-bin
   ];
 
   programs = {
@@ -68,7 +69,8 @@
     };
 
     librewolf = {
-      enable = true;
+      enable = false;
+      package = with pkgs; if stdenv.isDarwin then librewolf else librewolf-bin;
       settings = {
         "webgl.disabled" = false;
         "privacy.resistFingerprinting" = false;
