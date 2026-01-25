@@ -9,6 +9,7 @@
 }:
 {
   imports = [
+    ./hardware-configuration.nix
     inputs.base16.nixosModule
     { scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml"; }
     inputs.agenix.nixosModules.default
@@ -23,7 +24,6 @@
     flake.nixosModules.waydroid
     flake.nixosModules.bluetooth
     flake.nixosModules.sunshine
-    ./hardware-configuration.nix
   ];
 
   nix.settings.trusted-users = [
@@ -185,7 +185,6 @@
         nil
         godot
         alejandra
-        pika-backup
         ncpamixer
         (
           (ffmpeg-full.override {
@@ -205,6 +204,8 @@
       shell = pkgs.fish;
     };
   };
+
+  home-manager.backupFileExtension = ".bak";
 
   system.stateVersion = "25.11"; # initial nixos state
 }

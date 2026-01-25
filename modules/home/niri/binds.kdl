@@ -1,0 +1,79 @@
+binds {
+  Mod+1 { focus-workspace "main"; }
+  Mod+2 { focus-workspace "games"; }
+  Mod+3 { focus-workspace "mail"; }
+  Mod+4 { focus-workspace "04"; }
+  Mod+5 { focus-workspace "05"; }
+  Mod+6 { focus-workspace "media"; }
+  Mod+7 { focus-workspace "07"; }
+  Mod+8 { focus-workspace "08"; }
+  Mod+9 { focus-workspace "09"; }
+  Mod+0 { focus-workspace "10"; }
+  Mod+C { center-column; }
+  Mod+Comma { consume-or-expel-window-left; }
+  Mod+Ctrl+C { center-visible-columns; }
+  Mod+Ctrl+H { focus-monitor-left; }
+  Mod+Ctrl+L { focus-monitor-right; }
+  Mod+Ctrl+Left { focus-monitor-left; }
+  Mod+Ctrl+R { switch-preset-window-height; }
+  Mod+Ctrl+Right { focus-monitor-right; }
+  Mod+Ctrl+Shift+H { move-window-to-monitor-left; }
+  Mod+Ctrl+Shift+L { move-window-to-monitor-right; }
+  Mod+Ctrl+Shift+Left { move-window-to-monitor-left; }
+  Mod+Ctrl+Shift+Right { move-window-to-monitor-right; }
+  Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-right; }
+  Mod+Ctrl+WheelScrollUp cooldown-ms=150 { move-column-left; }
+  Mod+D hotkey-overlay-title="Spawn application launcher (vicinae)" { spawn "vicinae" "toggle"; }
+  Mod+Down { focus-window-or-workspace-down; }
+  Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+  Mod+F { maximize-column; }
+  Mod+H { focus-column-or-monitor-left; }
+  Mod+I { focus-workspace-up; }
+  Mod+J { focus-window-or-workspace-down; }
+  Mod+K { focus-window-or-workspace-up; }
+  Mod+L { focus-column-or-monitor-right; }
+  Mod+Left { focus-column-or-monitor-left; }
+  Mod+M { set-column-width "+10%"; }
+  Mod+N { set-column-width "-10%"; }
+  Mod+O { toggle-overview; }
+  Mod+Period { consume-or-expel-window-right; }
+  Mod+R { switch-preset-column-width; }
+  Mod+Return hotkey-overlay-title="Spawn terminal (ghostty)" { spawn "ghostty"; }
+  Mod+Right { focus-column-or-monitor-right; }
+  Mod+Shift+0 { move-column-to-workspace "10"; }
+  Mod+Shift+1 { move-column-to-workspace "main"; }
+  Mod+Shift+2 { move-column-to-workspace "games"; }
+  Mod+Shift+3 { move-column-to-workspace "mail"; }
+  Mod+Shift+4 { move-column-to-workspace "04"; }
+  Mod+Shift+5 { move-column-to-workspace "05"; }
+  Mod+Shift+6 { move-column-to-workspace "media"; }
+  Mod+Shift+7 { move-column-to-workspace "07"; }
+  Mod+Shift+8 { move-column-to-workspace "08"; }
+  Mod+Shift+9 { move-column-to-workspace "09"; }
+  Mod+Shift+Down { move-window-down-or-to-workspace-down; }
+  Mod+Shift+E { quit; }
+  Mod+Shift+F { fullscreen-window; }
+  Mod+Shift+H { move-column-left; }
+  Mod+Shift+I { move-workspace-up; }
+  Mod+Shift+J { move-window-down; }
+  Mod+Shift+K { move-window-up; }
+  Mod+Shift+L { move-column-right; }
+  Mod+Shift+Left { move-column-left; }
+  Mod+Shift+M { set-window-height "+10%"; }
+  Mod+Shift+N { set-window-height "-10%"; }
+  Mod+Shift+Q repeat=false { close-window; }
+  Mod+Shift+R { reset-window-height; }
+  Mod+Shift+Right { move-column-right; }
+  Mod+Shift+Slash { show-hotkey-overlay; }
+  Mod+Shift+U { move-workspace-down; }
+  Mod+Shift+Up { move-window-up-or-to-workspace-up; }
+  Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+  Mod+T { toggle-column-tabbed-display; }
+  Mod+U { focus-workspace-down; }
+  Mod+Up { focus-window-or-workspace-up; }
+  Mod+V { toggle-window-floating; }
+  Mod+WheelScrollDown cooldown-ms=150 { focus-column-right; }
+  Mod+WheelScrollUp cooldown-ms=150 { focus-column-left; }
+  Print { screenshot show-pointer=false; }
+  Shift+Print { screenshot-window write-to-disk=false; }
+}

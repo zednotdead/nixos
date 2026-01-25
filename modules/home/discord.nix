@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ discord-canary ];
+  home.packages = with pkgs; [ equibop ];
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";

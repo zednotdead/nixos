@@ -1,9 +1,9 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
-}:
-{
+}: {
   imports = [
     inputs.niri.nixosModules.niri
   ];
@@ -23,7 +23,7 @@
 
   nix = {
     settings = {
-      substituters = [
+      substituters = lib.mkAfter [
         "https://vicinae.cachix.org"
       ];
       trusted-public-keys = [
@@ -32,7 +32,11 @@
     };
   };
 
-  programs.niri.enable = true;
+  nixpkgs.overlays = [inputs.niri.overlays.niri];
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
 
   niri-flake.cache.enable = true;
 }

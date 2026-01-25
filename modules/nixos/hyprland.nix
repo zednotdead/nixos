@@ -1,21 +1,19 @@
 {
   perSystem,
+  lib,
   ...
-}:
-{
+}: {
   nixpkgs.config.allowUnfree = true;
 
   nix = {
     settings = {
-      substituters = [
+      substituters = lib.mkAfter [
         "https://hyprland.cachix.org"
-        "https://vicinae.cachix.org"
       ];
-      trusted-public-keys = [
+      trusted-public-keys = lib.mkAfter [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       ];
-      trusted-substituters = [ "https://hyprland.cachix.org" ];
+      trusted-substituters = lib.mkAfter ["https://hyprland.cachix.org"];
     };
   };
 

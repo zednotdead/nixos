@@ -1,0 +1,66 @@
+
+input {
+  keyboard {
+    xkb {
+      layout "pl"
+      model ""
+      rules ""
+      variant ""
+    }
+    repeat-delay 600
+    repeat-rate 25
+    track-layout "global"
+    numlock
+  }
+  touchpad {
+    tap
+    natural-scroll
+  }
+}
+output "DP-1" {
+  focus-at-startup
+  transform "normal"
+  position x=0 y=0
+  mode "2560x1440"
+}
+output "HDMI-A-1" {
+  transform "normal"
+  position x=2560 y=0
+}
+prefer-no-csd
+layout {
+  gaps 16
+  struts {
+    left 0
+    right 0
+    top 0
+    bottom 0
+  }
+  focus-ring { width 4; }
+  border { off; }
+  default-column-width
+  center-focused-column "never"
+}
+cursor {
+  xcursor-theme "Digitan"
+  xcursor-size 24
+}
+
+spawn-at-startup "swww-daemon"
+spawn-at-startup "qs" "-d"
+spawn-at-startup "steam"
+spawn-at-startup "thunderbird"
+spawn-at-startup "signal-desktop"
+
+window-rule {
+  match app-id="thunderbird"
+  open-on-workspace "mail"
+}
+window-rule {
+  match app-id="steam"
+  open-on-workspace "games"
+}
+window-rule {
+  match app-id="steam_app_2767030"
+  open-fullscreen true
+}
