@@ -30,7 +30,7 @@
   environment.etc = {
     "1password/custom_allowed_browsers" = {
       text = ''
-        	waterfox
+        	librewolf
       '';
       mode = "0755";
     };

@@ -3,7 +3,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ../programs.nix
     # ./dms.nix
@@ -22,7 +23,7 @@
     };
   };
 
-  home.packages = with pkgs; [xwayland-satellite];
+  home.packages = with pkgs; [ xwayland-satellite ];
 
   programs.niri.package = null;
 

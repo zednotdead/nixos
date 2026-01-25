@@ -68,17 +68,8 @@
       package = perSystem.nixpkgs-stable.pqiv;
     };
 
-    librewolf = {
-      enable = false;
-      package = with pkgs; if stdenv.isDarwin then librewolf else librewolf-bin;
-      settings = {
-        "webgl.disabled" = false;
-        "privacy.resistFingerprinting" = false;
-        "privacy.clearOnShutdown.history" = false;
-        "privacy.clearOnShutdown.cookies" = false;
-        "network.cookie.lifetimePolicy" = 0;
-        "identity.fxaccounts.enabled" = true;
-      };
+    firefox = {
+      enable = true;
       nativeMessagingHosts = [
         pkgs.tridactyl-native
         pkgs._1password-gui-beta

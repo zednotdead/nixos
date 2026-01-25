@@ -1,9 +1,10 @@
-{inputs, pkgs, ...}: {
+{ inputs, pkgs, ... }:
+{
   imports = [
     inputs.noctalia.homeModules.default
   ];
 
-  home.packages = with pkgs; [pywalfox-native];
+  home.packages = with pkgs; [ pywalfox-native ];
 
   programs.noctalia-shell = {
     enable = true;
