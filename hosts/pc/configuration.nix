@@ -11,7 +11,7 @@
   imports = [
     ./hardware-configuration.nix
     inputs.base16.nixosModule
-    { scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml"; }
+    { scheme = "${inputs.tt-schemes}/base16/atelier-estuary.yaml"; }
     inputs.agenix.nixosModules.default
     # flake.nixosModules.hyprland
     flake.nixosModules.niri

@@ -20,7 +20,18 @@
     kdePackages.qtbase
     kdePackages.qtdeclarative
     kdePackages.qtstyleplugin-kvantum
+    nautilus
   ];
+
+  services.gnome.sushi.enable = true;
+  programs = {
+    nautilus-open-any-terminal.enable = true;
+    nautilus-open-any-terminal.terminal = "ghostty";
+    niri = {
+      enable = true;
+      package = pkgs.niri-unstable;
+    };
+  };
 
   nix = {
     settings = {
@@ -34,10 +45,6 @@
   };
 
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-  programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable;
-  };
 
   niri-flake.cache.enable = true;
 }

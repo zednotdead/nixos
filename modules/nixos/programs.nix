@@ -43,7 +43,7 @@
       openFirewall = true;
     };
     thunar = {
-      enable = true;
+      enable = false;
       plugins = with pkgs; [
         thunar-archive-plugin
         thunar-volman

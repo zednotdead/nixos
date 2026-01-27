@@ -27,20 +27,11 @@
       package = pkgs.papirus-icon-theme;
     };
 
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
 
   dconf.settings = {
-    "org/gtk/settings/file-chooser" = {
-      sort-directories-first = true;
-    };
-
-    # GTK4 Setup
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
