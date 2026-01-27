@@ -34,7 +34,6 @@
   };
 
   home.packages = with pkgs; [
-    nautilus
     file-roller
     swww
     networkmanagerapplet
@@ -58,7 +57,7 @@
     android-tools
     orca-slicer
     makemkv
-    perSystem.waterfox.waterfox-bin
+    pywalfox-native
   ];
 
   programs = {
@@ -70,9 +69,10 @@
 
     firefox = {
       enable = true;
-      nativeMessagingHosts = [
-        pkgs.tridactyl-native
-        pkgs._1password-gui-beta
+      nativeMessagingHosts = with pkgs; [
+        tridactyl-native
+        _1password-gui-beta
+        pywalfox-native
       ];
     };
   };

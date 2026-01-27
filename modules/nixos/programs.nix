@@ -23,6 +23,7 @@
     gvfs = {
       enable = true;
     };
+    tumbler.enable = true;
 
     gnome.gnome-keyring.enable = true;
   };
@@ -30,7 +31,7 @@
   environment.etc = {
     "1password/custom_allowed_browsers" = {
       text = ''
-        	librewolf
+        librewolf
       '';
       mode = "0755";
     };
@@ -41,6 +42,14 @@
       enable = true;
       openFirewall = true;
     };
+    thunar = {
+      enable = true;
+      plugins = with pkgs; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
+    xfconf.enable = true;
 
     steam = {
       enable = true;
@@ -50,7 +59,6 @@
         proton-ge-bin
       ];
     };
-
     _1password.enable = true;
     _1password-gui = with pkgs; {
       enable = true;

@@ -61,8 +61,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    waterfox.url = "github:Hythera/nix-waterfox";
-
     # Vim
     nixvim.url = "github:nix-community/nixvim";
 
