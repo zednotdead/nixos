@@ -13,7 +13,6 @@ in
     flake.homeModules.shared
     # flake.homeModules.wezterm
     flake.homeModules.shell
-    # flake.homeModules.hyprland
     # flake.homeModules.quickshell
     flake.homeModules.nvim
     flake.homeModules.minio
@@ -27,6 +26,7 @@ in
     flake.homeModules.matrix
     flake.homeModules.niri
     flake.homeModules.discord
+    flake.homeModules.emacs
   ];
 
   home.username = username;
