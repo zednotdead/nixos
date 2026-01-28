@@ -9,7 +9,7 @@ let
     !(builtins.elem config.scheme.slug [
       "oxocarbon-dark"
       "kanagawa"
-      "rose-pine"
+      # "rose-pine"
     ]);
 in
 {

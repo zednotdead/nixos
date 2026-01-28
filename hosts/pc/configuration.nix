@@ -186,6 +186,7 @@
         godot
         alejandra
         ncpamixer
+	perSystem.nixpkgs-stable.handbrake
         (
           (ffmpeg-full.override {
             withUnfree = true; # Allow unfree dependencies (for Nvidia features notably)

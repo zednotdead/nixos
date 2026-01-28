@@ -1,9 +1,6 @@
-{ pkgs, ... }:
-let
+{pkgs, lib, ...}: let
   prefix = "<Space>l";
-in
-{
-  home.packages = with pkgs; [ mdx-language-server ];
+in {
   programs.nixvim = {
     plugins = {
       lazydev.enable = true;
@@ -20,7 +17,11 @@ in
         enable = true;
         servers.mdx_analyzer = {
           enable = true;
-          package = pkgs.mdx-language-server;
+	  package = pkgs.mdx-language-server;
+          cmd = [(lib.getExe pkgs.mdx-language-server) "--stdio"];
+          filetypes = ["mdx"];
+          rootMarkers = ["package.json"];
+          extraOptions = {typescript = {enabled = true;};};
         };
       };
     };
