@@ -60,7 +60,7 @@ in
         just.enable = true;
         slint_lsp.enable = true;
         statix.enable = true;
-        basedpyright.enable = true;
+        pyrefly.enable = true;
         ruff.enable = true;
         tailwindcss.enable = true;
         marksman.enable = true;
