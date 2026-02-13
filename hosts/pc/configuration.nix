@@ -48,6 +48,7 @@
   networking = {
     hostName = "pc";
     networkmanager.enable = true;
+    nameservers = [ "10.0.0.1" ];
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -186,7 +187,7 @@
         godot
         alejandra
         ncpamixer
-	perSystem.nixpkgs-stable.handbrake
+        perSystem.nixpkgs-stable.handbrake
         (
           (ffmpeg-full.override {
             withUnfree = true; # Allow unfree dependencies (for Nvidia features notably)
