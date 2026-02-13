@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     ytfzf
     video-trimmer
+    kdePackages.kdenlive
   ];
 
   programs.yt-dlp = {
