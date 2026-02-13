@@ -15,7 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     mangohud
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     vulkan-tools
   ];
 
