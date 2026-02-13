@@ -1,6 +1,12 @@
-{pkgs, lib, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}:
+let
   prefix = "<Space>l";
-in {
+in
+{
   programs.nixvim = {
     plugins = {
       lazydev.enable = true;
@@ -17,11 +23,18 @@ in {
         enable = true;
         servers.mdx_analyzer = {
           enable = true;
-	  package = pkgs.mdx-language-server;
-          cmd = [(lib.getExe pkgs.mdx-language-server) "--stdio"];
-          filetypes = ["mdx"];
-          rootMarkers = ["package.json"];
-          extraOptions = {typescript = {enabled = true;};};
+          package = pkgs.mdx-language-server;
+          cmd = [
+            (lib.getExe pkgs.mdx-language-server)
+            "--stdio"
+          ];
+          filetypes = [ "mdx" ];
+          rootMarkers = [ "package.json" ];
+          extraOptions = {
+            typescript = {
+              enabled = true;
+            };
+          };
         };
       };
     };
@@ -53,6 +66,10 @@ in {
         marksman.enable = true;
         vale_ls.enable = true;
         svelte.enable = true;
+        jinja_lsp = {
+          enable = true;
+          package = pkgs.jinja-lsp;
+        };
       };
 
       keymaps = [

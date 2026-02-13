@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [emacs-gtk];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ emacs-gtk ];
 }
