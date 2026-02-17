@@ -27,6 +27,7 @@ in
     flake.homeModules.niri
     flake.homeModules.discord
     flake.homeModules.emacs
+    flake.homeModules.android-sdk
   ];
 
   home.username = username;

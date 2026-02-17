@@ -23,7 +23,6 @@
     flake.nixosModules.uutils
     flake.nixosModules.waydroid
     flake.nixosModules.bluetooth
-    flake.nixosModules.sunshine
   ];
 
   nix.settings.trusted-users = [
