@@ -6,12 +6,11 @@
   lib,
   perSystem,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware-configuration.nix
     inputs.base16.nixosModule
-    { scheme = "${inputs.tt-schemes}/base16/atelier-estuary.yaml"; }
+    {scheme = "${inputs.tt-schemes}/base16/atelier-estuary.yaml";}
     inputs.agenix.nixosModules.default
     # flake.nixosModules.hyprland
     flake.nixosModules.niri
@@ -24,6 +23,8 @@
     flake.nixosModules.waydroid
     flake.nixosModules.bluetooth
   ];
+  boot.kernelModules = ["sg"];
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   nix.settings.trusted-users = [
     "root"
@@ -47,7 +48,7 @@
   networking = {
     hostName = "pc";
     networkmanager.enable = true;
-    nameservers = [ "10.0.0.1" ];
+    nameservers = ["10.0.0.1"];
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -62,7 +63,7 @@
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    extraLocales = [ "pl_PL.UTF-8/UTF-8" ];
+    extraLocales = ["pl_PL.UTF-8/UTF-8"];
     extraLocaleSettings = {
       # LC_ALL = "en_US.UTF-8"; # This overrides all other LC_* settings.
       LC_CTYPE = "en_US.UTF8";
@@ -109,11 +110,12 @@
       useRoutingFeatures = "client";
     };
     scx.enable = true;
+    teamviewer.enable = true;
   };
 
   systemd.services.flatpak-repo = {
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.flatpak ];
+    wantedBy = ["multi-user.target"];
+    path = [pkgs.flatpak];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';

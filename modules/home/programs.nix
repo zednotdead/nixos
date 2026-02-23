@@ -49,6 +49,7 @@
       additionalLibs = [ vlc ];
       additionalPrograms = [ vlc ];
     })
+    jdk21
     perSystem.self.glide-browser
     onlyoffice-desktopeditors
     picard
@@ -58,6 +59,7 @@
     orca-slicer
     makemkv
     pywalfox-native
+    vlc
   ];
 
   programs = {
