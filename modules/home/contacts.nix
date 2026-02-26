@@ -46,7 +46,7 @@
       remote = {
         type = "carddav";
         url = "https://dav.mailbox.org";
-        userName = "zbigniew@zolnierowi.cz";
+        userName = "zuzanna@zolnierowi.cz";
         passwordCommand = [
           "${pkgs.gopass}/bin/gopass"
           "cat"
