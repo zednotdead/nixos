@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ./neomutt.nix
   ];
@@ -24,7 +25,7 @@
       ${pkgs.notmuch}/bin/notmuch tag -INBOX -- not folder:private/INBOX and tag:INBOX
 
       # Count new email
-      NEW_EMAIL_COUNT=${pkgs.notmuch}/bin/notmuch count "tag:INBOX and tag:unread"
+      NEW_EMAIL_COUNT=$(${pkgs.notmuch}/bin/notmuch count "tag:INBOX and tag:$1 and tag:unread")
       ${pkgs.libnotify}/bin/notify-send "Mails synced 📬" "New unread email: $NEW_EMAIL_COUNT"
     '';
     executable = true;
@@ -77,7 +78,7 @@
           enable = false;
           create = "both";
           expunge = "both";
-          patterns = ["*"];
+          patterns = [ "*" ];
           extraConfig = {
             channel = {
               Sync = "All";
@@ -96,7 +97,7 @@
 
         imapnotify = {
           enable = true;
-          onNotify = "${pkgs.offlineimap}/bin/offlineimap -a gmail";
+          onNotify = "${pkgs.offlineimap}/bin/offlineimap -a private";
         };
 
         msmtp.enable = true;

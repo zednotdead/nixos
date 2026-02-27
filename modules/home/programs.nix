@@ -57,7 +57,7 @@
     hledger-ui
     android-tools
     orca-slicer
-    makemkv
+    # makemkv
     pywalfox-native
     vlc
   ];

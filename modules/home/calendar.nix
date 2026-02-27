@@ -1,5 +1,5 @@
 {
-  config,
+  perSystem,
   pkgs,
   ...
 }:
@@ -9,6 +9,7 @@
 
   programs.khal = {
     enable = true;
+    package = perSystem.nixpkgs-stable.khal;
     locale = {
       firstweekday = 0;
     };
