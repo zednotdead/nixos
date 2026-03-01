@@ -53,3 +53,6 @@ bind editor ^T complete
 macro index,pager A \
     "<pipe-message>khard add-email<return>" \
     "add the sender email address to khard"
+
+macro index,pager <f1> '<sync-mailbox><enter-command>source ~/.config/neomutt/private<enter><change-folder>!<enter>'
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/neomutt/gmail<enter><change-folder>!<enter>'
