@@ -116,6 +116,7 @@
           "cat"
           "gmail"
         ];
+        folders.inbox = "INBOX";
         imap.host = "imap.gmail.com";
         smtp.host = "smtp.gmail.com";
 
