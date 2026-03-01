@@ -97,7 +97,7 @@
 
         imapnotify = {
           enable = true;
-          onNotify = "${pkgs.offlineimap}/bin/offlineimap -a private";
+          onNotifyPost = "${pkgs.offlineimap}/bin/offlineimap -a private";
         };
 
         msmtp.enable = true;
@@ -126,7 +126,7 @@
 
         imapnotify = {
           enable = true;
-          onNotify = "${pkgs.offlineimap}/bin/offlineimap -a gmail";
+          onNotifyPost = "${pkgs.offlineimap}/bin/offlineimap -a gmail";
         };
 
         msmtp.enable = true;
