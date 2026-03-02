@@ -105,7 +105,7 @@
         };
       };
     };
-    resolved.enable = true;
+    resolved.enable = false;
     tailscale = {
       enable = true;
       useRoutingFeatures = "client";

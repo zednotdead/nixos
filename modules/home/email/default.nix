@@ -25,7 +25,6 @@
         [InboxFilter]
       '';
     };
-    himalaya.enable = true;
   };
 
   services.imapnotify.enable = true;
@@ -40,7 +39,7 @@
     text = ''
       #!${pkgs.stdenv.shell}
 
-      export NOTMUCH_CONFIG=${config.xdg.configHome}/notmuch/notmuchrc
+      export NOTMUCH_CONFIG=${config.xdg.configHome}/notmuch/default/config
 
       ${pkgs.notmuch}/bin/notmuch new
       ${pkgs.afew}/bin/afew -C $NOTMUCH_CONFIG --tag --new -v
@@ -126,7 +125,6 @@
           };
         };
         neomutt.enable = true;
-        himalaya.enable = true;
       };
       "gmail" = {
         address = "zbigniew.zolnierowicz@gmail.com";
@@ -167,7 +165,6 @@
         notmuch.neomutt.enable = true;
 
         neomutt.enable = true;
-        himalaya.enable = true;
       };
     };
   };
