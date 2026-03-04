@@ -9,7 +9,7 @@
   programs.khard.enable = true;
 
   home.packages = with pkgs; [
-    gopass
+    pass
   ];
 
   accounts.contact.basePath = ".contacts";
@@ -48,8 +48,7 @@
         url = "https://dav.mailbox.org";
         userName = "zuzanna@zolnierowi.cz";
         passwordCommand = [
-          "${pkgs.gopass}/bin/gopass"
-          "cat"
+          "${pkgs.pass}/bin/pass"
           "mailbox"
         ];
       };

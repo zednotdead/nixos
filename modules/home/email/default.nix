@@ -12,6 +12,7 @@
       new.tags = ["new"];
     };
     mbsync.enable = true;
+    msmtp.enable = true;
 
     afew = {
       enable = true;
@@ -62,11 +63,7 @@
         folders = {
           inbox = "INBOX";
         };
-        passwordCommand = [
-          "${pkgs.gopass}/bin/gopass"
-          "cat"
-          "mailbox"
-        ];
+        passwordCommand = "${pkgs.pass}/bin/pass mailbox | head -n 1";
         imap = {
           host = "imap.mailbox.org";
           port = 993;
@@ -130,11 +127,7 @@
         address = "zbigniew.zolnierowicz@gmail.com";
         userName = "zbigniew.zolnierowicz@gmail.com";
         realName = "Zbigniew Żołnierowicz";
-        passwordCommand = [
-          "${pkgs.gopass}/bin/gopass"
-          "cat"
-          "gmail"
-        ];
+        passwordCommand = "${pkgs.pass}/bin/pass gmail";
         mbsync = {
           enable = true;
           create = "both";
