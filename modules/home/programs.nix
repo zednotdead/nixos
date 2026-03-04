@@ -44,7 +44,7 @@
     keymapp
     ungoogled-chromium
     realvnc-vnc-viewer
-    signal-desktop-bin
+    signal-desktop
     (prismlauncher.override {
       additionalLibs = [ vlc ];
       additionalPrograms = [ vlc ];
