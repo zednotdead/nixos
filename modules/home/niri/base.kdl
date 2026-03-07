@@ -42,7 +42,7 @@ layout {
   center-focused-column "never"
 }
 cursor {
-  xcursor-theme "Digitan"
+  xcursor-theme "creek"
   xcursor-size 24
 }
 

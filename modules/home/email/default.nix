@@ -2,14 +2,15 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ./neomutt.nix
   ];
   programs = {
     notmuch = {
       enable = true;
-      new.tags = ["new"];
+      new.tags = [ "new" ];
     };
     mbsync.enable = true;
     msmtp.enable = true;
@@ -79,7 +80,7 @@
           enable = true;
           create = "both";
           expunge = "both";
-          patterns = ["*"];
+          patterns = [ "*" ];
           extraConfig = {
             channel = {
               Sync = "All";
@@ -132,7 +133,12 @@
           enable = true;
           create = "both";
           expunge = "both";
-          patterns = ["*" "![Gmail]*" "[Gmail]/Sent Mail" "[Gmail]/Starred"];
+          patterns = [
+            "*"
+            "![Gmail]*"
+            "[Gmail]/Sent Mail"
+            "[Gmail]/Starred"
+          ];
           extraConfig = {
             channel = {
               Sync = "All";

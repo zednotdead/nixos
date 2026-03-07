@@ -111,7 +111,6 @@
       useRoutingFeatures = "client";
     };
     scx.enable = true;
-    teamviewer.enable = true;
   };
 
   systemd.services.flatpak-repo = {
@@ -143,6 +142,7 @@
     networkmanagerapplet
     docker-compose
     perSystem.agenix.default
+    rustdesk-flutter
   ];
 
   programs = {
