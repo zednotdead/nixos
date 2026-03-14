@@ -15,7 +15,6 @@ in
 {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
-    ./tmux.nix
   ];
 
   home.packages = with pkgs; [
