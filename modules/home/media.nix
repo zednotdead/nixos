@@ -4,6 +4,7 @@
     ytfzf
     video-trimmer
     kdePackages.kdenlive
+    feishin
   ];
 
   programs.yt-dlp = {
