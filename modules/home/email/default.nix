@@ -44,7 +44,25 @@
       export NOTMUCH_CONFIG=${config.xdg.configHome}/notmuch/default/config
 
       ${pkgs.notmuch}/bin/notmuch new
+
+      new=$(${pkgs.notmuch}/bin/notmuch count tag:new)
+      echo "New mail count: $new"
+
       ${pkgs.afew}/bin/afew -C $NOTMUCH_CONFIG --tag --new -v
+
+      if [ "$new" -ne 0 ]; then
+        ${pkgs.libnotify}/bin/notify-send -a "mbsync" "New mail!" "You got $new new messages!"
+      fi
+    '';
+    executable = true;
+  };
+
+  home.file.".local/bin/mailsync" = {
+    text = ''
+      #!${pkgs.stdenv.shell}
+
+      ${pkgs.libnotify}/bin/notify-send -a "mbsync" "Manual sync triggered!" "Synchronizing mail..."
+      systemctl start --user mbsync
     '';
     executable = true;
   };
@@ -155,7 +173,7 @@
 
         imapnotify = {
           enable = true;
-          onNotifyPost = "systemctl --user start mbsync";
+          onNotifyPost = "~/.local/bin/mailsync";
         };
 
         msmtp.enable = true;

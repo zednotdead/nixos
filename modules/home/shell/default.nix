@@ -38,7 +38,10 @@ in
     nix-index-database.comma.enable = true;
     lazygit.enable = true;
     fzf.enable = true;
-    mergiraf.enable = true;
+    mergiraf = {
+      enable = true;
+      enableGitIntegration = true;
+    };
     delta = {
       enable = true;
       enableGitIntegration = true;
@@ -105,11 +108,11 @@ in
           ${pkgs.git}/bin/git add --all
         '';
         tvnix = ''
-          	  ${pkgs.television}/bin/tv nix-search-tv
-          	'';
+          ${pkgs.television}/bin/tv nix-search-tv
+        '';
         get-hash-of-url = ''
-          	  nix-hash --type sha256 --to-sri $(nix-prefetch-url $argv[1])
-          	'';
+          nix-hash --type sha256 --to-sri $(nix-prefetch-url $argv[1])
+        '';
       };
       shellInit = ''
         set fish_greeting
