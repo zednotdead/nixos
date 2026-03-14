@@ -112,7 +112,7 @@
 
         imapnotify = {
           enable = true;
-          onNotifyPost = "systemctl --user start mbsync";
+          onNotify = "~/.local/bin/mailsync";
         };
 
         msmtp.enable = true;
@@ -173,7 +173,7 @@
 
         imapnotify = {
           enable = true;
-          onNotifyPost = "~/.local/bin/mailsync";
+          onNotify = "~/.local/bin/mailsync";
         };
 
         msmtp.enable = true;
