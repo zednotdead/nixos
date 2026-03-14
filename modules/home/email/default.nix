@@ -82,7 +82,7 @@
         folders = {
           inbox = "INBOX";
         };
-        passwordCommand = "${pkgs.pass}/bin/pass mailbox | head -n 1";
+        passwordCommand = "${pkgs.pass}/bin/pass mailbox";
         imap = {
           host = "imap.mailbox.org";
           port = 993;
