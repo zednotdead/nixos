@@ -62,7 +62,7 @@
       #!${pkgs.stdenv.shell}
 
       ${pkgs.libnotify}/bin/notify-send -a "mbsync" "Manual sync triggered!" "Synchronizing mail..."
-      systemctl start --user mbsync
+      ${pkgs.systemd}/bin/systemctl start --user mbsync
     '';
     executable = true;
   };
@@ -112,7 +112,7 @@
 
         imapnotify = {
           enable = true;
-          onNotify = "~/.local/bin/mailsync";
+          onNotifyPost = "~/.local/bin/mailsync";
         };
 
         msmtp.enable = true;
@@ -173,7 +173,7 @@
 
         imapnotify = {
           enable = true;
-          onNotify = "~/.local/bin/mailsync";
+          onNotifyPost = "~/.local/bin/mailsync";
         };
 
         msmtp.enable = true;
