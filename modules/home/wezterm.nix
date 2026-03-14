@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
     maple-mono.NF
     timg
@@ -13,17 +12,17 @@
   programs.wezterm = {
     enable = true;
     extraConfig = ''
-            return {
-      	font = wezterm.font_with_fallback({
-      	  "Maple Mono NF",
-      	}),
-      	font_size = 14.0,
-      	hide_tab_bar_if_only_one_tab = true,
-      	color_scheme = "oxocarbon-dark"
-            }
+           return {
+      font = wezterm.font_with_fallback({
+        "Maple Mono NF",
+      }),
+      font_size = 14.0,
+      hide_tab_bar_if_only_one_tab = true,
+      color_scheme = "${config.scheme.slug}"
+           }
     '';
     colorSchemes = {
-      "oxocarbon-dark" = builtins.fromTOML (
+      "${config.scheme.slug}" = builtins.fromTOML (
         builtins.readFile (
           config.scheme {
             template = ''

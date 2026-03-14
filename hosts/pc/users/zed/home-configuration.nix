@@ -22,7 +22,8 @@ in
     flake.homeModules.media
     flake.homeModules.backup
     flake.homeModules.obsidian
-    flake.homeModules.ghostty
+    # flake.homeModules.ghostty
+    flake.homeModules.wezterm
     flake.homeModules.matrix
     flake.homeModules.niri
     flake.homeModules.discord
