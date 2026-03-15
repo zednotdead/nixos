@@ -41,6 +41,7 @@ in
     mergiraf = {
       enable = true;
       enableGitIntegration = true;
+      enableJujutsuIntegration = false;
     };
     delta = {
       enable = true;
@@ -52,7 +53,7 @@ in
       settings.user = gitUser;
     };
     jujutsu = {
-      enable = true;
+      enable = false;
       settings.user = gitUser;
     };
     nh = {
