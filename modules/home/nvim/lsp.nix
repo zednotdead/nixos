@@ -66,6 +66,8 @@ in
         marksman.enable = true;
         vale_ls.enable = true;
         svelte.enable = true;
+        oxlint.enable = true;
+        oxfmt.enable = true;
         jinja_lsp = {
           enable = true;
           package = pkgs.jinja-lsp;

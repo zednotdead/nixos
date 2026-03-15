@@ -17,7 +17,7 @@ in
   home.file.".mailcap" = {
     enable = true;
     text = ''
-      text/html;        ${monolith-bin} %s -aFo - | ${chawan} -T text/html; nametemplate=%s.html; needsterminal;
+      text/html;        ${monolith-bin} %s -ajvFo - | ${chawan} -T text/html; nametemplate=%s.html; needsterminal;
       text/calendar;    ${khal} printics; copiousoutput;print=${khal} import --batch -a Calendar
       text/x-vcalendar; ${khal} printics; copiousoutput;print=${khal} import --batch -a Calendar
       application/ics;  ${khal} printics; copiousoutput;print=${khal} import --batch -a Calendar
