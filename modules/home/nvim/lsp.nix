@@ -21,19 +21,28 @@ in
 
       lsp = {
         enable = true;
-        servers.mdx_analyzer = {
-          enable = true;
-          package = pkgs.mdx-language-server;
-          cmd = [
-            (lib.getExe pkgs.mdx-language-server)
-            "--stdio"
-          ];
-          filetypes = [ "mdx" ];
-          rootMarkers = [ "package.json" ];
-          extraOptions = {
-            typescript = {
-              enabled = true;
+        servers = {
+          mdx_analyzer = {
+            enable = true;
+            package = pkgs.mdx-language-server;
+            cmd = [
+              (lib.getExe pkgs.mdx-language-server)
+              "--stdio"
+            ];
+            filetypes = [ "mdx" ];
+            rootMarkers = [ "package.json" ];
+            extraOptions = {
+              typescript = {
+                enabled = true;
+              };
             };
+          };
+          tailwindcss = {
+            enable = true;
+            settings.tailwindCSS.classFunctions = [
+              "cva"
+              "cx"
+            ];
           };
         };
       };
@@ -62,7 +71,6 @@ in
         statix.enable = true;
         pyrefly.enable = true;
         ruff.enable = true;
-        tailwindcss.enable = true;
         marksman.enable = true;
         vale_ls.enable = true;
         svelte.enable = true;
