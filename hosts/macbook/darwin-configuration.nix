@@ -37,7 +37,7 @@ in
 
   users.users.${user} = {
     home = /Users/${user};
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
   nix.settings = {
     # Necessary for using flakes on this system.
@@ -54,7 +54,6 @@ in
 
   # Enable alternative shell support in nix-darwin.
   programs.fish.enable = true;
-  programs.zsh.enable = true;
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = flake.rev or flake.dirtyRev or null;

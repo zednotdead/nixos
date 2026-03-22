@@ -55,7 +55,6 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   programs.fish.enable = true;
-  programs.zsh.enable = true;
 
   age.secrets.zed-password.file = ../../secrets/zed-password.age;
   security.pam.services.greetd.enableGnomeKeyring = true;
@@ -206,7 +205,7 @@
         )
         home-manager
       ];
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
     };
   };
 

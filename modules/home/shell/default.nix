@@ -86,7 +86,6 @@ in
     yazi = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
       enableNushellIntegration = true;
       shellWrapperName = "y";
     };
@@ -166,7 +165,6 @@ in
     pay-respects = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
       enableNushellIntegration = true;
     };
 
@@ -174,7 +172,6 @@ in
       enable = true;
       enableFishIntegration = true;
       enableNushellIntegration = true;
-      enableZshIntegration = true;
       enableTransience = true;
       settings = {
         add_newline = false;
@@ -244,7 +241,6 @@ in
     mise = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
       enableNushellIntegration = true;
     };
 
@@ -257,14 +253,12 @@ in
     zoxide = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
       enableNushellIntegration = true;
     };
 
     television = {
       enable = true;
       enableFishIntegration = false;
-      enableZshIntegration = false;
     };
 
     k9s = {
@@ -575,13 +569,11 @@ in
     nix-your-shell = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
       enableNushellIntegration = true;
     };
 
     direnv = {
       enable = true;
-      enableZshIntegration = true;
       enableNushellIntegration = true;
       silent = true;
     };
@@ -603,13 +595,11 @@ in
       enable = true;
       enableNushellIntegration = true;
     };
-    zsh.enable = true;
   };
 
   services.gpg-agent = {
     enable = true;
     enableFishIntegration = true;
-    enableZshIntegration = true;
     enableNushellIntegration = true;
   };
 }
