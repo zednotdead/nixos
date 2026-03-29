@@ -15,6 +15,11 @@
     mbsync.enable = true;
     msmtp.enable = true;
 
+    aerc = {
+      enable = true;
+      extraConfig.general.unsafe-accounts-conf = true;
+    };
+
     afew = {
       enable = true;
       extraConfig = ''
@@ -115,6 +120,8 @@
           onNotifyPost = "~/.local/bin/mailsync";
         };
 
+        aerc.enable = true;
+
         msmtp.enable = true;
         notmuch = {
           enable = true;
@@ -178,6 +185,7 @@
 
         msmtp.enable = true;
 
+        aerc.enable = true;
         notmuch.enable = true;
         notmuch.neomutt.enable = true;
 

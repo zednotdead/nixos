@@ -1,12 +1,15 @@
 {
-  config,
   pkgs,
+  perSystem,
   ...
 }:
 {
   programs.vdirsyncer.enable = true;
   services.vdirsyncer.enable = true;
-  programs.khard.enable = true;
+  programs.khard = {
+    enable = true;
+    package = perSystem.nixpkgs-stable.khard;
+  };
 
   home.packages = with pkgs; [
     pass

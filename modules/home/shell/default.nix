@@ -116,8 +116,9 @@ in
         '';
       };
       shellInit = ''
-        set fish_greeting
-        bind ctrl-h backward-kill-word
+                set fish_greeting
+                bind ctrl-h backward-kill-word
+        	fish_add_path --global --append --path $HOME/.local/bin
       '';
       interactiveShellInit = ''
         tv init fish | source
