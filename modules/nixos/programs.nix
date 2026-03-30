@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fonts.packages = with pkgs; [
     corefonts
     noto-fonts
@@ -18,6 +17,10 @@
     wineWow64Packages.waylandFull
     vulkan-tools
   ];
+
+  programs.obs-studio = {
+    enable = true;
+  };
 
   services = {
     gvfs = {
@@ -63,7 +66,7 @@
     _1password-gui = with pkgs; {
       enable = true;
       package = _1password-gui-beta;
-      polkitPolicyOwners = [ "zed" ];
+      polkitPolicyOwners = ["zed"];
     };
     gamemode.enable = true;
   };
