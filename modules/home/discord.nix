@@ -1,4 +1,16 @@
-{ pkgs, ... }:
+{
+  inputs,
+  ...
+}:
+let
+  pkgs = import inputs.nixpkgs-stable {
+    system = "x86_64-linux";
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
+in
 {
   home.packages = with pkgs; [ discord ];
 

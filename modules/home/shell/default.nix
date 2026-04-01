@@ -204,26 +204,26 @@ in
 
         git_status = {
           style = "cyan";
-          modified = " !×$\{count}";
-          ahead = " ⇡×$\{count}";
-          behind = " ⇣×$\{count}";
-          diverged = " ⇡×$\{ahead_count} ⇣×$\{behind_count}";
-          staged = " +×$\{count}";
-          untracked = " ?×$\{count}";
+          modified = " !×\${count}";
+          ahead = " ⇡×\${count}";
+          behind = " ⇣×\${count}";
+          diverged = " ⇡×\${ahead_count} ⇣×\${behind_count}";
+          staged = " +×\${count}";
+          untracked = " ?×\${count}";
           stashed = "";
-          deleted = " ✘×$\{count}";
+          deleted = " ✘×\${count}";
           format = "[$all_status$ahead_behind]($style)";
         };
 
         git_state = {
-          format = "\([$state( $progress_current/$progress_total)]($style)\) ";
+          format = "([$state( $progress_current/$progress_total)]($style)) ";
           style = "bright-black";
         };
 
         kubernetes = {
           disabled = false;
           symbol = "☸ ";
-          format = " [$symbol$context( \($namespace\))]($style)";
+          format = " [$symbol$context( ($namespace))]($style)";
           style = "cyan bold";
         };
 
