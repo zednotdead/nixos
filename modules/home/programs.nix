@@ -60,6 +60,7 @@
     # makemkv
     pywalfox-native
     vlc
+    heroic
   ];
 
   programs = {
