@@ -35,6 +35,8 @@ in
     pkgs.nushell
   ];
 
+  services.tailscale.enable = true;
+
   users.users.${user} = {
     home = /Users/${user};
     shell = pkgs.fish;
