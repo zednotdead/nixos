@@ -1,0 +1,10 @@
+workspace "main" { open-on-output "DP-1"; }
+workspace "games" { open-on-output "DP-1"; }
+workspace "mail" { open-on-output "DP-1"; }
+workspace "04" { open-on-output "DP-1"; }
+workspace "05" { open-on-output "DP-1"; }
+workspace "media" { open-on-output "HDMI-A-1"; }
+workspace "07" { open-on-output "HDMI-A-1"; }
+workspace "08" { open-on-output "HDMI-A-1"; }
+workspace "09" { open-on-output "HDMI-A-1"; }
+workspace "10" { open-on-output "HDMI-A-1"; }

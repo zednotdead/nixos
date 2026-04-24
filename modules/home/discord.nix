@@ -1,15 +1,18 @@
-{ pkgs, ... }:
 {
-  home.packages =
-    if pkgs.stdenv.isLinux then
-      with pkgs;
-      [
-        (discord-canary.override {
-          withOpenASAR = true;
-        })
-      ]
-    else
-      with pkgs; [ discord-canary ];
+  inputs,
+  ...
+}:
+let
+  pkgs = import inputs.nixpkgs-stable {
+    system = "x86_64-linux";
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
+in
+{
+  home.packages = with pkgs; [ discord ];
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";

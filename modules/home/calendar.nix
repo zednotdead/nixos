@@ -1,5 +1,5 @@
 {
-  config,
+  perSystem,
   pkgs,
   ...
 }:
@@ -9,13 +9,14 @@
 
   programs.khal = {
     enable = true;
+    package = perSystem.nixpkgs-stable.khal;
     locale = {
       firstweekday = 0;
     };
   };
 
   home.packages = with pkgs; [
-    gopass
+    pass
   ];
 
   accounts.calendar.basePath = ".calendar";
@@ -53,10 +54,9 @@
       remote = {
         type = "caldav";
         url = "https://dav.mailbox.org";
-        userName = "zbigniew@zolnierowi.cz";
+        userName = "zuzanna@zolnierowi.cz";
         passwordCommand = [
-          "${pkgs.gopass}/bin/gopass"
-          "cat"
+          "${pkgs.pass}/bin/pass"
           "mailbox"
         ];
       };

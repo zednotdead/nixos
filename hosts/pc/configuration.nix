@@ -9,10 +9,10 @@
 }:
 {
   imports = [
+    ./hardware-configuration.nix
     inputs.base16.nixosModule
-    { scheme = "${inputs.tt-schemes}/base16/rose-pine.yaml"; }
+    { scheme = "${inputs.tt-schemes}/base16/atelier-estuary.yaml"; }
     inputs.agenix.nixosModules.default
-    inputs.chaotic.nixosModules.default
     # flake.nixosModules.hyprland
     flake.nixosModules.niri
     flake.nixosModules.programs
@@ -21,8 +21,11 @@
     flake.nixosModules.tablet
     flake.nixosModules.wine
     flake.nixosModules.uutils
-    ./hardware-configuration.nix
+    flake.nixosModules.waydroid
+    flake.nixosModules.bluetooth
   ];
+  boot.kernelModules = [ "sg" ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   nix.settings.trusted-users = [
     "root"
@@ -30,7 +33,13 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    plymouth = {
+      enable = true;
+      theme = "blahaj";
+      themePackages = with pkgs; [
+        plymouth-blahaj-theme
+      ];
+    };
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -40,6 +49,7 @@
   networking = {
     hostName = "pc";
     networkmanager.enable = true;
+    nameservers = [ "10.0.0.1" ];
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -95,8 +105,10 @@
         };
       };
     };
+    resolved.enable = false;
     tailscale = {
       enable = true;
+      useRoutingFeatures = "client";
     };
     scx.enable = true;
   };
@@ -129,8 +141,8 @@
     gcc
     networkmanagerapplet
     docker-compose
-    nix-search-tv
     perSystem.agenix.default
+    rustdesk-flutter
   ];
 
   programs = {
@@ -176,8 +188,8 @@
         nil
         godot
         alejandra
-        pika-backup
         ncpamixer
+        perSystem.nixpkgs-stable.handbrake
         (
           (ffmpeg-full.override {
             withUnfree = true; # Allow unfree dependencies (for Nvidia features notably)
@@ -196,6 +208,8 @@
       shell = pkgs.fish;
     };
   };
+
+  home-manager.backupFileExtension = ".bak";
 
   system.stateVersion = "25.11"; # initial nixos state
 }

@@ -1,15 +1,18 @@
 {
-  config,
   pkgs,
+  perSystem,
   ...
 }:
 {
   programs.vdirsyncer.enable = true;
   services.vdirsyncer.enable = true;
-  programs.khard.enable = true;
+  programs.khard = {
+    enable = true;
+    package = perSystem.nixpkgs-stable.khard;
+  };
 
   home.packages = with pkgs; [
-    gopass
+    pass
   ];
 
   accounts.contact.basePath = ".contacts";
@@ -46,10 +49,9 @@
       remote = {
         type = "carddav";
         url = "https://dav.mailbox.org";
-        userName = "zbigniew@zolnierowi.cz";
+        userName = "zuzanna@zolnierowi.cz";
         passwordCommand = [
-          "${pkgs.gopass}/bin/gopass"
-          "cat"
+          "${pkgs.pass}/bin/pass"
           "mailbox"
         ];
       };

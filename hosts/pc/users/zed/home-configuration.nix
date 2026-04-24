@@ -13,7 +13,6 @@ in
     flake.homeModules.shared
     # flake.homeModules.wezterm
     flake.homeModules.shell
-    # flake.homeModules.hyprland
     # flake.homeModules.quickshell
     flake.homeModules.nvim
     flake.homeModules.minio
@@ -23,10 +22,14 @@ in
     flake.homeModules.media
     flake.homeModules.backup
     flake.homeModules.obsidian
-    flake.homeModules.ghostty
+    # flake.homeModules.ghostty
+    flake.homeModules.wezterm
     flake.homeModules.matrix
     flake.homeModules.niri
     flake.homeModules.discord
+    flake.homeModules.emacs
+    flake.homeModules.android-sdk
+    flake.homeModules.android
   ];
 
   home.username = username;

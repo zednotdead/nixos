@@ -3,6 +3,8 @@
   home.packages = with pkgs; [
     ytfzf
     video-trimmer
+    kdePackages.kdenlive
+    feishin
   ];
 
   programs.yt-dlp = {

@@ -39,6 +39,11 @@
     ];
   };
 
+  fileSystems."/mnt/extra01" = {
+    device = "/dev/disk/by-partuuid/39ee220e-e46c-4e5d-aa8a-00b1b13710fd";
+    fsType = "ext4";
+  };
+
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/cc0cd569-944a-4dc8-baac-4ea77b5f497f";
     fsType = "ext4";
@@ -64,5 +69,18 @@
   # networking.interfaces.enp113s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  environment.variables.AMD_VULKAN_ICD = "RADV";
+
+  hardware.enableRedistributableFirmware = true;
+
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
+
+  hardware.amdgpu = {
+    initrd.enable = true;
+    opencl.enable = true;
+  };
 }

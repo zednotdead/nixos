@@ -12,7 +12,13 @@
   services = {
     vicinae = {
       enable = true;
-      autoStart = true;
+      systemd = {
+        enable = true;
+        autoStart = true;
+        environment = {
+          USE_LAYER_SHELL = 1;
+        };
+      };
     };
 
     kdeconnect = {
@@ -28,7 +34,6 @@
   };
 
   home.packages = with pkgs; [
-    nautilus
     file-roller
     swww
     networkmanagerapplet
@@ -39,14 +44,23 @@
     keymapp
     ungoogled-chromium
     realvnc-vnc-viewer
-    signal-desktop-bin
+    signal-desktop
     (prismlauncher.override {
       additionalLibs = [ vlc ];
       additionalPrograms = [ vlc ];
     })
+    jdk21
     perSystem.self.glide-browser
     onlyoffice-desktopeditors
     picard
+    hledger
+    hledger-ui
+    android-tools
+    orca-slicer
+    # makemkv
+    pywalfox-native
+    vlc
+    heroic
   ];
 
   programs = {
@@ -56,12 +70,12 @@
       package = perSystem.nixpkgs-stable.pqiv;
     };
 
-    librewolf = {
+    firefox = {
       enable = true;
-      package = perSystem.nixpkgs-stable.librewolf;
-      nativeMessagingHosts = [
-        pkgs.tridactyl-native
-        pkgs._1password-gui-beta
+      nativeMessagingHosts = with pkgs; [
+        tridactyl-native
+        _1password-gui-beta
+        pywalfox-native
       ];
     };
   };

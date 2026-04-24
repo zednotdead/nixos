@@ -13,12 +13,32 @@
     proggyfonts
   ];
 
+  environment.systemPackages = with pkgs; [
+    mangohud
+    wineWow64Packages.waylandFull
+    vulkan-tools
+  ];
+
+  programs.obs-studio = {
+    enable = true;
+  };
+
   services = {
     gvfs = {
       enable = true;
     };
+    tumbler.enable = true;
 
     gnome.gnome-keyring.enable = true;
+  };
+
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ''
+        librewolf
+      '';
+      mode = "0755";
+    };
   };
 
   programs = {
@@ -26,17 +46,29 @@
       enable = true;
       openFirewall = true;
     };
-    adb.enable = true;
+    thunar = {
+      enable = false;
+      plugins = with pkgs; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
+    xfconf.enable = true;
 
     steam = {
       enable = true;
+      protontricks.enable = true;
+      gamescopeSession.enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
     };
-
     _1password.enable = true;
     _1password-gui = with pkgs; {
       enable = true;
       package = _1password-gui-beta;
       polkitPolicyOwners = [ "zed" ];
     };
+    gamemode.enable = true;
   };
 }

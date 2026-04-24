@@ -30,13 +30,19 @@ in
     devenv
     perSystem.nix-auth.default
     megacmd
+    glab
+    commitizen
   ];
 
   programs = {
     nix-index-database.comma.enable = true;
     lazygit.enable = true;
     fzf.enable = true;
-    mergiraf.enable = true;
+    mergiraf = {
+      enable = true;
+      enableGitIntegration = true;
+      enableJujutsuIntegration = false;
+    };
     delta = {
       enable = true;
       enableGitIntegration = true;
@@ -47,7 +53,7 @@ in
       settings.user = gitUser;
     };
     jujutsu = {
-      enable = true;
+      enable = false;
       settings.user = gitUser;
     };
     nh = {
@@ -63,6 +69,7 @@ in
       enable = true;
       settings = {
         buffer.images = true;
+        network.allow-http-from-file = true;
       };
     };
 
@@ -80,6 +87,7 @@ in
       enable = true;
       enableFishIntegration = true;
       enableNushellIntegration = true;
+      shellWrapperName = "y";
     };
 
     fish = {
@@ -100,10 +108,20 @@ in
         gaa = ''
           ${pkgs.git}/bin/git add --all
         '';
+        tvnix = ''
+          ${pkgs.television}/bin/tv nix-search-tv
+        '';
+        get-hash-of-url = ''
+          nix-hash --type sha256 --to-sri $(nix-prefetch-url $argv[1])
+        '';
       };
       shellInit = ''
-        set fish_greeting
-        bind ctrl-h backward-kill-word
+                set fish_greeting
+                bind ctrl-h backward-kill-word
+        	fish_add_path --global --append --path $HOME/.local/bin
+      '';
+      interactiveShellInit = ''
+        tv init fish | source
       '';
       plugins = with pkgs.fishPlugins; [
         {
@@ -186,26 +204,26 @@ in
 
         git_status = {
           style = "cyan";
-          modified = " !×$\{count}";
-          ahead = " ⇡×$\{count}";
-          behind = " ⇣×$\{count}";
-          diverged = " ⇡×$\{ahead_count} ⇣×$\{behind_count}";
-          staged = " +×$\{count}";
-          untracked = " ?×$\{count}";
+          modified = " !×\${count}";
+          ahead = " ⇡×\${count}";
+          behind = " ⇣×\${count}";
+          diverged = " ⇡×\${ahead_count} ⇣×\${behind_count}";
+          staged = " +×\${count}";
+          untracked = " ?×\${count}";
           stashed = "";
-          deleted = " ✘×$\{count}";
+          deleted = " ✘×\${count}";
           format = "[$all_status$ahead_behind]($style)";
         };
 
         git_state = {
-          format = "\([$state( $progress_current/$progress_total)]($style)\) ";
+          format = "([$state( $progress_current/$progress_total)]($style)) ";
           style = "bright-black";
         };
 
         kubernetes = {
           disabled = false;
           symbol = "☸ ";
-          format = " [$symbol$context( \($namespace\))]($style)";
+          format = " [$symbol$context( ($namespace))]($style)";
           style = "cyan bold";
         };
 
@@ -239,17 +257,9 @@ in
       enableNushellIntegration = true;
     };
 
-    mcfly = {
-      enable = true;
-      enableFishIntegration = true;
-      fzf = {
-        enable = true;
-      };
-    };
-
     television = {
       enable = true;
-      enableFishIntegration = true;
+      enableFishIntegration = false;
     };
 
     k9s = {
@@ -593,16 +603,4 @@ in
     enableFishIntegration = true;
     enableNushellIntegration = true;
   };
-
-  xdg.configFile."television/cable/nix.toml".text = ''
-    [metadata]
-    name = "nix"
-    requirements = ["nix-search-tv"]
-
-    [source]
-    command = "nix-search-tv print"
-
-    [preview]
-    command = "nix-search-tv preview {}"
-  '';
 }

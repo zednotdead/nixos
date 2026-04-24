@@ -1,9 +1,12 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 let
   prefix = "<Space>l";
 in
 {
-  home.packages = with pkgs; [ mdx-language-server ];
   programs.nixvim = {
     plugins = {
       lazydev.enable = true;
@@ -18,9 +21,29 @@ in
 
       lsp = {
         enable = true;
-        servers.mdx_analyzer = {
-          enable = true;
-          package = pkgs.mdx-language-server;
+        servers = {
+          mdx_analyzer = {
+            enable = true;
+            package = pkgs.mdx-language-server;
+            cmd = [
+              (lib.getExe pkgs.mdx-language-server)
+              "--stdio"
+            ];
+            filetypes = [ "mdx" ];
+            rootMarkers = [ "package.json" ];
+            extraOptions = {
+              typescript = {
+                enabled = true;
+              };
+            };
+          };
+          tailwindcss = {
+            enable = true;
+            settings.tailwindCSS.classFunctions = [
+              "cva"
+              "cx"
+            ];
+          };
         };
       };
     };
@@ -46,12 +69,17 @@ in
         just.enable = true;
         slint_lsp.enable = true;
         statix.enable = true;
-        basedpyright.enable = true;
+        pyrefly.enable = true;
         ruff.enable = true;
-        tailwindcss.enable = true;
         marksman.enable = true;
         vale_ls.enable = true;
         svelte.enable = true;
+        oxlint.enable = true;
+        oxfmt.enable = true;
+        jinja_lsp = {
+          enable = true;
+          package = pkgs.jinja-lsp;
+        };
       };
 
       keymaps = [

@@ -1,11 +1,11 @@
 { pkgs, ... }:
 pkgs.stdenv.mkDerivation (finalAttrs: {
   pname = "glide-browser";
-  version = "0.1.55a";
+  version = "0.1.57a";
 
   src = pkgs.fetchurl {
     url = "https://github.com/glide-browser/glide/releases/download/${finalAttrs.version}/glide.linux-x86_64.tar.xz";
-    hash = "sha256-mjk8KmB/T5ZpB9AMQw1mtb9VbMXVX2VV4N+hWpWkSYI=";
+    hash = "sha256-BK0vB8B6DN3TXs7MweiOAycB7+6IaQPau/0HvNbNta0=";
   };
 
   nativeBuildInputs = with pkgs; [

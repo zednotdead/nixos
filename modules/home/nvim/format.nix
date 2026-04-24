@@ -16,7 +16,6 @@ in
     taplo
     statix
     beautysh
-    sqlfluff
     jq
     opentofu
     alejandra
@@ -43,7 +42,6 @@ in
       bash = [ "beautysh" ];
       sh = [ "beautysh" ];
       zsh = [ "beautysh" ];
-      sql = [ "sqlfluff" ];
       toml = [ "taplo" ];
       terraform = [ "terraform_fmt" ];
       go = [

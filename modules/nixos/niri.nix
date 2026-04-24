@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -19,11 +20,22 @@
     kdePackages.qtbase
     kdePackages.qtdeclarative
     kdePackages.qtstyleplugin-kvantum
+    nautilus
   ];
+
+  services.gnome.sushi.enable = true;
+  programs = {
+    nautilus-open-any-terminal.enable = true;
+    nautilus-open-any-terminal.terminal = "ghostty";
+    niri = {
+      enable = true;
+      package = pkgs.niri-unstable;
+    };
+  };
 
   nix = {
     settings = {
-      substituters = [
+      substituters = lib.mkAfter [
         "https://vicinae.cachix.org"
       ];
       trusted-public-keys = [
@@ -32,7 +44,7 @@
     };
   };
 
-  programs.niri.enable = true;
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
   niri-flake.cache.enable = true;
 }

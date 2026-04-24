@@ -6,6 +6,7 @@
     # Base
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +20,10 @@
       url = "github:numtide/blueprint";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix.url = "github:ryantm/agenix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Theming
     base16.url = "github:SenchoPens/base16.nix";
@@ -32,16 +36,21 @@
       flake = false;
     };
 
-    # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland";
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     vicinae = {
       # Programs
       url = "github:vicinaehq/vicinae";
@@ -63,9 +72,8 @@
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     nix-auth.url = "github:numtide/nix-auth";
   };

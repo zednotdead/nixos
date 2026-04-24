@@ -1,0 +1,6 @@
+---
+commitizen:
+  name: cz_jira
+  tag_format: $version
+  version: 0.0.1
+  version_scheme: semver
